@@ -1,0 +1,155 @@
+/* Navbar */
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: hsl(0, 0%, 98%);
+}
+.nav {
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.nav__logo,
+.nav__toggle {
+  color: hsl(0, 0%, 20%);
+  font-weight: 500;
+}
+
+.nav__list {
+  display: flex;
+  column-gap: 2rem;
+}
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.875rem;
+  color: hsl(0, 0%, 20%);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav__icon,
+.nav__close,
+.nav__toggle {
+  display: none;
+}
+/* show menu */
+
+/* active link */
+
+.active-link,
+.nav__link:hover {
+  color: hsl(0, 0%, 0%);
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    top: initial;
+    bottom: 0;
+  }
+  .nav {
+    height: 3rem;
+  }
+  .nav__menu {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: hsl(0, 0%, 98%);
+    padding: 2rem 1.5rem 4rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: all 0.7s ease-in-out;
+  }
+  .nav__menu--open {
+    bottom: 0;
+  }
+
+  .nav__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .ser {
+    margin-left: 2rem;
+  }
+  .nav__icon {
+    font-size: 1.2rem;
+  }
+  .nav__close {
+    position: absolute;
+    right: 1.3rem;
+    bottom: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: hsl(0, 0%, 20%);
+  }
+  .nav__close:hover {
+    color: hsl(0, 0%, 0%);
+  }
+
+  .nav__icon,
+  .nav__close,
+  .nav__toggle {
+    display: block;
+  }
+  .nav__toggle {
+    cursor: pointer;
+  }
+}
+
+.scrollup {
+  position: fixed;
+  right: 2.5rem;
+  bottom: -20%;
+  background-color: hsl(0, 0%, 20%);
+  opacity: 0.8;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  z-index: 10;
+  transition: 0.4s;
+}
+
+.scrollup__icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.scrollup:hover {
+  background-color: hsl(0, 0%, 0%);
+}
+
+.show-scroll {
+  bottom: 3rem;
+}
+
+@media only screen and (max-width: 992px) {
+  .scrollup{
+    right: 1.5rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .scrollup__icon{
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .show-scroll{
+    bottom: 4rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .scrollup{
+    right: 1rem;
+  }
+}

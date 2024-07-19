@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Kalnia
+- Font Author: Copyright 2022 The Kalnia Project Authors (https://github.com/fridamedrano/Kalnia-Typeface.git)
+- Font Source: https://fonts.gstatic.com/s/kalnia/v2/11hqGpPCwUbbYwZZP0RBuDY62BQZhjvOytM_sLzi-TFWAW9ilmxRGNcykIZc.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
