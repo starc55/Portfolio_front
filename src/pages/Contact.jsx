@@ -36,7 +36,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        "https://portfolio-yfmo.onrender.com/api/messages",
+        "https://protfolios-0axc.onrender.com/api/messages",
         data
       );
       console.log("Message sent:", response.data);
