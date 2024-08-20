@@ -8,11 +8,11 @@ import { FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 import { Input } from "antd";
 import ScrollReveal from "scrollreveal";
-const { TextArea } = Input;
+const { TextArea } = Input; 
 
-const onChange = (e) => {
-  console.log(e);
-};
+// const onChange = (e) => {
+//   console.log(e);
+// };
 
 const Contact = () => {
   const [name, setName] = useState("");

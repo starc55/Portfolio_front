@@ -287,7 +287,7 @@ button:hover .button-text {
   margin-top: 13rem;
   font-weight: 600;
 }
-.header_about{
+.header_about {
   margin-top: 14rem;
 }
 .about_content {
@@ -797,12 +797,12 @@ button:hover .button-text {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px; 
+  padding: 20px;
 }
 .portfolio_works {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px; 
+  gap: 20px;
   max-width: 1200px;
   width: 100%;
   justify-content: center;
@@ -899,53 +899,77 @@ button:hover .button-text {
   margin-top: 2rem;
 }
 
-
 /* testimonials */
 
-.testimonial__container{
+.testimonial__container {
   width: 750px;
   margin-top: 3rem;
 }
 
-.testimonial__card{
+.testimonial__card {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1.5rem 2rem;
   border-radius: 1.5rem;
   margin-bottom: 3rem;
+  height: 200px !important;
 }
 
-.testimonial__img{
+.testimonial__img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-bottom: 1rem;
 }
 
-.testimonial__name{
+.testimonial__name {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
-.testimonial__description{
+.testimonial__description {
   font-size: 0.875rem;
 }
 
-.swiper-pagination-bullet{
+.swiper-pagination-bullet {
   background-color: hsl(0, 0%, 46%);
 }
 
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
   background-color: hsl(0, 0%, 20%) !important;
 }
 
 @media screen and (max-width: 992px) {
-  .testimonial__container{
+  .testimonial__container {
     width: initial;
   }
 
-  .testimonial__card{
+  .testimonial__card {
     padding: 1.25rem 1.5rem;
   }
+}
+
+.achievements_container {
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.achievements_img img {
+  max-width: 300px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: box-shadow 0.4s ease-in-out;
+}
+.achievements_img img:hover {
+  -webkit-box-shadow: 2px 6px 89px 33px rgba(34, 60, 80, 0.29);
+  -moz-box-shadow: 2px 6px 89px 33px rgba(34, 60, 80, 0.29);
+  box-shadow: 2px 6px 89px 33px rgba(34, 60, 80, 0.29);
+}
+.achievements_img {
+  display: flex;
+  flex-wrap: wrap;
 }

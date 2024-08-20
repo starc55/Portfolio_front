@@ -11,6 +11,7 @@ import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 import { Footer } from "./pages/Footer";
 import ScrollUp from "./components/ScrollUp";
+import Achievements from "./pages/Achievements";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Qualification />
       <Portfolio />
       <Testimonials />
+      <Achievements />
       <Contact />
       <Footer />
 
