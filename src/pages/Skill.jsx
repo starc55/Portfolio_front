@@ -54,6 +54,11 @@ export const Skill = () => {
                       React
                     </span>
                     <p className="card_text_sub">Intermediate</p>
+                    <span>
+                      <MdOutlineVerified className="card_icon" />
+                      Wordpress
+                    </span>
+                    <p className="card_text_sub">Intermediate</p>
                   </div>
                   <div className="skill2">
                     <span>
@@ -64,6 +69,11 @@ export const Skill = () => {
                     <span>
                       <MdOutlineVerified className="card_icon" />
                       Bulma
+                    </span>
+                    <p className="card_text_sub">Intermediate</p>
+                    <span>
+                      <MdOutlineVerified className="card_icon" />
+                      Angular
                     </span>
                     <p className="card_text_sub">Intermediate</p>
                     <span>
@@ -100,6 +110,11 @@ export const Skill = () => {
                     <span>
                       <MdOutlineVerified className="card_icon" />
                       Adobe Premier
+                    </span>
+                    <p className="card_text_sub">Intermediate</p>
+                    <span>
+                      <MdOutlineVerified className="card_icon" />
+                      Canva
                     </span>
                     <p className="card_text_sub">Intermediate</p>
                   </div>
