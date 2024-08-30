@@ -271,6 +271,11 @@ button:hover .button-text {
     overflow-y: auto;
   }
 }
+@media only screen and (max-width: 470px) {
+  .home_img {
+    scale: 0.7;
+  }
+}
 
 /* About */
 .about {
@@ -291,10 +296,23 @@ button:hover .button-text {
   margin-top: 14rem;
 }
 .about_content {
-  margin-top: 5rem;
   display: flex;
-  gap: 17rem;
   justify-content: center;
+  margin: auto;
+  gap: 17rem;
+  margin-top: 5rem;
+}
+@media only screen and (max-width: 870px) {
+  .about_content {
+    display: flex;
+    flex-direction: column;
+  }
+  .about_img img {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
 }
 @media only screen and (max-width: 768px) {
   .about_content {
@@ -440,6 +458,17 @@ button:hover .button-text {
     justify-content: center;
   }
 }
+@media only screen and (max-width: 870px) {
+  .card_text {
+    display: flex;
+    flex-direction: column;
+  }
+  .cards_skill {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .click {
   font-size: 15px;
   font-weight: 500;
@@ -549,17 +578,17 @@ button:hover .button-text {
 /* service */
 
 .parent {
-  width: 350px;
+  width: 300px;
   padding: 20px;
   perspective: 1000px;
 }
 .parent2 {
-  width: 350px;
+  width: 300px;
   padding: 20px;
   perspective: 1000px;
 }
 .parent3 {
-  width: 350px;
+  width: 300px;
   padding: 20px;
   perspective: 1000px;
 }
@@ -644,6 +673,12 @@ button:hover .button-text {
     display: flex;
     justify-content: center;
     margin: auto;
+  }
+}
+@media only screen and (max-width: 870) {
+  .service_card {
+    display: flex;
+    flex-direction: column !important;
   }
 }
 
@@ -949,7 +984,7 @@ button:hover .button-text {
     padding: 1.25rem 1.5rem;
   }
 }
-
+/* achievements */
 .achievements_container {
   max-width: 600px;
   display: flex;

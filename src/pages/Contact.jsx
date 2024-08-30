@@ -1,18 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Contact.css";
-import { useState,useEffect } from "react";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { CiLinkedin } from "react-icons/ci";
-import { FaWhatsapp } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
-import axios from "axios";
+import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 import { Input } from "antd";
 import ScrollReveal from "scrollreveal";
-const { TextArea } = Input; 
+import emailjs from "emailjs-com"; // EmailJS import
 
-// const onChange = (e) => {
-//   console.log(e);
-// };
+const { TextArea } = Input;
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -23,30 +18,36 @@ const Contact = () => {
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangeMessage = (e) => setMessage(e.target.value);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const data = {
-      data: {
-        name,
-        email,
-        message,
-      },
+    // EmailJS orqali xabar yuborish
+    const templateParams = {
+      name,
+      email,
+      message,
     };
 
-    try {
-      const response = await axios.post(
-        "https://protfolios-0axc.onrender.com/api/messages",
-        data
+    emailjs
+      .send(
+        "ogabek67", // EmailJS Service ID
+        "template_ydezhzu", // EmailJS Template ID
+        templateParams,
+        "XkiWKzzY71KxfbVso" // EmailJS Public Key
+      )
+      .then(
+        (response) => {
+          console.log("Message sent:", response.status, response.text);
+          alert("Message sent successfully!");
+          setName("");
+          setEmail("");
+          setMessage("");
+        },
+        (error) => {
+          console.error("Error sending message:", error);
+          alert("Failed to send message. Please try again.");
+        }
       );
-      console.log("Message sent:", response.data);
-      setMessage("");
-      setEmail("");
-      setName("");
-    } catch (error) {
-      console.error("Error sending message:", error);
-      alert("Failed to send message.");
-    }
   };
 
   useEffect(() => {
@@ -94,7 +95,7 @@ const Contact = () => {
                 <MdOutlineAttachEmail className="card5_icon" />
                 <p className="card5_content">Email</p>
                 <p className="c5">orziyevogabek67@gmail.com</p>
-                <a href="orziyevogabek67@gmail" className="linkc5">
+                <a href="mailto:orziyevogabek67@gmail.com" className="linkc5">
                   Write me <FaArrowRight className="arr" />
                 </a>
               </div>
@@ -191,46 +192,11 @@ const Contact = () => {
                   </div>
                   <p>
                     <span style={{ "--i": 0 }}>S</span>
-                    <span style={{ "--i": 1 }}>e</span>
-                    <span style={{ "--i": 2 }}>n</span>
-                    <span style={{ "--i": 3 }}>d</span>
-                    <span style={{ "--i": 4 }}>M</span>
-                    <span style={{ "--i": 5 }}>e</span>
-                    <span style={{ "--i": 6 }}>s</span>
-                    <span style={{ "--i": 7 }}>s</span>
-                    <span style={{ "--i": 8 }}>a</span>
-                    <span style={{ "--i": 9 }}>g</span>
-                    <span style={{ "--i": 10 }}>e</span>
-                  </p>
-                </div>
-                <div className="state state--sent">
-                  <div className="icon">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      height="1em"
-                      width="1em"
-                      strokeWidth="0.5px"
-                      stroke="black"
-                    >
-                      <g style={{ filter: "url(#shadow)" }}>
-                        <path
-                          fill="currentColor"
-                          d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"
-                        ></path>
-                        <path
-                          fill="currentColor"
-                          d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"
-                        ></path>
-                      </g>
-                    </svg>
-                  </div>
-                  <p>
-                    <span style={{ "--i": 5 }}>S</span>
-                    <span style={{ "--i": 6 }}>e</span>
-                    <span style={{ "--i": 7 }}>n</span>
-                    <span style={{ "--i": 8 }}>t</span>
+                    <span style={{ "--i": 1 }}>u</span>
+                    <span style={{ "--i": 2 }}>b</span>
+                    <span style={{ "--i": 3 }}>m</span>
+                    <span style={{ "--i": 4 }}>i</span>
+                    <span style={{ "--i": 5 }}>t</span>
                   </p>
                 </div>
               </button>

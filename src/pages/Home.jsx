@@ -1,22 +1,41 @@
 import React, { useEffect } from "react";
 import { FaInstagram, FaTelegram, FaGithub } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa6";
-import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Page.css";
+import ScrollReveal from "scrollreveal";
 
 const Home = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 1200,
+    ScrollReveal().reveal(".home_social", {
+      origin: "left",
+      distance: "40px",
+      duration: 1500,
+      reset: true,
+    });
+    ScrollReveal().reveal(".home_title", {
+      origin: "top",
+      distance: "40px",
+      duration: 1500,
+      reset: true,
+    });
+    ScrollReveal().reveal(".home_img", {
+      origin: "right",
+      distance: "40px",
+      duration: 1600,
+      reset: true,
+    });
+    ScrollReveal().reveal(".scroll-d", {
+      origin: "bottom",
+      distance: "40px",
+      duration: 1700,
       reset: true,
     });
   }, []);
-
   return (
     <div id="home" className="home">
       <div className="home_f">
-        <div className="home_social" data-aos="fade-right">
+        <div className="home_social">
           <button className="btn">
             <a href="https://github.com/starc55">
               <FaGithub className="icon_git" />
@@ -34,7 +53,7 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="home_title" data-aos="fade-up">
+        <div className="home_title">
           <strong className="strong">Ogabek Orziyev 🤚</strong>
           <br />
           <p className="tit_sub">Web developer</p>
@@ -47,7 +66,7 @@ const Home = () => {
           <br />
 
           <a href="#contact">
-            <button className="learn-more" data-aos="zoom-in">
+            <button className="learn-more">
               <span className="circle" aria-hidden="true">
                 <span className="icon arrow"></span>
               </span>
@@ -56,12 +75,12 @@ const Home = () => {
           </a>
         </div>
 
-        <div className="home_img" data-aos="fade-left">
+        <div className="home_img">
           <div className="img"></div>
         </div>
       </div>
 
-      <div className="scroll-d" data-aos="fade-down">
+      <div className="scroll-d">
         <button className="mouse">
           <div className="scroll"></div>
         </button>

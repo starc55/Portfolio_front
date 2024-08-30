@@ -30,7 +30,7 @@ const Testimonials = () => {
           className="testimonial__container"
           loop={true}
           grabCursor={true}
-          spaceBetween={24}
+          spaceBetween={20}
           pagination={{
             clickable: true,
           }}
