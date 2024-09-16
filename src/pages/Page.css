@@ -623,6 +623,7 @@ button:hover .button-text {
   transition: all 0.5s ease-in-out;
   padding: 60px 25px 25px 25px;
   transform-style: preserve-3d;
+  border-radius: 0 0 10px 10px;
 }
 
 .content-box .card-title {

@@ -11,7 +11,7 @@ const Services = () => {
     title: "",
     description: "",
     points: [],
-  });
+  }); 
 
   useEffect(() => {
     ScrollReveal().reveal(".parent", {
@@ -73,7 +73,7 @@ const Services = () => {
                     showModal({
                       title: "Frontend Development",
                       description:
-                        "Services with more than + 1 years of experience. Providing quality work to clients and companies.",
+                        "Services with more than + 2 years of experience. Providing quality work to clients and companies.",
                       points: [
                         "I develop the user interface.",
                         "Web page development.",

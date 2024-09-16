@@ -11,7 +11,7 @@ const About = () => {
     const link = document.createElement("a");
     link.href = cvLink;
     link.download = "CV.pdf";
-    link.click(); 
+    link.click();
   };
 
   useEffect(() => {
@@ -51,12 +51,12 @@ const About = () => {
               <div className="card">
                 <PiMedalFill className="icon_about" />
                 <p>Experience</p>
-                <p className="about_s">+ 1 year</p>
+                <p className="about_s">+ 2 year</p>
               </div>
               <div className="card">
                 <PiProjectorScreenChartFill className="icon_about" />
                 <p>Completed</p>
-                <p className="about_s">10 + projects</p>
+                <p className="about_s">30 + projects</p>
               </div>
               <div className="card">
                 <BiSupport className="icon_about" />

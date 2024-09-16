@@ -5,7 +5,7 @@ import { CiLinkedin } from "react-icons/ci";
 import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 import { Input } from "antd";
 import ScrollReveal from "scrollreveal";
-import emailjs from "emailjs-com"; // EmailJS import
+import emailjs from "emailjs-com";
 
 const { TextArea } = Input;
 
@@ -13,19 +13,21 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [suggestion, setSuggestion] = useState("");
 
   const onChangeName = (e) => setName(e.target.value);
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangeMessage = (e) => setMessage(e.target.value);
+  const onChangeSuggestion = (e) => setSuggestion(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // EmailJS orqali xabar yuborish
     const templateParams = {
       name,
       email,
       message,
+      suggestion,
     };
 
     emailjs
@@ -154,6 +156,14 @@ const Contact = () => {
                 onChange={onChangeMessage}
                 className="textarea"
                 value={message}
+              />
+              <br />
+              <TextArea
+                placeholder="Enter your suggestions"
+                allowClear
+                onChange={onChangeSuggestion}
+                className="textarea"
+                value={suggestion}
               />
               <br />
               <br />

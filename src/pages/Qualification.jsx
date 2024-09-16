@@ -6,8 +6,6 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import ScrollReveal from "scrollreveal";
 import { useEffect } from "react";
 
-
-
 const Qualification = () => {
   const [toggleState, SetToggleState] = useState(1);
 
@@ -107,9 +105,7 @@ const Qualification = () => {
               <div className="qualification__data">
                 <div>
                   <h3 className="qualification__title">Computer works</h3>
-                  <span className="qualification__subtitle">
-                    Free
-                  </span>
+                  <span className="qualification__subtitle">Free</span>
                   <div className="qualification__calendar">
                     <FaRegCalendarAlt /> 2022 - Present
                   </div>
@@ -135,7 +131,7 @@ const Qualification = () => {
                     Monday academy
                   </span>
                   <div className="qualification__calendar">
-                    <FaRegCalendarAlt /> 2024 - Present
+                    <FaRegCalendarAlt /> 2022 - Present
                   </div>
                 </div>
                 <div>
@@ -153,9 +149,7 @@ const Qualification = () => {
                 </div>
                 <div>
                   <h3 className="qualification__title">Video editing</h3>
-                  <span className="qualification__subtitle">
-                    Free
-                  </span>
+                  <span className="qualification__subtitle">Freelancer</span>
                   <div className="qualification__calendar">
                     <FaRegCalendarAlt /> 2020 - Present
                   </div>
@@ -165,9 +159,7 @@ const Qualification = () => {
               <div className="qualification__data">
                 <div>
                   <h3 className="qualification__title">Presentation</h3>
-                  <span className="qualification__subtitle">
-                    Free
-                  </span>
+                  <span className="qualification__subtitle">Freelancer</span>
                   <div className="qualification__calendar">
                     <FaRegCalendarAlt /> 2022 - Present
                   </div>
