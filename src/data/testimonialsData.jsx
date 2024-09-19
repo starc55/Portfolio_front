@@ -3,6 +3,7 @@ import t2 from "../imgs/t2.jpg";
 import t3 from "../imgs/t3.jpg";
 import t4 from "../imgs/t4.jpg";
 import t5 from "../imgs/t5.jpg";
+import t6 from "../imgs/t6.jpg";
 
 export const Data = [
   {
@@ -39,5 +40,12 @@ export const Data = [
     title: "Jony",
     description:
       "Impressive creativity and technical expertise in frontend development, delivering a seamless user experience. Highly satisfied!",
+  },
+  {
+    id: 6,
+    image: t6,
+    title: "Sarah",
+    description:
+      "Ogabek delivers high-quality web solutions with creativity and precision. A reliable and talented freelancer!",
   },
 ];
