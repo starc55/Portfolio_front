@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ScrollReveal from "scrollreveal";
-import me from "../imgs/me.jpg";
+import about from "../imgs/about.jpg";
 import { PiMedalFill, PiProjectorScreenChartFill } from "react-icons/pi";
 import { BiSupport } from "react-icons/bi";
 
@@ -44,30 +44,57 @@ const About = () => {
         </div>
         <div className="about_content">
           <div className="about_img" data-sr>
-            <img src={me} alt="" />
+            <img src={about} alt="" />
           </div>
           <div className="add_about about_text" data-sr>
             <div className="about_card">
-              <div className="card">
-                <PiMedalFill className="icon_about" />
-                <p>Experience</p>
-                <p className="about_s">+ 2 year</p>
+              <div class="outer">
+                <div class="dot"></div>
+                <div class="card">
+                  <div class="ray"></div>
+                  <div class="text">2+ years</div>
+                  <div className="card_text-about">Exprience</div>
+                  <div class="line topl"></div>
+                  <div class="line leftl"></div>
+                  <div class="line bottoml"></div>
+                  <div class="line rightl"></div>
+                </div>
               </div>
-              <div className="card">
-                <PiProjectorScreenChartFill className="icon_about" />
-                <p>Completed</p>
-                <p className="about_s">30 + projects</p>
+              <div class="outer">
+                <div class="dot"></div>
+                <div class="card">
+                  <div class="ray"></div>
+                  <div class="text">30+ projects</div>
+                  <div className="card_text-about">Completed</div>
+                  <div class="line topl"></div>
+                  <div class="line leftl"></div>
+                  <div class="line bottoml"></div>
+                  <div class="line rightl"></div>
+                </div>
               </div>
-              <div className="card">
-                <BiSupport className="icon_about" />
-                <p>Support</p>
-                <p className="about_s">Online 24/7</p>
+              <div class="outer">
+                <div class="dot"></div>
+                <div class="card">
+                  <div class="ray"></div>
+                  <div class="text">24/7 Online</div>
+                  <div className="card_text-about">To support</div>
+                  <div class="line topl"></div>
+                  <div class="line leftl"></div>
+                  <div class="line bottoml"></div>
+                  <div class="line rightl"></div>
+                </div>
               </div>
             </div>
             <div className="about_sub">
               <p>
-                I have a lot of knowledge and skills in the field of frontend
-                and I am currently working on several projects.
+                Hello! I’m Jony, a frontend developer focused on creating modern
+                and user-friendly web applications. I’m currently working
+                towards becoming a full-stack developer, expanding my skills in
+                both frontend and backend technologies. With experience in
+                JavaScript, React, and CSS, I’m passionate about enhancing user
+                experiences through effective design and functionality. I
+                believe in continuous learning and am excited to grow in this
+                field. Let’s learn and develop together!
               </p>
             </div>
             <div className="about_btn" data-sr>

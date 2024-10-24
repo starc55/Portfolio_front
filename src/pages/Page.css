@@ -332,7 +332,7 @@ button:hover .button-text {
 }
 .about_img img {
   max-width: 320px;
-  height: auto;
+  height: 460px;
   border-radius: 20px;
   /* margin-left: 10rem; */
 }
@@ -353,13 +353,13 @@ button:hover .button-text {
   justify-content: center;
   margin-bottom: 0.5rem;
 }
-.card p {
+/* .card p {
   font-size: 13px;
   display: flex;
   justify-content: center;
   margin-bottom: 0.5rem;
-}
-.card {
+} */
+/* .card {
   width: 100px;
   height: 100px;
   display: flex;
@@ -369,7 +369,7 @@ button:hover .button-text {
   background: rgb(255, 255, 255);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
-}
+} */
 .sub_head {
   font-size: 17px;
   display: flex;
@@ -961,11 +961,12 @@ button:hover .button-text {
 .testimonial__name {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .testimonial__description {
   font-size: 0.875rem;
+  margin-top: 1rem;
 }
 
 .swiper-pagination-bullet {
@@ -1008,4 +1009,118 @@ button:hover .button-text {
 .achievements_img {
   display: flex;
   flex-wrap: wrap;
+}
+.testi_title{
+  display: flex;
+  gap: 1rem;
+}
+
+
+/* From Uiverse.io by Spacious74 */ 
+.outer {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  padding: 1px;
+  background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
+  position: relative;
+}
+
+.dot {
+  width: 5px;
+  aspect-ratio: 1;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ffffff;
+  border-radius: 100px;
+  z-index: 2;
+  right: 10%;
+  top: 10%;
+  animation: moveDot 6s linear infinite;
+}
+
+@keyframes moveDot {
+  0%,
+  100% {
+    top: 10%;
+    right: 10%;
+  }
+  25% {
+    top: 10%;
+    right: calc(100% - 15px);
+  }
+  50% {
+    top: calc(100% - 15px);
+    right: calc(100% - 15px);
+  }
+  75% {
+    top: calc(100% - 15px);
+    right: 10%;
+  }
+}
+
+.card {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 9px;
+  border: solid 1px #202222;
+  background-size: 20px 20px;
+  background: radial-gradient(circle 280px at 0% 0%, #444444, #170948);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  color: #fff;
+}
+.ray {
+  width: 100px;
+  height: 45px;
+  border-radius: 100px;
+  position: absolute;
+  background-color: #c7c7c7;
+  opacity: 0.4;
+  box-shadow: 0 0 50px #fff;
+  filter: blur(10px);
+  transform-origin: 10%;
+  top: 0%;
+  left: 0;
+  transform: rotate(40deg);
+}
+
+.card .text {
+  font-weight: 1000;
+  font-size: 11px;
+  background: linear-gradient(45deg, #dcdcdc 4%, #ffffff, #aaa9a9);
+  background-clip: text;
+  color: transparent;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  background-color: #2c2c2c;
+}
+.topl {
+  top: 10%;
+  background: linear-gradient(90deg, #888888 30%, #1d1f1f 70%);
+}
+.bottoml {
+  bottom: 10%;
+}
+.leftl {
+  left: 10%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, #747474 30%, #222424 70%);
+}
+.rightl {
+  right: 10%;
+  width: 1px;
+  height: 100%;
+}
+.card_text-about{
+  font-size: 10px;
 }

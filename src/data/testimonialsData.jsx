@@ -4,6 +4,9 @@ import t3 from "../imgs/t3.jpg";
 import t4 from "../imgs/t4.jpg";
 import t5 from "../imgs/t5.jpg";
 import t6 from "../imgs/t6.jpg";
+import t7 from "../imgs/t7.jpg";
+import t8 from "../imgs/t8.jpg";
+
 
 export const Data = [
   {
@@ -47,5 +50,19 @@ export const Data = [
     title: "Sarah",
     description:
       "Ogabek delivers high-quality web solutions with creativity and precision. A reliable and talented freelancer!",
+  },
+  {
+    id: 7,
+    image: t7,
+    title: "Jony",
+    description:
+      "Working with Jony was a pleasure; his professionalism and dedication impressed me, consistently delivering high-quality results!",
+  },
+  {
+    id: 8,
+    image: t8,
+    title: "Mechail",
+    description:
+      "Jony is a true professional; he delivered outstanding results that left me very impressed!",
   },
 ];

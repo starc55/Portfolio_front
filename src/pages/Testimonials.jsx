@@ -2,14 +2,13 @@ import React from "react";
 import "./Page.css";
 import { Data } from "../data/testimonialsData";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import ScrollReveal from "scrollreveal";
 import { useEffect } from "react";
 
 const Testimonials = () => {
-
   useEffect(() => {
     ScrollReveal().reveal(".testimonial__container", {
       origin: "bottom",
@@ -31,6 +30,10 @@ const Testimonials = () => {
           loop={true}
           grabCursor={true}
           spaceBetween={20}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
           }}
@@ -43,14 +46,16 @@ const Testimonials = () => {
               spaceBetween: 48,
             },
           }}
-          modules={[Pagination]}
+          modules={[Pagination, Autoplay]}
         >
           {Data.map(({ id, image, title, description }) => {
             return (
               <SwiperSlide className="testimonial__card" key={id}>
-                <img src={image} alt="" className="testimonial__img" />
+                <div className="testi_title">
+                  <img src={image} alt="" className="testimonial__img" />
+                  <h3 className="testimonial__name">{title}</h3>
+                </div>
 
-                <h3 className="testimonial__name">{title}</h3>
                 <p className="testimonial__description">{description}</p>
               </SwiperSlide>
             );
