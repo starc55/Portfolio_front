@@ -72,7 +72,7 @@ const Home = () => {
           <div className="scroll"></div>
         </button>
         <span>
-          Scroll down
+          Scroll down here
           <FaArrowDown className="sc" />
         </span>
       </div>
