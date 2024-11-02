@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import ScrollReveal from "scrollreveal";
+import React from "react";
 import about from "../imgs/about.jpg";
 import { PiMedalFill, PiProjectorScreenChartFill } from "react-icons/pi";
 import { BiSupport } from "react-icons/bi";
@@ -14,27 +13,6 @@ const About = () => {
     link.click();
   };
 
-  useEffect(() => {
-    ScrollReveal().reveal(".about_img", {
-      origin: "left",
-      distance: "40px",
-      duration: 1300,
-      reset: true,
-    });
-    ScrollReveal().reveal(".about_text", {
-      origin: "right",
-      distance: "40px",
-      duration: 1400,
-      reset: true,
-    });
-    ScrollReveal().reveal(".about_btn", {
-      origin: "bottom",
-      distance: "40px",
-      duration: 1500,
-      reset: true,
-    });
-  }, []);
-
   return (
     <div id="about" className="about">
       <div>
@@ -43,45 +21,45 @@ const About = () => {
           <span className="sub_head">My introduction</span>
         </div>
         <div className="about_content">
-          <div className="about_img" data-sr>
+          <div className="about_img">
             <img src={about} alt="" />
           </div>
-          <div className="add_about about_text" data-sr>
+          <div className="add_about about_text">
             <div className="about_card">
-              <div class="outer">
-                <div class="dot"></div>
-                <div class="card">
-                  <div class="ray"></div>
-                  <div class="text">2+ years</div>
-                  <div className="card_text-about">Exprience</div>
-                  <div class="line topl"></div>
-                  <div class="line leftl"></div>
-                  <div class="line bottoml"></div>
-                  <div class="line rightl"></div>
+              <div className="outer">
+                <div className="dot"></div>
+                <div className="card">
+                  <div className="ray"></div>
+                  <div className="text">2+ years</div>
+                  <div className="card_text-about">Experience</div>
+                  <div className="line topl"></div>
+                  <div className="line leftl"></div>
+                  <div className="line bottoml"></div>
+                  <div className="line rightl"></div>
                 </div>
               </div>
-              <div class="outer">
-                <div class="dot"></div>
-                <div class="card">
-                  <div class="ray"></div>
-                  <div class="text">30+ projects</div>
+              <div className="outer">
+                <div className="dot"></div>
+                <div className="card">
+                  <div className="ray"></div>
+                  <div className="text">30+ projects</div>
                   <div className="card_text-about">Completed</div>
-                  <div class="line topl"></div>
-                  <div class="line leftl"></div>
-                  <div class="line bottoml"></div>
-                  <div class="line rightl"></div>
+                  <div className="line topl"></div>
+                  <div className="line leftl"></div>
+                  <div className="line bottoml"></div>
+                  <div className="line rightl"></div>
                 </div>
               </div>
-              <div class="outer">
-                <div class="dot"></div>
-                <div class="card">
-                  <div class="ray"></div>
-                  <div class="text">24/7 Online</div>
+              <div className="outer">
+                <div className="dot"></div>
+                <div className="card">
+                  <div className="ray"></div>
+                  <div className="text">24/7 Online</div>
                   <div className="card_text-about">To support</div>
-                  <div class="line topl"></div>
-                  <div class="line leftl"></div>
-                  <div class="line bottoml"></div>
-                  <div class="line rightl"></div>
+                  <div className="line topl"></div>
+                  <div className="line leftl"></div>
+                  <div className="line bottoml"></div>
+                  <div className="line rightl"></div>
                 </div>
               </div>
             </div>
@@ -97,7 +75,7 @@ const About = () => {
                 field. Let’s learn and develop together!
               </p>
             </div>
-            <div className="about_btn" data-sr>
+            <div className="about_btn">
               <button className="Documents-btn" onClick={handleDownload}>
                 <span className="folderContainer">
                   <svg

@@ -8,6 +8,10 @@
   z-index: 100;
   background-color: hsl(0, 0%, 98%);
 }
+.nav__logo img{
+  width: 50px;
+  border-radius: 50%;
+}
 .nav {
   height: 4rem;
   display: flex;
@@ -21,7 +25,13 @@
   color: hsl(0, 0%, 20%);
   font-weight: 500;
 }
-
+.nav__list a {
+  color: hsl(0, 0%, 20%);
+  transition: all 0.3s ease-in-out;
+}
+.nav__list a:hover{
+  font-weight: 700;
+}
 .nav__list {
   display: flex;
   column-gap: 2rem;
@@ -32,7 +42,7 @@
   align-items: center;
   font-size: 0.875rem;
   color: hsl(0, 0%, 20%);
-  font-weight: 500;
+  font-weight: 700;
   transition: 0.3s;
 }
 
@@ -76,7 +86,7 @@
   .nav__list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .ser {
     margin-left: 2rem;
@@ -132,24 +142,24 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .scrollup{
+  .scrollup {
     right: 1.5rem;
     padding: 0.25rem 0.4rem;
   }
 
-  .scrollup__icon{
+  .scrollup__icon {
     font-size: 1.25rem;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .show-scroll{
+  .show-scroll {
     bottom: 4rem;
   }
 }
 
 @media only screen and (max-width: 350px) {
-  .scrollup{
+  .scrollup {
     right: 1rem;
   }
 }

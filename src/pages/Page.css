@@ -1,17 +1,45 @@
 .home {
-  margin-left: 3rem;
-  margin-right: 3rem;
+  margin-left: 10%;
+  margin-right: 10%;
 }
+/* typewriter kursorining shar shakliga aylanishi */
+.typewriter-cursor {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #000; /* Shar rangini o'zgartirish mumkin */
+  border-radius: 50%;
+  animation: blink 0.9s infinite ease-in-out;
+  margin-left: 0.5rem; /* Matndan biroz masofa qo'shish */
+  margin-top: 0.5rem;
+}
+
+/* Shar blink animatsiyasi */
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
 .home_f {
   display: flex;
+  justify-content: center;
+  margin: auto;
   margin-top: 13rem;
-  gap: 3rem;
+  gap: 2rem;
 }
-.home_img {
-  margin-right: 9rem;
+.home_social{
+  margin-top: 2rem;
+  margin-right: 30px;
 }
 .home_social .btn {
   margin-top: 1rem;
+}
+.home_img{
+  scale: 1.2;
 }
 .img {
   background: url(../imgs/me.jpg);

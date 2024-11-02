@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Contact.css";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { CiLinkedin } from "react-icons/ci";
 import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 import { Input } from "antd";
-import ScrollReveal from "scrollreveal";
 import emailjs from "emailjs-com";
 
 const { TextArea } = Input;
@@ -51,33 +50,6 @@ const Contact = () => {
         }
       );
   };
-
-  useEffect(() => {
-    ScrollReveal().reveal(".card5", {
-      origin: "left",
-      distance: "40px",
-      duration: 1300,
-      reset: true,
-    });
-    ScrollReveal().reveal(".input", {
-      origin: "bottom",
-      distance: "40px",
-      duration: 1400,
-      reset: true,
-    });
-    ScrollReveal().reveal(".textarea", {
-      origin: "bottom",
-      distance: "40px",
-      duration: 1500,
-      reset: true,
-    });
-    ScrollReveal().reveal(".button", {
-      origin: "right",
-      distance: "40px",
-      duration: 1500,
-      reset: true,
-    });
-  }, []);
 
   return (
     <div id="contact">

@@ -3,8 +3,6 @@ import "./Page.css";
 import { MdCastForEducation } from "react-icons/md";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import ScrollReveal from "scrollreveal";
-import { useEffect } from "react";
 
 const Qualification = () => {
   const [toggleState, SetToggleState] = useState(1);
@@ -13,20 +11,6 @@ const Qualification = () => {
     SetToggleState(index);
   };
 
-  useEffect(() => {
-    ScrollReveal().reveal(".data1", {
-      origin: "left",
-      distance: "40px",
-      duration: 1300,
-      reset: true,
-    });
-    ScrollReveal().reveal(".data2", {
-      origin: "right",
-      distance: "40px",
-      duration: 1300,
-      reset: true,
-    });
-  });
   return (
     <div>
       <section className="qualification section">
@@ -39,8 +23,8 @@ const Qualification = () => {
             <div
               className={
                 toggleState === 1
-                  ? "qualification__button qualification__active button--flex data1"
-                  : "qualification__button button--flex data1"
+                  ? "qualification__button qualification__active button--flex"
+                  : "qualification__button button--flex"
               }
               onClick={() => toggleTab(1)}
             >
@@ -52,11 +36,12 @@ const Qualification = () => {
               className={
                 toggleState === 2
                   ? "qualification__button qualification__active button--flex"
-                  : "qualification__button button--flex data2"
+                  : "qualification__button button--flex"
               }
+              onClick={() => toggleTab(2)}
             >
               <CgWorkAlt className="qualification__icon" />
-              Exprience
+              Experience
             </div>
           </div>
           <div className="qualification__sections">
@@ -66,7 +51,6 @@ const Qualification = () => {
                   ? "qualification__content qualification__content-active"
                   : "qualification__content"
               }
-              onClick={() => toggleTab(2)}
             >
               <div className="qualification__data">
                 <div>
@@ -94,7 +78,7 @@ const Qualification = () => {
                 <div>
                   <h3 className="qualification__title">Video editing</h3>
                   <span className="qualification__subtitle">
-                    You tube channels
+                    YouTube channels
                   </span>
                   <div className="qualification__calendar">
                     <FaRegCalendarAlt /> 2020 - Present

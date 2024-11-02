@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaLaptopCode } from "react-icons/fa6";
 import { MdOutlineSlowMotionVideo, MdDevicesOther } from "react-icons/md";
 import { Modal } from "antd";
-import ScrollReveal from "scrollreveal";
 import "./Page.css";
 
 const Services = () => {
@@ -11,27 +10,6 @@ const Services = () => {
     title: "",
     description: "",
     points: [],
-  }); 
-
-  useEffect(() => {
-    ScrollReveal().reveal(".parent", {
-      origin: "left",
-      distance: "40px",
-      duration: 1700,
-      reset: true,
-    });
-    ScrollReveal().reveal(".parent2", {
-      origin: "bottom",
-      distance: "40px",
-      duration: 1800,
-      reset: true,
-    });
-    ScrollReveal().reveal(".parent3", {
-      origin: "right",
-      distance: "40px",
-      duration: 1900,
-      reset: true,
-    });
   });
 
   const showModal = (content) => {
@@ -132,7 +110,7 @@ const Services = () => {
                   onClick={() =>
                     showModal({
                       title: "Other Services",
-                      description: "I can do a lot more computer work !",
+                      description: "I can do a lot more computer work!",
                       points: [
                         "Preparing a wonderful and attractive presentation",
                         "Ability to work with Canva",

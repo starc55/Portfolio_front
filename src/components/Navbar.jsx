@@ -7,6 +7,7 @@ import { CiImageOn } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { GrAppsRounded } from "react-icons/gr";
 import "./component.css";
+import logo from "../imgs/logome.png"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,9 +20,9 @@ const Navbar = () => {
     <div className="header">
       <div className="nav container">
         <a href="#home" className="nav__logo">
-          --Ogabek--
+          <img src={logo} alt="" />
         </a>
- 
+
         <div className={`nav__menu ${isMenuOpen ? "nav__menu--open" : ""}`}>
           <ul className="nav__list grid">
             <li className="nav__item">

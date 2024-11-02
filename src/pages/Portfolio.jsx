@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Page.css";
 import { FaArrowRight } from "react-icons/fa";
 import works from "../data/woks";
-import ScrollReveal from "scrollreveal";
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -23,15 +22,6 @@ const Portfolio = () => {
     selectedCategory === "All"
       ? works
       : works.filter((work) => work.category === selectedCategory);
-
-  useEffect(() => {
-    ScrollReveal().reveal(".work_card", {
-      origin: "bottom",
-      distance: "40px",
-      duration: 1500,
-      reset: true,
-    });
-  }, []);
 
   return (
     <div className="portfolio" id="portfolio">

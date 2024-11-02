@@ -1,25 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Page.css";
-import ScrollReveal from "scrollreveal";
 import { FaCode } from "react-icons/fa6";
 import { SiGoogledisplayandvideo360 } from "react-icons/si";
 import { MdOutlineVerified } from "react-icons/md";
 
 export const Skill = () => {
-  useEffect(() => {
-    ScrollReveal().reveal(".anima1", {
-      origin: "left",
-      distance: "40px",
-      duration: 1300,
-      reset: true,
-    });
-    ScrollReveal().reveal(".anima2", {
-      origin: "right",
-      distance: "40px",
-      duration: 1300,
-      reset: true,
-    });
-  });
   return (
     <div id="skill" className="skill_page">
       <div>

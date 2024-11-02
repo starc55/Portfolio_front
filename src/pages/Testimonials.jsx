@@ -5,24 +5,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import ScrollReveal from "scrollreveal";
-import { useEffect } from "react";
 
 const Testimonials = () => {
-  useEffect(() => {
-    ScrollReveal().reveal(".testimonial__container", {
-      origin: "bottom",
-      distance: "40px",
-      duration: 1500,
-      reset: true,
-    });
-  }, []);
   return (
     <div>
       <div>
         <div className="header_about">
           <p>Testimonials</p>
-          <span className="sub_head">My clieants saying</span>
+          <span className="sub_head">My clients saying</span>
         </div>
 
         <Swiper
