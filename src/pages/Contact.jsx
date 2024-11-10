@@ -3,7 +3,7 @@ import "./Contact.css";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { CiLinkedin } from "react-icons/ci";
 import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
-import { Input } from "antd";
+import { Input, notification, Progress } from "antd";
 import emailjs from "emailjs-com";
 
 const { TextArea } = Input;
@@ -13,14 +13,29 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [suggestion, setSuggestion] = useState("");
+  const [progress, setProgress] = useState(0);
 
   const onChangeName = (e) => setName(e.target.value);
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangeMessage = (e) => setMessage(e.target.value);
   const onChangeSuggestion = (e) => setSuggestion(e.target.value);
 
+  const openNotification = () => {
+    notification.open({
+      message: "Sending Message",
+      description: (
+        <div>
+          <Progress percent={progress} showInfo={false} status="active" />
+        </div>
+      ),
+      icon: <MdOutlineAttachEmail style={{ color: "#108ee9" }} />,
+      duration: 3, // closes notification after 3 seconds
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    openNotification();
 
     const templateParams = {
       name,
@@ -28,6 +43,15 @@ const Contact = () => {
       message,
       suggestion,
     };
+
+    let counter = 0;
+    const progressInterval = setInterval(() => {
+      counter += 20;
+      setProgress(counter);
+      if (counter >= 100) {
+        clearInterval(progressInterval);
+      }
+    }, 500);
 
     emailjs
       .send(
@@ -39,14 +63,25 @@ const Contact = () => {
       .then(
         (response) => {
           console.log("Message sent:", response.status, response.text);
-          alert("Message sent successfully!");
+          notification.success({
+            message: "Message Sent Successfully",
+            description: "Your message has been sent!",
+            icon: <MdOutlineAttachEmail style={{ color: "#52c41a" }} />,
+            duration: 3,
+          });
           setName("");
           setEmail("");
           setMessage("");
+          setSuggestion("");
         },
         (error) => {
           console.error("Error sending message:", error);
-          alert("Failed to send message. Please try again.");
+          notification.error({
+            message: "Message Failed",
+            description: "Failed to send message. Please try again.",
+            icon: <MdOutlineAttachEmail style={{ color: "#ff4d4f" }} />,
+            duration: 3,
+          });
         }
       );
   };
@@ -105,6 +140,7 @@ const Contact = () => {
             <br />
             <form onSubmit={handleSubmit}>
               <input
+                required
                 placeholder="Insert your name"
                 type="text"
                 name="text"
@@ -114,8 +150,9 @@ const Contact = () => {
               />
               <br />
               <input
+                required
                 placeholder="Insert your email"
-                type="text"
+                type="email"
                 name="text"
                 className="input"
                 value={email}
@@ -123,6 +160,7 @@ const Contact = () => {
               />
               <br />
               <TextArea
+                required
                 placeholder="Write me your project"
                 allowClear
                 onChange={onChangeMessage}
@@ -131,6 +169,7 @@ const Contact = () => {
               />
               <br />
               <TextArea
+                required
                 placeholder="Enter your suggestions"
                 allowClear
                 onChange={onChangeSuggestion}
@@ -156,29 +195,17 @@ const Contact = () => {
                           fill="currentColor"
                         ></path>
                         <path
-                          d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z"
+                          d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.02 9.67999C13.31 9.38999 13.79 9.38999 14.08 9.67999C14.37 9.96999 14.37 10.45 14.08 10.74L10.64 14.18C10.49 14.33 10.3 14.4 10.11 14.4Z"
                           fill="currentColor"
                         ></path>
                       </g>
-                      <defs>
-                        <filter id="shadow">
-                          <feDropShadow
-                            dx="0"
-                            dy="1"
-                            stdDeviation="0.6"
-                            floodOpacity="0.5"
-                          ></feDropShadow>
-                        </filter>
-                      </defs>
                     </svg>
                   </div>
                   <p>
                     <span style={{ "--i": 0 }}>S</span>
                     <span style={{ "--i": 1 }}>u</span>
                     <span style={{ "--i": 2 }}>b</span>
-                    <span style={{ "--i": 3 }}>m</span>
-                    <span style={{ "--i": 4 }}>i</span>
-                    <span style={{ "--i": 5 }}>t</span>
+                    <span style={{ "--i": 3 }}>mit</span>
                   </p>
                 </div>
               </button>

@@ -50,9 +50,9 @@ const Navbar = () => {
               </a>
             </li>
             <li>
-              <a href="#portfolio">
+              <a href="#projects">
                 <CiImageOn className="uil uil-scenery nav__icon" />
-                Portfolio
+                Projects
               </a>
             </li>
             <li>

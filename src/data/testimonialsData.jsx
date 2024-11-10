@@ -6,6 +6,11 @@ import t5 from "../imgs/t5.jpg";
 import t6 from "../imgs/t6.jpg";
 import t7 from "../imgs/t7.jpg";
 import t8 from "../imgs/t8.jpg";
+import t9 from "../imgs/t9.jpg";
+import t10 from "../imgs/t10.png";
+import t11 from "../imgs/t11.jpg";
+import t12 from "../imgs/t12.jpg";
+import t13 from "../imgs/t13.jpg";
 
 
 export const Data = [
@@ -49,7 +54,7 @@ export const Data = [
     image: t6,
     title: "Sarah",
     description:
-      "Ogabek delivers high-quality web solutions with creativity and precision. A reliable and talented freelancer!",
+      "Jony delivers high-quality web solutions with creativity and precision. A reliable and talented freelancer!",
   },
   {
     id: 7,
@@ -64,5 +69,40 @@ export const Data = [
     title: "Mechail",
     description:
       "Jony is a true professional; he delivered outstanding results that left me very impressed!",
+  },
+  {
+    id: 9,
+    image: t9,
+    title: "Durdona Ikromova",
+    description:
+      "Working with Jony was a pleasure. He is professional and creative, always offering solutions that perfectly match the client's needs.",
+  },
+  {
+    id: 10,
+    image: t10,
+    title: "Earl",
+    description:
+      "Jony's approach is always modern and innovative. He knows how to quickly solve even the most complex issues. Highly recommended!",
+  },
+  {
+    id: 11,
+    image: t11,
+    title: "Dilshoda",
+    description:
+      "Timely execution and high-quality work. Jony's expertise and consistency are exceptional.",
+  },
+  {
+    id: 12,
+    image: t12,
+    title: "Abduvali Kozimov",
+    description:
+      "I really appreciate his approach to creating and utilizing new ideas. Jony is always creative and effective in his work",
+  },
+  {
+    id: 13,
+    image: t13,
+    title: "Davron Hojiqurbonov",
+    description:
+      "Collaborating with Jony is always smooth. His working style is clear and efficient, ensuring that projects are completed successfully.",
   },
 ];

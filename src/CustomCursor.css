@@ -1,0 +1,20 @@
+/* src/components/CustomCursor.css */
+
+.custom-cursor {
+    position: fixed;
+    width: 20px; /* Size of the cursor */
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker circle */
+    border-radius: 50%;
+    pointer-events: none; /* Ensures it doesn't interfere with clicks */
+    transition: transform 0.1s ease-out, background-color 0.2s ease;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+  
+  /* Scale up the cursor on hover */
+  .hovered-element:hover ~ .custom-cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: rgba(0, 0, 0, 0.9); /* Darker shade on hover */
+  }
+  

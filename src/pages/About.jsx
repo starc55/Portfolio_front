@@ -1,15 +1,16 @@
 import React from "react";
 import about from "../imgs/about.jpg";
-import { PiMedalFill, PiProjectorScreenChartFill } from "react-icons/pi";
-import { BiSupport } from "react-icons/bi";
+// import { PiMedalFill, PiProjectorScreenChartFill } from "react-icons/pi";
+// import { BiSupport } from "react-icons/bi";
+import "./Page.css"
 
 const About = () => {
-  const cvLink = "/CV.pdf";
+  const cvLink = process.env.PUBLIC_URL + "/CV.pdf";
 
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = cvLink;
-    link.download = "CV.pdf";
+    link.download = "/CV.pdf";
     link.click();
   };
 
