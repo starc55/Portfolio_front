@@ -66,7 +66,7 @@ const About = () => {
             </div>
             <div className="about_sub">
               <p>
-                Hello! I’m Jony, a frontend developer focused on creating modern
+                Hello! I’m Jony (Ogabek), a frontend developer focused on creating modern
                 and user-friendly web applications. I’m currently working
                 towards becoming a full-stack developer, expanding my skills in
                 both frontend and backend technologies. With experience in

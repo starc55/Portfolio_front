@@ -2,7 +2,7 @@
   width: 100%;
   background-color: rgb(254, 254, 254);
   border-top: 1px solid silver;
-  height: auto;
+  height: 100%;
   position: relative;
   bottom: 0;
   left: 0;
@@ -32,7 +32,6 @@
   display: flex;
   justify-content: center;
   margin-top: 3rem;
-  margin-bottom: 2rem;
 }
 .wrapper {
   display: inline-flex;
@@ -105,14 +104,14 @@
   background: #1877f2;
   color: #fff;
 }
-.twitter{
-    color: black;
+.twitter {
+  color: black;
 }
-.instagram{
-    color: black;
+.instagram {
+  color: black;
 }
-.facebook{
-    color: black;
+.facebook {
+  color: black;
 }
 .wrapper .twitter:hover,
 .wrapper .twitter:hover .tooltip,

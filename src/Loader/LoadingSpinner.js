@@ -1,16 +1,14 @@
-// components/LoadingSpinner.js
 import React from "react";
-import "./LoadingSpinner.css"; // Import spinner CSS
+import "./LoadingSpinner.css";
 
 const LoadingSpinner = () => {
   return (
-    <div class="circ">
-      <div class="load">Loading . . . </div>
-      <div class="hands"></div>
-      <div class="body"></div>
-      <div class="head">
-        <div class="eye"></div>
+    <div class="typewriter">
+      <div class="slide">
+        <i></i>
       </div>
+      <div class="paper"></div>
+      <div class="keyboard"></div>
     </div>
   );
 };
