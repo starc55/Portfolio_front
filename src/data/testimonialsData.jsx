@@ -11,7 +11,7 @@ import t10 from "../imgs/t10.png";
 import t11 from "../imgs/t11.jpg";
 import t12 from "../imgs/t12.jpg";
 import t13 from "../imgs/t13.jpg";
-
+import t14 from "../imgs/t14.jpg";
 
 export const Data = [
   {
@@ -104,5 +104,12 @@ export const Data = [
     title: "Davron Hojiqurbonov",
     description:
       "Collaborating with Jony is always smooth. His working style is clear and efficient, ensuring that projects are completed successfully.",
+  },
+  {
+    id: 14,
+    image: t14,
+    title: "Yaxshinoyeva Maxliyo",
+    description:
+      "Amazing service! Jony transformed our ideas into a stunning website. Thank you!",
   },
 ];
