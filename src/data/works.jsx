@@ -67,7 +67,7 @@ const works = [
     img: test,
     title: "Test for developer but only css questions",
     link: "https://testdemo005.netlify.app/",
-    tags: ["HTML5", "CSS", "JavaScript"],
+    tags: ["HTML5", "CSS", "JavaScript","React"],
   },
   {
     category: "Video",
