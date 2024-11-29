@@ -108,7 +108,7 @@ export const Data = [
   {
     id: 14,
     image: t14,
-    title: "Yaxshinoyeva Maxliyo",
+    title: "Yaxshiboyeva Maxliyo",
     description:
       "Amazing service! Jony transformed our ideas into a stunning website. Thank you!",
   },
