@@ -4,6 +4,7 @@ import "./Page.css";
 import works from "../data/works";
 import { SyncOutlined } from "@ant-design/icons";
 import { useRef } from "react";
+import snow from "../new year version img/snow2.png";
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -25,9 +26,6 @@ const Portfolio = () => {
     setSelectedCategory(category);
     setCurrentPage(1); // Reset to the first page when changing category
   };
-
-
-
 
   const handleImageClick = (work) => {
     resetModalState();
@@ -106,7 +104,10 @@ const Portfolio = () => {
     <div className="portfolio" id="projects">
       <div>
         <div className="header_about">
-          <p>Projects</p>
+          <p className="header_about">
+            <img src={snow} alt="" className="header_icon3" />
+            Projects
+          </p>
           <span className="sub_head">Most recent works</span>
         </div>
         <div className="portfolio_btn">
@@ -145,7 +146,14 @@ const Portfolio = () => {
                     className="video_container"
                     onClick={() => handleVideoClick(work)}
                   >
-                    <video width="320" height="240" autoPlay loop muted ref={videoRef}>
+                    <video
+                      width="320"
+                      height="240"
+                      autoPlay
+                      loop
+                      muted
+                      ref={videoRef}
+                    >
                       <source src={work.video} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>

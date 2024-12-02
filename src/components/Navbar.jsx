@@ -7,7 +7,8 @@ import { CiImageOn } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
 import { GrAppsRounded } from "react-icons/gr";
 import "./component.css";
-import logo from "../imgs/logome.png"
+import logo from "../imgs/logome.png";
+import logoHat from "../new year version img/hat.png"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,12 +21,15 @@ const Navbar = () => {
     <div className="header">
       <div className="nav container">
         <a href="#home" className="nav__logo">
-          <img src={logo} alt="" />
+          <div className="logo-container">
+            <img src={logo} alt="logo" />
+            <img src={logoHat} alt="hat" className="logo-hat"/>
+          </div>
         </a>
 
         <div className={`nav__menu ${isMenuOpen ? "nav__menu--open" : ""}`}>
           <ul className="nav__list grid">
-            <li className="nav__item">
+            <li className="nav__item" style={{ "--i": 1 }}>
               <a href="#home" className="nav__link active-link">
                 <CiHome className="uil uil-home nav__icon" />
                 Home

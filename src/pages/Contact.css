@@ -16,7 +16,18 @@
   justify-content: center;
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 }
-
+.card5_content {
+  font-family: "Great Vibes", cursive;
+  font-size: 20px;
+  position: relative;
+  top: -2rem;
+}
+.c5 {
+  font-family: "Great Vibes", cursive;
+  font-size: 23px;
+  position: relative;
+  top: -2rem;
+}
 .bg {
   display: flex;
   gap: 1rem;
@@ -86,7 +97,7 @@
 }
 
 .input:focus {
-  text-decoration: underline 6px;
+  /* text-decoration: underline 6px; */
   box-shadow: 0 0 50px rgb(255, 255, 255);
   border: 1px solid grey;
 }
@@ -111,9 +122,11 @@
   min-width: 200px;
   padding: 20px;
   height: 68px;
-  font-family: "Galano Grotesque", Poppins, Montserrat, sans-serif;
+  /* font-family: "Galano Grotesque", Poppins, Montserrat, sans-serif; */
+  font-family: "Great Vibes", cursive;
   font-style: normal;
-  font-size: 18px;
+  /* font-size: 18px; */
+  font-size: 24px;
   font-weight: 600;
 }
 .button:hover {
@@ -401,7 +414,7 @@
 }
 
 .card5_icon {
-  font-size: 30px;
+  scale: 0.5;
 }
 
 .c_s_title {
@@ -410,25 +423,100 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .contact_content{
+  .contact_content {
     display: flex;
     flex-direction: column;
   }
-  .card5{
+  .card5 {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: auto;
   }
-  .c_s_title{
+  .c_s_title {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
   }
-  .contact_input{
+  .contact_input {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: auto;
   }
+}
+
+.contact_write_me {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  top: -2rem;
+}
+.input[placeholder] {
+  font-family: "Great Vibes", cursive;
+  font-size: 20px;
+}
+
+.contact_write_me {
+  --primary-color: #111;
+  --hovered-color: #62c1c2;
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  font-size: 20px;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.contact_write_me p {
+  margin: 0;
+  position: relative;
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.contact_write_me::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -7px;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: 0.3s ease-out;
+}
+
+.contact_write_me p::before {
+  position: absolute;
+  /*   box-sizing: border-box; */
+  content: "Write me";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+
+.contact_write_me:hover::after {
+  width: 100%;
+}
+
+.contact_write_me:hover p::before {
+  width: 100%;
+}
+
+.contact_write_me:hover svg {
+  transform: translateX(4px);
+  color: var(--hovered-color);
+}
+
+.contact_write_me svg {
+  color: var(--primary-color);
+  transition: 0.2s;
+  position: relative;
+  width: 15px;
+  transition-delay: 0.2s;
 }

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
 import { FaInstagram, FaTelegram, FaGithub } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa6";
 import "aos/dist/aos.css";
 import "./Page.css";
+import toy from "../new year version img/toy.png";
 
 const Home = () => {
   const [showTypewriter, setShowTypewriter] = useState(true); // Effektni faollashtirish
@@ -48,7 +49,8 @@ const Home = () => {
           <br />
           <p className="content">
             I'm a web developer and it's both my interest, hobby, and job. I've
-            been in this field for a long time and I'm still doing many projects.
+            been in this field for a long time and I'm still doing many
+            projects.
           </p>
           <br />
 
@@ -63,6 +65,7 @@ const Home = () => {
         </div>
 
         <div className="home_img">
+          <img src={toy} alt="toy" className="home_toy" />
           <div className="img"></div>
         </div>
       </div>

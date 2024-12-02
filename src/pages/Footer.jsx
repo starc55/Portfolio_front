@@ -1,16 +1,17 @@
 import React from "react";
 import "./footer.css";
 import { FaXTwitter } from "react-icons/fa6";
+import wreath from "../new year version img/wreath.png";
 
 export const Footer = () => {
   return (
     <div id="footer">
       <div className="footer">
-        <p className="footer_title">--Ogabek--</p>
+        <a className="footer_title" href="#home">--Ogabek--</a>
 
         <div className="footer_links">
           <a href="#about">About</a>
-          <a href="#portfolio">Projects</a>
+          <a href="#projects">Projects</a>
           <a href="#service">Services</a>
         </div>
 
@@ -18,6 +19,7 @@ export const Footer = () => {
           <ul className="wrapper">
             <a href="https://www.facebook.com/profile.php?id=100085257432733&mibextid=ZbWKwL">
               <li className="icon facebook">
+                <img src={wreath} alt="" className="social_wreath" />
                 <span className="tooltip">Facebook</span>
                 <svg
                   viewBox="0 0 320 512"
@@ -32,6 +34,7 @@ export const Footer = () => {
 
             <a href="https://x.com/OrziyevOg?t=nRMafQM50qlie3-pgF4WqQ&s=09">
               <li className="icon twitter">
+                <img src={wreath} alt="" className="social_wreath" />
                 <span className="tooltip">Twitter</span>
                 <FaXTwitter />
               </li>
@@ -39,6 +42,7 @@ export const Footer = () => {
 
             <a href="https://www.instagram.com/oga_vine25?igsh=b2V1ZWE2NWVzMjNn">
               <li className="icon instagram">
+                <img src={wreath} alt="" className="social_wreath" />
                 <span className="tooltip">Instagram</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

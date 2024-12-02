@@ -2,7 +2,9 @@ import React from "react";
 import about from "../imgs/about.jpg";
 // import { PiMedalFill, PiProjectorScreenChartFill } from "react-icons/pi";
 // import { BiSupport } from "react-icons/bi";
-import "./Page.css"
+import "./Page.css";
+import snow from "../new year version img/snow2.png";
+import chtree from "../new year version img/chtree.png"
 
 const About = () => {
   const cvLink = process.env.PUBLIC_URL + "/CV.pdf";
@@ -18,11 +20,15 @@ const About = () => {
     <div id="about" className="about">
       <div>
         <div className="header_about">
-          <p>About</p>
+          <p className="head_icon_">
+            <img src={snow} alt="" className="header_icon" />
+            About
+          </p>
           <span className="sub_head">My introduction</span>
         </div>
         <div className="about_content">
           <div className="about_img">
+            <img src={chtree} alt="" className="chtree"/>
             <img src={about} alt="" />
           </div>
           <div className="add_about about_text">
@@ -66,14 +72,14 @@ const About = () => {
             </div>
             <div className="about_sub">
               <p>
-                Hello! I’m Jony (Ogabek), a frontend developer focused on creating modern
-                and user-friendly web applications. I’m currently working
-                towards becoming a full-stack developer, expanding my skills in
-                both frontend and backend technologies. With experience in
-                JavaScript, React, and CSS, I’m passionate about enhancing user
-                experiences through effective design and functionality. I
-                believe in continuous learning and am excited to grow in this
-                field. Let’s learn and develop together!
+                Hello! I’m Jony (Ogabek), a frontend developer focused on
+                creating modern and user-friendly web applications. I’m
+                currently working towards becoming a full-stack developer,
+                expanding my skills in both frontend and backend technologies.
+                With experience in JavaScript, React, and CSS, I’m passionate
+                about enhancing user experiences through effective design and
+                functionality. I believe in continuous learning and am excited
+                to grow in this field. Let’s learn and develop together!
               </p>
             </div>
             <div className="about_btn">

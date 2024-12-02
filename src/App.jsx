@@ -14,41 +14,62 @@ import { Footer } from "./pages/Footer";
 import ScrollUp from "./components/ScrollUp";
 import Achievements from "./pages/Achievements";
 import CustomCursor from "./CustomCursor";
-import LoadingSpinner from "./Loader/LoadingSpinner";// Import your LoadingSpinner component
+import LoadingSpinner from "./Loader/LoadingSpinner";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time
     setTimeout(() => {
       setLoading(false);
-    }, 3200); // Adjust the time as needed
+    }, 3200);
   }, []);
 
-  if (loading) {
-    return <LoadingSpinner />; // Show the spinner while loading
-  }
+  // Create snowflakes dynamically
+  const createSnowflakes = () => {
+    let snowflakes = [];
+    for (let i = 0; i < 50; i++) {
+      snowflakes.push(
+        <div
+          key={i}
+          className="snowflake"
+          style={{
+            left: `${Math.random() * 100}vw`,
+            animationDuration: `${Math.random() * 5 + 3}s`,
+            animationDelay: `${Math.random() * 3}s`,
+          }}
+        />
+      );
+    }
+    return snowflakes;
+  };
 
   return (
     <div>
-      <CustomCursor />
-      <Navbar className="hovered-element" />
-      <Home className="hovered-element" />
-      <About className="hovered-element" />
-      <Skill className="hovered-element" />
-      <Services className="hovered-element" />
-      <Qualification className="hovered-element" />
-      <Portfolio className="hovered-element" />
-      <Testimonials className="hovered-element" />
-      <Achievements className="hovered-element" />
-      <Contact className="hovered-element" />
-      <Footer className="hovered-element" />
-
-      <ScrollUp />
-      <BrowserRouter>
-        <Routes>{/* Define your routes here */}</Routes>
-      </BrowserRouter>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <div>
+          <div className="snow">{createSnowflakes()}</div>{" "}
+          {/* Snowflakes Container */}
+          <CustomCursor />
+          <Navbar className="hovered-element" />
+          <Home className="hovered-element" />
+          <About className="hovered-element" />
+          <Skill className="hovered-element" />
+          <Services className="hovered-element" />
+          <Qualification className="hovered-element" />
+          <Portfolio className="hovered-element" />
+          <Testimonials className="hovered-element" />
+          <Achievements className="hovered-element" />
+          <Contact className="hovered-element" />
+          <Footer className="hovered-element" />
+          <ScrollUp />
+          <BrowserRouter>
+            <Routes>{/* Define your routes here */}</Routes>
+          </BrowserRouter>
+        </div>
+      )}
     </div>
   );
 }

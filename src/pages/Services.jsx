@@ -3,6 +3,7 @@ import { FaLaptopCode } from "react-icons/fa6";
 import { MdOutlineSlowMotionVideo, MdDevicesOther } from "react-icons/md";
 import { Modal } from "antd";
 import "./Page.css";
+import snow from "../new year version img/snow2.png";
 
 const Services = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -32,7 +33,10 @@ const Services = () => {
     <div id="service">
       <div>
         <div className="header_about">
-          <p>Services</p>
+          <p className="header_about">
+            <img src={snow} alt="" className="header_icon2" />
+            Services
+          </p>
           <span className="sub_head">What I offer</span>
         </div>
         <div className="service_card">

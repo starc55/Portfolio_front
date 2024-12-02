@@ -44,6 +44,21 @@
 .home_img {
   scale: 1.2;
 }
+.home_img .home_toy {
+  position: absolute;
+  top: 60%;
+  animation: sparkle 2s infinite ease-in-out alternate;
+  transition: scale 2s ease-in-out;
+}
+@keyframes sparkle {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+}
 .img {
   background: url(../imgs/me.jpg);
   width: 300px;
@@ -101,6 +116,8 @@
 
 .content {
   width: 70%;
+  font-family: "Dancing Script", cursive;
+  font-size: 20px;
 }
 
 button {
@@ -176,6 +193,7 @@ button.learn-more .button-text {
   line-height: 1.6;
   text-align: center;
   text-transform: uppercase;
+  font-family: "Dancing Script", cursive;
 }
 
 button:hover .circle {
@@ -230,6 +248,8 @@ button:hover .button-text {
   gap: 1rem;
   justify-content: center;
   align-items: center;
+  font-family: "Great Vibes", cursive;
+  font-size: 25px;
 }
 .sc {
   margin-left: 1rem;
@@ -279,6 +299,11 @@ button:hover .button-text {
     align-items: center;
   }
 
+  .home_img .home_toy{
+    margin-top: 20% !important;
+    margin-right: 30% !important;
+  }
+
   .home_social,
   .home_img {
     display: flex;
@@ -326,6 +351,28 @@ button:hover .button-text {
 .header_about {
   margin-top: 14rem;
 }
+.head_icon_{
+  display: flex;
+  flex-direction: column;
+}
+.header_icon{
+  position: absolute;
+  scale: 0.68;
+  margin-top: -1rem;
+  margin-right: 5px;
+}
+.header_icon2{
+  position: absolute;
+  scale: 1.2;
+  margin-top: -1rem;
+  margin-right: 10px;
+}
+.header_icon3{
+  position: absolute;
+  scale: 1.25;
+  margin-top: -1rem;
+  margin-right: 20px;
+}
 .about_content {
   display: flex;
   justify-content: center;
@@ -334,6 +381,12 @@ button:hover .button-text {
   margin-top: 5rem;
   margin-left: 20%;
 }
+.chtree{
+  position: absolute;
+  margin-top: 21rem;
+  margin-left: -2rem;
+}
+
 @media only screen and (max-width: 870px) {
   .about_content {
     display: flex;
@@ -348,27 +401,37 @@ button:hover .button-text {
     justify-content: center;
     margin: auto;
   }
-  .about_card{
+  .chtree{
+    margin-left: 23% !important;
+    scale: 0.7;
+    margin-top: 15% !important;
+  }
+  .about_card {
     display: flex;
     justify-content: center;
     margin: auto;
   }
-  .about_sub{
+  .about_sub {
     display: flex;
     justify-content: center;
     margin: auto;
     text-align: center;
   }
-  .about_btn{
+  .about_btn {
     display: flex;
     justify-content: center;
     margin: auto;
   }
 }
 @media only screen and (max-width: 768px) {
-  .about_sub{
+  .about_sub {
     width: 90% !important;
     font-size: 14px;
+  }
+  .chtree{
+    position: relative;
+    right: 3rem;
+    top: 17rem;
   }
 }
 .about_img img {
@@ -421,6 +484,8 @@ button:hover .button-text {
 .about_sub {
   width: 70%;
   margin-top: 3rem;
+  font-family: "Dancing Script", cursive;
+  font-size: 20px;
 }
 
 /* btnabout */
@@ -555,7 +620,9 @@ button:hover .button-text {
   transform: translateY(150px);
   transition: transform 0.25s;
 }
-
+.card-title {
+  font-family: "Great Vibes", cursive;
+}
 .card_content::before {
   content: "";
   position: absolute;
@@ -718,7 +785,6 @@ button:hover .button-text {
   }
 }
 
-
 .modal-open {
   overflow: hidden;
 }
@@ -817,8 +883,9 @@ button:hover .button-text {
 }
 
 .qualification__title {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 500;
+  font-family: "Great Vibes", cursive;
 }
 .qualification__subtitle {
   display: inline-block;
@@ -845,8 +912,9 @@ button:hover .button-text {
   background-color: hsl(0, 0%, 46%);
   transform: translate(6px, -7px);
 }
-@media only screen and (max-width: 768px){
-  .qualification__rounder, .qualification__line{
+@media only screen and (max-width: 768px) {
+  .qualification__rounder,
+  .qualification__line {
     display: none;
   }
 }
@@ -885,7 +953,6 @@ button:hover .button-text {
   justify-content: center;
 }
 
-/* From Uiverse.io by zjssun */
 .portfolio_button {
   position: relative;
   padding: 10px 22px;
@@ -895,6 +962,8 @@ button:hover .button-text {
   cursor: pointer;
   background-color: #7d2ae8;
   transition: all 0.2s ease;
+  font-family: "Great Vibes", cursive;
+  font-size: 20px;
 }
 
 .portfolio_button:active {
@@ -1217,8 +1286,9 @@ body.modal-open {
 }
 
 .testimonial__description {
-  font-size: 0.875rem;
+  font-size: 20px;
   margin-top: 1rem;
+  font-family: "Great Vibes", cursive;
 }
 
 .swiper-pagination-bullet {

@@ -16,6 +16,7 @@
   font-size: 20px;
   font-weight: 700;
   font-family: "Red Hat Display", sans-serif;
+  color: rgb(35, 33, 33);
 }
 .footer_links {
   display: flex;
@@ -126,3 +127,9 @@
   background: #e4405f;
   color: #fff;
 }
+
+.social_wreath {
+  position: absolute;
+  scale: 1.2;
+}
+

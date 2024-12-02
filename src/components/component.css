@@ -8,16 +8,33 @@
   z-index: 100;
   background-color: hsl(0, 0%, 98%);
 }
-.nav__logo img{
+.nav__logo img {
   width: 50px;
   border-radius: 50%;
 }
+
 .nav {
   height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 1rem;
+}
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.logo-hat {
+  position: absolute;
+  top: -15px; /* Adjust for proper positioning */
+  left: 5px;
+  width: 50px; /* Adjust size to match */
+  transform: rotate(20deg);
+  z-index: 10;
+  scale: 0.8;
 }
 
 .nav__logo,
@@ -29,7 +46,7 @@
   color: hsl(0, 0%, 20%);
   transition: all 0.3s ease-in-out;
 }
-.nav__list a:hover{
+.nav__list a:hover {
   font-weight: 700;
 }
 .nav__list {

@@ -5,6 +5,10 @@ import { CiLinkedin } from "react-icons/ci";
 import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 import { Input, notification, Progress } from "antd";
 import emailjs from "emailjs-com";
+import emailIcon from "../new year version img/email.png"
+import whatsapp from "../new year version img/whatsapp.png"
+import linkedIn from "../new year version img/linked.png"
+
 
 const { TextArea } = Input;
 
@@ -101,11 +105,31 @@ const Contact = () => {
 
             <div className="card5">
               <div className="bg">
-                <MdOutlineAttachEmail className="card5_icon" />
+                <img src={emailIcon} alt="" className="card5_icon" />
                 <p className="card5_content">Email</p>
                 <p className="c5">orziyevogabek67@gmail.com</p>
-                <a href="mailto:orziyevogabek67@gmail.com" className="linkc5">
+                {/* <a href="mailto:orziyevogabek67@gmail.com" className="linkc5">
                   Write me <FaArrowRight className="arr" />
+                </a> */}
+                <a
+                  href="mailto:orziyevogabek67@gmail.com"
+                  className="contact_write_me"
+                >
+                  <p>Write me</p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    ></path>
+                  </svg>
                 </a>
               </div>
               <div className="blob"></div>
@@ -113,7 +137,7 @@ const Contact = () => {
             <br />
             <div className="card5">
               <div className="bg">
-                <FaWhatsapp className="card5_icon" />
+                <img src={whatsapp} alt="" className="card5_icon"/>
                 <p className="card5_content">Whatsapp</p>
                 <p className="c5">+998 93 110 26 81</p>
               </div>
@@ -122,13 +146,33 @@ const Contact = () => {
             <br />
             <div className="card5">
               <div className="bg">
-                <CiLinkedin className="card5_icon" />
+                <img src={linkedIn} alt="" className="card5_icon"/>
                 <p className="card5_content">LinkedIn</p>
-                <a
+                {/* <a
                   href="https://www.linkedin.com/in/og-abek-orziyev-b2a84729b/"
                   className="linkc5"
                 >
                   Write me <FaArrowRight className="arr" />
+                </a> */}
+                <a
+                  href="https://www.linkedin.com/in/og-abek-orziyev-b2a84729b/"
+                  className="contact_write_me"
+                >
+                  <p>Write me</p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    ></path>
+                  </svg>
                 </a>
               </div>
               <div className="blob"></div>
