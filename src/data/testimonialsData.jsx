@@ -12,6 +12,7 @@ import t11 from "../imgs/t11.jpg";
 import t12 from "../imgs/t12.jpg";
 import t13 from "../imgs/t13.jpg";
 import t14 from "../imgs/t14.jpg";
+import t15 from "../imgs/t15.jpg";
 
 export const Data = [
   {
@@ -111,5 +112,12 @@ export const Data = [
     title: "Yaxshiboyeva Maxliyo",
     description:
       "Amazing service! Jony transformed our ideas into a stunning website. Thank you!",
+  },
+  {
+    id: 15,
+    image: t15,
+    title: "Shodmonov Jonibek",
+    description:
+      "Excellent work! Jony's expertise and dedication truly stand out. Thank you!",
   },
 ];
