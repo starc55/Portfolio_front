@@ -13,8 +13,9 @@ import Contact from "./pages/Contact";
 import { Footer } from "./pages/Footer";
 import ScrollUp from "./components/ScrollUp";
 import Achievements from "./pages/Achievements";
-import CustomCursor from "./CustomCursor";
+// import CustomCursor from "./CustomCursor";
 import LoadingSpinner from "./Loader/LoadingSpinner";
+import snowflake from './new year version img/snowflake.png'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3200);
+    }, 9200);
   }, []);
 
   // Create snowflakes dynamically
@@ -37,6 +38,9 @@ function App() {
             left: `${Math.random() * 100}vw`,
             animationDuration: `${Math.random() * 5 + 3}s`,
             animationDelay: `${Math.random() * 3}s`,
+            backgroundImage: `url(${snowflake})`,
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
           }}
         />
       );
@@ -50,9 +54,8 @@ function App() {
         <LoadingSpinner />
       ) : (
         <div>
-          <div className="snow">{createSnowflakes()}</div>{" "}
-          {/* Snowflakes Container */}
-          <CustomCursor />
+          <div className="snow">{createSnowflakes()}</div>
+          {/* <CustomCursor /> */}
           <Navbar className="hovered-element" />
           <Home className="hovered-element" />
           <About className="hovered-element" />
@@ -66,7 +69,7 @@ function App() {
           <Footer className="hovered-element" />
           <ScrollUp />
           <BrowserRouter>
-            <Routes>{/* Define your routes here */}</Routes>
+            <Routes></Routes>
           </BrowserRouter>
         </div>
       )}

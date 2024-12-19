@@ -217,13 +217,6 @@ img {
   }
 }
 
-/* Sayt orqa fonini sozlash (oq fon) */
-body {
-  margin: 0;
-  padding: 0;
-  /* overflow: hidden;  */
-}
-
 /* Qor flaklarining konteyneri */
 .snow {
   position: fixed;
@@ -239,10 +232,10 @@ body {
 .snowflake {
   position: absolute;
   top: -10px; /* Flaklar ekranga yuqoridan kiradi */
-  width: 10px;
-  height: 10px;
-  background-color: rgb(103, 230, 247);
-  border-radius: 50%; /* Doira shaklida */
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
   opacity: 0.8; /* Biroz shaffoflik */
   animation: snowfall linear infinite; /* Animatsiya qo'shish */
 }
@@ -293,5 +286,3 @@ body {
   animation-delay: 1s;
   left: 60%;
 }
-
-/* Add more snowflakes with different timing */

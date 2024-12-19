@@ -3,40 +3,59 @@ import "./LoadingSpinner.css";
 
 const LoadingSpinner = () => {
   return (
-    /* From Uiverse.io by NlghtM4re */
-    <div className="container_tree-loader">
-      <div className="tree">
-        <div className="branch" style={{ "--x": 0 }}>
-          <span style={{ "--i": 0 }}></span>
-          <span style={{ "--i": 1 }}></span>
-          <span style={{ "--i": 2 }}></span>
-          <span style={{ "--i": 3 }}></span>
+    <div className="loading-container">
+      <div className="feliz">Happy New Year</div>
+      <div className="ano_novo">
+        <span>202</span>
+        <span className="seis">4</span>
+        <span className="sete">5</span>
+        <div className="balao"></div>
+      </div>
+      <div className="fogos">
+        <div className="f1">
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
         </div>
-        <div className="branch" style={{ "--x": 1 }}>
-          <span style={{ "--i": 0 }}></span>
-          <span style={{ "--i": 1 }}></span>
-          <span style={{ "--i": 2 }}></span>
-          <span style={{ "--i": 3 }}></span>
+        <div className="f2">
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
         </div>
-        <div className="branch" style={{ "--x": 2 }}>
-          <span style={{ "--i": 0 }}></span>
-          <span style={{ "--i": 1 }}></span>
-          <span style={{ "--i": 2 }}></span>
-          <span style={{ "--i": 3 }}></span>
+        <div className="f3">
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
         </div>
-        <div className="branch" style={{ "--x": 3 }}>
-          <span style={{ "--i": 0 }}></span>
-          <span style={{ "--i": 1 }}></span>
-          <span style={{ "--i": 2 }}></span>
-          <span style={{ "--i": 3 }}></span>
+        <div className="f4">
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
         </div>
-        <div className="stem">
-          <span style={{ "--i": 0 }}></span>
-          <span style={{ "--i": 1 }}></span>
-          <span style={{ "--i": 2 }}></span>
-          <span style={{ "--i": 3 }}></span>
-        </div>
-        <span className="shadow"></span>
       </div>
     </div>
   );
