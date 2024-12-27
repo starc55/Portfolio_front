@@ -15,6 +15,7 @@ import video3 from "../video/video3.mp4";
 import video4 from "../video/video4.mp4";
 import video5 from "../video/video5.mp4";
 import video6 from "../video/video6.mp4";
+import testNew from "../imgs/testNew.png";
 
 const works = [
   {
@@ -65,9 +66,16 @@ const works = [
   {
     category: "Web",
     img: test,
-    title: "Test for developer but only css questions",
+    title: "Test for developer html and css questions",
     link: "https://testdemo005.netlify.app/",
     tags: ["HTML5", "CSS", "JavaScript","React"],
+  },
+  {
+    category: "Web",
+    img: testNew,
+    title: "Test for web developer html and css questions",
+    link: "https://test-wheat-eta-33.vercel.app/",
+    tags: ["HTML5", "CSS", "JavaScript","React","Vercel"],
   },
   {
     category: "Video",

@@ -16,7 +16,7 @@ const LoadingSpinner = () => {
           <span>
             <i></i>
           </span>
-          <span>
+          <span> 
             <i></i>
           </span>
           <span>
