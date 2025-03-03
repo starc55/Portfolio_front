@@ -4,7 +4,6 @@ import "./Page.css";
 import works from "../data/works";
 import { SyncOutlined } from "@ant-design/icons";
 import { useRef } from "react";
-import snow from "../new year version img/snow2.png";
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -102,12 +101,9 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio" id="projects">
-      <div>
+      <div className="portfolio_container">
         <div className="header_about">
-          <p className="header_about">
-            <img src={snow} alt="" className="header_icon3" />
-            Projects
-          </p>
+          <p className="header_about">Projects</p>
           <span className="sub_head">Most recent works</span>
         </div>
         <div className="portfolio_btn">
@@ -128,6 +124,12 @@ const Portfolio = () => {
             onClick={() => handleCategoryChange("Video")}
           >
             Video
+          </button>
+          <button
+            className="portfolio_button"
+            onClick={() => handleCategoryChange("Stickers")}
+          >
+            Stickers
           </button>
           <button
             className="portfolio_button"
@@ -219,14 +221,12 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
-
-        {/* Pagination Component */}
         <Pagination
           current={currentPage}
           pageSize={itemsPerPage}
           total={filteredWorks.length}
           onChange={(page) => setCurrentPage(page)}
-          style={{ marginTop: "16px", textAlign: "center" }}
+          style={{ marginTop: "50px", textAlign: "center" }}
           className="project_pagination"
         />
 
@@ -269,7 +269,13 @@ const Portfolio = () => {
                 loading={loading}
                 style={{ marginTop: "16px" }}
               >
-                {loading ? "Loading..." : "Site overview"}
+                {loading
+                  ? "Loading..."
+                  : selectedCategory === "Web"
+                  ? "Site overview"
+                  : selectedCategory === "Stickers"
+                  ? "Watch Sticker"
+                  : "Overview"}
               </Button>
             )}
           </div>

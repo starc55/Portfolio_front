@@ -12,7 +12,7 @@ const Qualification = () => {
   };
 
   return (
-    <div>
+    <div id="qualification">
       <section className="qualification section">
         <div className="header_about">
           <p>Qualification</p>
@@ -26,7 +26,7 @@ const Qualification = () => {
                   ? "qualification__button qualification__active button--flex"
                   : "qualification__button button--flex"
               }
-              onClick={() => toggleTab(1)}
+              onClick={() => toggleTab(1)} 
             >
               <MdCastForEducation className="qualification__icon" />
               Education
@@ -59,7 +59,7 @@ const Qualification = () => {
                     Monday Academy
                   </span>
                   <div className="qualification__calendar">
-                    <FaRegCalendarAlt /> 2023 - Present
+                    <FaRegCalendarAlt /> 2022 - Present
                   </div>
                 </div>
                 <div>
@@ -97,6 +97,22 @@ const Qualification = () => {
                 <div>
                   <span className="qualification__rounder"></span>
                   <span className="qualification__line"></span>
+                </div>
+              </div>
+
+              <div className="qualification__data">
+                <div></div>
+
+                <div>
+                  <span className="qualification__rounder"></span>
+                  <span className="qualification__line"></span>
+                </div>
+                <div>
+                  <h3 className="qualification__title">Sticker making</h3>
+                  <span className="qualification__subtitle">Free</span>
+                  <div className="qualification__calendar">
+                    <FaRegCalendarAlt /> 2023 - Present
+                  </div>
                 </div>
               </div>
             </div>
@@ -151,6 +167,22 @@ const Qualification = () => {
                 <div>
                   <span className="qualification__rounder"></span>
                   <span className="qualification__line"></span>
+                </div>
+              </div>
+              
+              <div className="qualification__data">
+                <div></div>
+
+                <div>
+                  <span className="qualification__rounder"></span>
+                  <span className="qualification__line"></span>
+                </div>
+                <div>
+                  <h3 className="qualification__title">Sticker making</h3>
+                  <span className="qualification__subtitle">Freelancer</span>
+                  <div className="qualification__calendar">
+                    <FaRegCalendarAlt /> 2020 - Present
+                  </div>
                 </div>
               </div>
             </div>

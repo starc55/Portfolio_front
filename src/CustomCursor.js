@@ -1,4 +1,3 @@
-// // src/components/CustomCursor.js
 // import React, { useEffect, useState } from "react";
 // import "./CustomCursor.css";
 // import cursorImage from "./new year version img/cursor.png"; // Fayl manzili

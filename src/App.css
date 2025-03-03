@@ -14,6 +14,24 @@
   --text-color: hsl(var(--hue), var(--sat), 46%);
   --body-color: hsl(var(--hue), var(--sat), 98%);
   --container-color: #fff;
+/* Global scroll style */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #454545;
+}
 
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
@@ -48,6 +66,35 @@
   --z-tooltip: 10;
   --z-fixed: 100;
   --z-modal: 1000;
+}
+/* Dark mode */
+body.dark-mode {
+  --title-color: hsl(var(--hue), var(--sat), 90%);
+  --text-color: hsl(var(--hue), var(--sat), 80%);
+  background-color: #1f1f1f;
+  --container-color: hsl(var(--hue), var(--sat), 15%);
+}
+
+/* Dark mode tugmasi */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--title-color);
+  color: var(--container-color);
+  font-size: var(--small-font-size);
+  cursor: pointer;
+  z-index: var(--z-fixed);
+}
+body.dark-mode .dark-mode-toggle {
+  color: white
+}
+
+.theme-toggle:hover {
+  background-color: var(--title-color-dark);
 }
 
 /* Responsive typography */

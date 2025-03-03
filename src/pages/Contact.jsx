@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import { MdOutlineAttachEmail } from "react-icons/md";
-import { CiLinkedin } from "react-icons/ci";
-import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 import { Input, notification, Progress } from "antd";
 import emailjs from "emailjs-com";
-import emailIcon from "../new year version img/email.png"
-import whatsapp from "../new year version img/whatsapp.png"
-import linkedIn from "../new year version img/linked.png"
-
+import emailIcon from "../imgs/email.png";
+import whatsapp from "../imgs/whatsapp.png";
+import linkedIn from "../imgs/linked.png";
 
 const { TextArea } = Input;
 
@@ -62,7 +59,7 @@ const Contact = () => {
         "ogabek67", // EmailJS Service ID
         "template_ydezhzu", // EmailJS Template ID
         templateParams,
-        "XkiWKzzY71KxfbVso" // EmailJS Public Key
+        "Ert7ISwYIs_HL32bW" // EmailJS Public Key
       )
       .then(
         (response) => {
@@ -107,10 +104,6 @@ const Contact = () => {
               <div className="bg">
                 <img src={emailIcon} alt="" className="card5_icon" />
                 <p className="card5_content">Email</p>
-                <p className="c5">orziyevogabek67@gmail.com</p>
-                {/* <a href="mailto:orziyevogabek67@gmail.com" className="linkc5">
-                  Write me <FaArrowRight className="arr" />
-                </a> */}
                 <a
                   href="mailto:orziyevogabek67@gmail.com"
                   className="contact_write_me"
@@ -137,7 +130,7 @@ const Contact = () => {
             <br />
             <div className="card5">
               <div className="bg">
-                <img src={whatsapp} alt="" className="card5_icon"/>
+                <img src={whatsapp} alt="" className="card5_icon" />
                 <p className="card5_content">Whatsapp</p>
                 <p className="c5">+998 93 110 26 81</p>
               </div>
@@ -146,14 +139,8 @@ const Contact = () => {
             <br />
             <div className="card5">
               <div className="bg">
-                <img src={linkedIn} alt="" className="card5_icon"/>
+                <img src={linkedIn} alt="" className="card5_icon" />
                 <p className="card5_content">LinkedIn</p>
-                {/* <a
-                  href="https://www.linkedin.com/in/og-abek-orziyev-b2a84729b/"
-                  className="linkc5"
-                >
-                  Write me <FaArrowRight className="arr" />
-                </a> */}
                 <a
                   href="https://www.linkedin.com/in/og-abek-orziyev-b2a84729b/"
                   className="contact_write_me"
@@ -182,7 +169,7 @@ const Contact = () => {
           <div className="contact_input">
             <p className="c_s_title">Write me your project</p>
             <br />
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form">
               <input
                 required
                 placeholder="Insert your name"
@@ -192,7 +179,6 @@ const Contact = () => {
                 value={name}
                 onChange={onChangeName}
               />
-              <br />
               <input
                 required
                 placeholder="Insert your email"
@@ -202,7 +188,6 @@ const Contact = () => {
                 value={email}
                 onChange={onChangeEmail}
               />
-              <br />
               <TextArea
                 required
                 placeholder="Write me your project"
@@ -211,7 +196,6 @@ const Contact = () => {
                 className="textarea"
                 value={message}
               />
-              <br />
               <TextArea
                 required
                 placeholder="Enter your suggestions"
@@ -220,8 +204,6 @@ const Contact = () => {
                 className="textarea"
                 value={suggestion}
               />
-              <br />
-              <br />
               <button type="submit" className="button">
                 <div className="outline"></div>
                 <div className="state state--default">

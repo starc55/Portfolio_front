@@ -3,7 +3,6 @@ import "./Page.css";
 import { FaCode } from "react-icons/fa6";
 import { SiGoogledisplayandvideo360 } from "react-icons/si";
 import { MdOutlineVerified } from "react-icons/md";
-import snow from "../new year version img/snow2.png";
 
 export const Skill = () => {
   return (
@@ -11,8 +10,7 @@ export const Skill = () => {
       <div>
         <div className="header_about">
           <p className="head_icon_">
-            <img src={snow} alt="" className="header_icon" />
-            Skill
+            Skill 
           </p>
           <span className="sub_head">My technical level</span>
         </div>

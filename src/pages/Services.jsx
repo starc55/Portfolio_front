@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FaLaptopCode } from "react-icons/fa6";
-import { MdOutlineSlowMotionVideo, MdDevicesOther } from "react-icons/md";
+import { MdWeb } from "react-icons/md";
+import { TfiVideoClapper } from "react-icons/tfi";
+import { PiNetworkLight } from "react-icons/pi";
 import { Modal } from "antd";
 import "./Page.css";
-import snow from "../new year version img/snow2.png";
 
 const Services = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -33,10 +33,7 @@ const Services = () => {
     <div id="service">
       <div>
         <div className="header_about">
-          <p className="header_about">
-            <img src={snow} alt="" className="header_icon2" />
-            Services
-          </p>
+          <p className="header_about">Services</p>
           <span className="sub_head">What I offer</span>
         </div>
         <div className="service_card">
@@ -44,7 +41,7 @@ const Services = () => {
             <div className="card3">
               <div className="content-box">
                 <span className="service_icon">
-                  <FaLaptopCode />
+                  <MdWeb />
                 </span>
                 <br />
                 <span className="card-title">Frontend</span>
@@ -75,7 +72,7 @@ const Services = () => {
             <div className="card3">
               <div className="content-box">
                 <span className="service_icon">
-                  <MdOutlineSlowMotionVideo />
+                  <TfiVideoClapper />
                 </span>
                 <br />
                 <span className="card-title">Video Editing</span>
@@ -104,7 +101,7 @@ const Services = () => {
             <div className="card3">
               <div className="content-box">
                 <span className="service_icon">
-                  <MdDevicesOther />
+                  <PiNetworkLight />
                 </span>
                 <br />
                 <span className="card-title">Other</span>
@@ -139,6 +136,7 @@ const Services = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         centered
+        footer={null}
       >
         <p>{modalContent.description}</p>
         <ul>

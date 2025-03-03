@@ -6,7 +6,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const Testimonials = () => {
+const Testimonials = () => { 
   return (
     <div>
       <div>
