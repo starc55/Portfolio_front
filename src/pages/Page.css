@@ -471,7 +471,6 @@ button:hover .button-text {
   .home_social,
   .home_img {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: auto;
@@ -484,7 +483,6 @@ button:hover .button-text {
 
   .content {
     width: 80%;
-    margin: 1rem 0;
     display: flex;
     flex-direction: column;
     font-size: 3vw;
@@ -493,9 +491,9 @@ button:hover .button-text {
     margin: auto;
   }
 
-  .home {
+  /* .home {
     overflow-y: auto;
-  }
+  } */
 
   .tit_sub {
     font-size: 4vw;
