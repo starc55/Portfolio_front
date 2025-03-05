@@ -3,12 +3,12 @@ import about from "../imgs/about.svg";
 import "./Page.css";
 
 const About = () => {
-  const cvLink = process.env.PUBLIC_URL + "/CV.pdf";
+  const cvLink = process.env.PUBLIC_URL + "/Resume.pdf";
 
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = cvLink;
-    link.download = "/CV.pdf";
+    link.download = "/Resume.pdf";
     link.click();
   };
 
