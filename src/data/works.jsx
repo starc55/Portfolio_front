@@ -21,7 +21,8 @@ import nightstick from "../imgs/nightstick.png";
 import ramadanstick from "../imgs/ramadanstick.png";
 import okstick from "../imgs/okstick.png";
 import pandastick from "../imgs/pandastick.png";
-
+import taraweehstick from "../imgs/taraweeh.png";
+import nomoodstick from "../imgs/nomood.png";
 
 const works = [
   {
@@ -50,6 +51,13 @@ const works = [
     img: threedsiteme,
     title: "This is 3D site overview",
     tags: ["Three.js", "JavaScript", "CSS", "HTML5"],
+  },
+  {
+    category: "Stickers",
+    img: taraweehstick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
   },
   {
     category: "Video",
@@ -155,6 +163,13 @@ const works = [
     video: video7,
     title: "Video by me",
     tags: ["Video editing", "Cap Cut"],
+  },
+  {
+    category: "Stickers",
+    img: nomoodstick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
   },
   {
     category: "Web",

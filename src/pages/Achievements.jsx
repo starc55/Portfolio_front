@@ -40,6 +40,11 @@ const items = [
     image: require("../imgs/achieve1.jpg"),
     link: "#",
   },
+  {
+    text: "Introduction to Microsoft 365 Copilot",
+    image: require("../imgs/7.png"),
+    link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/CFLEGBH9?sharingId=F3BA35B3751C3983",
+  },
 ];
 const pageSize = 4;
 
