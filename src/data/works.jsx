@@ -23,6 +23,13 @@ import okstick from "../imgs/okstick.png";
 import pandastick from "../imgs/pandastick.png";
 import taraweehstick from "../imgs/taraweeh.png";
 import nomoodstick from "../imgs/nomood.png";
+import catstick from "../imgs/cat.png";
+import goodstick from "../imgs/good.png";
+import lolstick from "../imgs/lol.png";
+import marchstick from "../imgs/march.png";
+
+
+
 
 const works = [
   {
@@ -64,6 +71,13 @@ const works = [
     video: video2,
     title: "Video by me",
     tags: ["Video editing", "Cap Cut"],
+  },
+  {
+    category: "Stickers",
+    img: catstick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
   },
   {
     category: "Web",
@@ -159,6 +173,13 @@ const works = [
     tags: ["React", "JavaScript", "CSS", "HTML5", "Bulma"],
   },
   {
+    category: "Stickers",
+    img: marchstick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
+  },
+  {
     category: "Video",
     video: video7,
     title: "Video by me",
@@ -179,6 +200,13 @@ const works = [
     tags: ["HTML5", "CSS", "JavaScript"],
   },
   {
+    category: "Stickers",
+    img: lolstick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
+  },
+  {
     category: "Video",
     video: video6,
     title: "Video by me",
@@ -189,6 +217,13 @@ const works = [
     img: gamesite,
     title: "This site is about PS games",
     tags: ["React", "JavaScript", "CSS", "HTML5", "Bulma", "Api", "Strapi"],
+  },
+  {
+    category: "Stickers",
+    img: goodstick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
   },
   {
     category: "Other",
