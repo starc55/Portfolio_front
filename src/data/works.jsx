@@ -27,9 +27,9 @@ import catstick from "../imgs/cat.png";
 import goodstick from "../imgs/good.png";
 import lolstick from "../imgs/lol.png";
 import marchstick from "../imgs/march.png";
-
-
-
+import balancestick from "../imgs/balance.png";
+import habystick from "../imgs/haby.png";
+import happydogstick from "../imgs/happydog.png";
 
 const works = [
   {
@@ -45,6 +45,13 @@ const works = [
       "Strapi",
       "Other react libraries",
     ],
+  },
+  {
+    category: "Stickers",
+    img: balancestick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
   },
   {
     category: "Web",
@@ -86,6 +93,13 @@ const works = [
     tags: ["React", "JavaScript", "CSS", "HTML5", "Strapi", "Api"],
   },
   {
+    category: "Stickers",
+    img: habystick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
+  },
+  {
     category: "Web",
     img: magazinesite,
     title: "This sites magazine example",
@@ -103,14 +117,21 @@ const works = [
     img: testsite,
     title: "Test for developer html and css questions",
     link: "https://testdemo005.netlify.app/",
-    tags: ["HTML5", "CSS", "JavaScript","React"],
+    tags: ["HTML5", "CSS", "JavaScript", "React"],
+  },
+  {
+    category: "Stickers",
+    img: happydogstick,
+    title: "This is stickers for telegram",
+    link: "https://t.me/obranostickers",
+    tags: ["Canva", "Telegram", "Stickers"],
   },
   {
     category: "Web",
     img: testNewsite,
     title: "Test for web developer html and css questions",
     link: "https://test-wheat-eta-33.vercel.app/",
-    tags: ["HTML5", "CSS", "JavaScript","React","Vercel"],
+    tags: ["HTML5", "CSS", "JavaScript", "React", "Vercel"],
   },
   {
     category: "Stickers",
