@@ -9,9 +9,7 @@ export const Skill = () => {
     <div id="skill" className="skill_page">
       <div>
         <div className="header_about">
-          <p className="head_icon_">
-            Skill 
-          </p>
+          <p className="head_icon_">Skill</p>
           <span className="sub_head">My technical level</span>
         </div>
         <div className="card_text">
@@ -22,7 +20,23 @@ export const Skill = () => {
               </div>
               <p className="click">Click</p>
               <div className="card_content">
-                <span className="card_title">Frontend</span>
+                <span className="card_title">
+                  Frontend
+                  <span
+                    className="lordicon_skill"
+                    dangerouslySetInnerHTML={{
+                      __html: `
+                <lord-icon
+                  src="https://cdn.lordicon.com/tcfzgyak.json"
+                  trigger="loop"
+                  delay="1000"
+                  colors="primary:#848484,secondary:#08a88a"
+                  style="width: 25px; height: 25px;">
+                </lord-icon>
+              `,
+                    }}
+                  />
+                </span>
                 <span className="card_subtitle">My frontend skill</span>
                 <p className="card_description">
                   <div className="skill1">
@@ -80,7 +94,23 @@ export const Skill = () => {
               </div>
               <p className="click">Click</p>
               <div className="card_content">
-                <span className="card_title">Video Editing</span>
+                <span className="card_title">
+                  Video Editing
+                  <span
+                    className="lordicon_skill"
+                    dangerouslySetInnerHTML={{
+                      __html: `
+                <lord-icon
+                  src="https://cdn.lordicon.com/ugllxeyl.json"
+                  trigger="loop"
+                  delay="1000"
+                  colors="primary:#848484,secondary:#08a88a"
+                  style="width: 25px; height: 25px;">
+                </lord-icon>
+              `,
+                    }}
+                  />
+                </span>
                 <span className="card_subtitle">My video editor skills</span>
                 <p className="card_description">
                   <div className="skill1">

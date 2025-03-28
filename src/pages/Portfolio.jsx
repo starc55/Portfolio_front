@@ -155,6 +155,7 @@ const Portfolio = () => {
                       loop
                       muted
                       ref={videoRef}
+                      loading="lazy"
                     >
                       <source src={work.video} type="video/mp4" />
                       Your browser does not support the video tag.
@@ -165,7 +166,7 @@ const Portfolio = () => {
                     className="image_container"
                     onClick={() => handleImageClick(work)}
                   >
-                    <img src={work.img} alt={work.title} />
+                    <img src={work.img} alt={work.title} loading="lazy"/>
                     <button className="button_overlay">
                       <p className="button__text">
                         <span style={{ "--index": 0 }}>O</span>
@@ -228,6 +229,7 @@ const Portfolio = () => {
           onChange={(page) => setCurrentPage(page)}
           style={{ marginTop: "50px", textAlign: "center" }}
           className="project_pagination"
+          showLessItems
         />
 
         <Modal
@@ -237,11 +239,13 @@ const Portfolio = () => {
           centered
           width={700}
           title={
-            <span style={{ textDecoration: "underline" }}>{selectedTitle}</span>
+            <span style={{ fontSize: "18px", fontWeight: "700" }}>
+              {selectedTitle}
+            </span>
           }
         >
           {selectedVideo ? (
-            <video controls autoPlay style={{ width: "95%" }} ref={videoRef}>
+            <video controls autoPlay style={{ width: "95%" }} ref={videoRef} loading="lazy">
               <source src={selectedVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
@@ -249,7 +253,8 @@ const Portfolio = () => {
             <img
               src={selectedImage}
               alt="Selected Work"
-              style={{ width: "95%" }}
+              style={{ width: "100%", borderRadius: "10px" }}
+              loading="lazy"
             />
           )}
 

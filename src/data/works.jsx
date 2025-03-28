@@ -17,8 +17,6 @@ import video6 from "../video/video6.mp4";
 import video7 from "../video/video7.mp4";
 import testNewsite from "../imgs/testNewsite.png";
 import gamesite from "../imgs/gamesite.png";
-import nightstick from "../imgs/nightstick.png";
-import ramadanstick from "../imgs/ramadanstick.png";
 import okstick from "../imgs/okstick.png";
 import pandastick from "../imgs/pandastick.png";
 import taraweehstick from "../imgs/taraweeh.png";
@@ -26,10 +24,13 @@ import nomoodstick from "../imgs/nomood.png";
 import catstick from "../imgs/cat.png";
 import goodstick from "../imgs/good.png";
 import lolstick from "../imgs/lol.png";
-import marchstick from "../imgs/march.png";
 import balancestick from "../imgs/balance.png";
 import habystick from "../imgs/haby.png";
 import happydogstick from "../imgs/happydog.png";
+import tgweb1 from "../imgs/game.png"
+import cat2 from "../imgs/cat2.png"
+import shelby from "../imgs/shelby.png"
+import starc from "../imgs/starc.png"
 
 const works = [
   {
@@ -74,6 +75,13 @@ const works = [
     tags: ["Canva", "Telegram", "Stickers"],
   },
   {
+    category: "Web",
+    img: tgweb1,
+    title: "This is telegram web site(Games(Only open in telegram))",
+    link: "https://t.me/ad_linkbot",
+    tags: ["Telegram", "React", "CSS", "HTML5", "JavaScript", "Api", "Strapi","Telegram Api"],
+  },
+  {
     category: "Video",
     video: video2,
     title: "Video by me",
@@ -107,7 +115,7 @@ const works = [
   },
   {
     category: "Stickers",
-    img: ramadanstick,
+    img: cat2,
     title: "This is stickers for telegram",
     link: "https://t.me/obranostickers",
     tags: ["Canva", "Telegram", "Stickers"],
@@ -135,7 +143,7 @@ const works = [
   },
   {
     category: "Stickers",
-    img: nightstick,
+    img: shelby,
     title: "This is stickers for telegram",
     link: "https://t.me/obranostickers",
     tags: ["Canva", "Telegram", "Stickers"],
@@ -195,7 +203,7 @@ const works = [
   },
   {
     category: "Stickers",
-    img: marchstick,
+    img: starc,
     title: "This is stickers for telegram",
     link: "https://t.me/obranostickers",
     tags: ["Canva", "Telegram", "Stickers"],

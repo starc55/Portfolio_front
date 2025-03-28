@@ -290,6 +290,10 @@ body.dark-mode .typewriter-cursor {
 .quote {
   position: relative;
   top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 button {
@@ -490,6 +494,7 @@ button:hover .button-text {
     justify-content: center;
     margin: auto;
   }
+
   .tit_sub {
     font-size: 4vw;
   }
@@ -1073,7 +1078,6 @@ button:hover .button-text {
     justify-content: center;
   }
 }
-
 .click {
   font-size: 15px;
   font-weight: 500;
@@ -1795,11 +1799,14 @@ body.dark-mode .project_pagination .ant-pagination-item-active {
 
 .tags-container {
   margin-top: 2.5%;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .project_over {
   display: flex;
-  margin-right: 5%;
+  justify-content: space-between;
 }
 
 /* testimonials */

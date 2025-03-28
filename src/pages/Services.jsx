@@ -59,6 +59,8 @@ const Services = () => {
                         "I create UI element interactions.",
                         "I position your company brand.",
                         "Design and mockups of products for companies.",
+                        "Creating a responsive design.",
+                        "Creating telegram web applications.",
                       ],
                     })
                   }
