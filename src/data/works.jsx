@@ -1,6 +1,8 @@
 import naturesite from "../imgs/naturesite.png";
 import ppt1 from "../imgs/ppt1.png";
 import ppt2 from "../imgs/ppt2.png";
+import ppt3 from "../imgs/ppt3.png";
+import ppt4 from "../imgs/ppt4.png";
 import kunsite from "../imgs/kunsite.png";
 import homesite from "../imgs/homesite.png";
 import testsite from "../imgs/testsite.png";
@@ -27,10 +29,10 @@ import lolstick from "../imgs/lol.png";
 import balancestick from "../imgs/balance.png";
 import habystick from "../imgs/haby.png";
 import happydogstick from "../imgs/happydog.png";
-import tgweb1 from "../imgs/game.png"
-import cat2 from "../imgs/cat2.png"
-import shelby from "../imgs/shelby.png"
-import starc from "../imgs/starc.png"
+import tgweb1 from "../imgs/game.png";
+import cat2 from "../imgs/cat2.png";
+import shelby from "../imgs/shelby.png";
+import starc from "../imgs/starc.png";
 
 const works = [
   {
@@ -79,7 +81,16 @@ const works = [
     img: tgweb1,
     title: "This is telegram web site(Games(Only open in telegram))",
     link: "https://t.me/ad_linkbot",
-    tags: ["Telegram", "React", "CSS", "HTML5", "JavaScript", "Api", "Strapi","Telegram Api"],
+    tags: [
+      "Telegram",
+      "React",
+      "CSS",
+      "HTML5",
+      "JavaScript",
+      "Api",
+      "Strapi",
+      "Telegram Api",
+    ],
   },
   {
     category: "Video",
@@ -222,6 +233,14 @@ const works = [
     tags: ["Canva", "Telegram", "Stickers"],
   },
   {
+    category: "Other",
+    img: ppt4,
+    title: "Presentation for Islamic history",
+    link: "https://www.canva.com/design/DAGjwk6uFUs/WeRLHd69uK1u1dEyRE6enw/view?utm_content=DAGjwk6uFUs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9e1d254006",
+    isDownload: false,
+    tags: ["Canva", "Power Point"],
+  },
+  {
     category: "Web",
     img: naturesite,
     title: "About saving nature",
@@ -240,6 +259,14 @@ const works = [
     video: video6,
     title: "Video by me",
     tags: ["Video editing", "Cap Cut"],
+  },
+  {
+    category: "Other",
+    img: ppt3,
+    title: "Presentation for History",
+    link: "https://www.canva.com/design/DAGjwVMH5YY/XCu-t2AFkhhDNBut32OCkA/view?utm_content=DAGjwVMH5YY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hcf5d392ff5",
+    isDownload: false,
+    tags: ["Canva", "Power Point"],
   },
   {
     category: "Web",
