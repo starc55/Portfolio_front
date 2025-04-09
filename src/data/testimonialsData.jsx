@@ -157,7 +157,7 @@ export const Data = [
     title: "Bozorova Gulnora",
     description:
       "Jony did an exceptional job — professional, dedicated, and truly a pleasure to work with!",
-    rasting: 5,
+    rating: 5,
     position: "Marketing Manager",
   },
 ];
