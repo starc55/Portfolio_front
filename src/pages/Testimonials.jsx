@@ -6,7 +6,37 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const Testimonials = () => { 
+const Testimonials = () => {
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating); // To‘liq yulduzlar soni
+    const hasHalfStar = rating % 1 !== 0; // Yarim yulduz bormi?
+    const stars = [];
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= fullStars) {
+        stars.push(
+          <span key={i} style={{ color: "#ffc107", fontSize: "18px" }}>
+            ★
+          </span>
+        );
+      } else if (i === fullStars + 1 && hasHalfStar) {
+        stars.push(
+          <span key={i} style={{ color: "#ffc107", fontSize: "18px" }}>
+            ☆
+          </span> // yarimni bildiradigan belgi
+        );
+      } else {
+        stars.push(
+          <span key={i} style={{ color: "#e4e5e9", fontSize: "18px" }}>
+            ★
+          </span>
+        );
+      }
+    }
+
+    return stars;
+  };
+
   return (
     <div>
       <div>
@@ -38,15 +68,20 @@ const Testimonials = () => {
           }}
           modules={[Pagination, Autoplay]}
         >
-          {Data.map(({ id, image, title, description }) => {
+          {Data.map(({ id, image, title, description, rating, position }) => {
             return (
               <SwiperSlide className="testimonial__card" key={id}>
                 <div className="testi_title">
                   <img src={image} alt="" className="testimonial__img" />
-                  <h3 className="testimonial__name">{title}</h3>
+                  <div className="testimonial__info">
+                    <h3 className="testimonial__name">{title}</h3>
+                    <h6 className="testimonial__position">{position}</h6>
+                  </div>
                 </div>
 
                 <p className="testimonial__description">{description}</p>
+
+                <div className="ratingStar">{renderStars(rating)}</div>
               </SwiperSlide>
             );
           })}

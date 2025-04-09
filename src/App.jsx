@@ -41,18 +41,18 @@ function App() {
         <LoadingSpinner />
       ) : (
         <div>
-          <Navbar className="hovered-element" />
-          <Home className="hovered-element" />
-          <About className="hovered-element" />
-          <Skill className="hovered-element" />
-          <Services className="hovered-element" />
-          <Qualification className="hovered-element" />
-          <Portfolio className="hovered-element"/>
-          <Testimonials className="hovered-element" />
-          <Achievements className="hovered-element" />
-          <Contact className="hovered-element" />
-          <Footer className="hovered-element" />
-          <TidioChat /> 
+          <Navbar />
+          <Home />
+          <About />
+          <Skill />
+          <Services />
+          <Qualification />
+          <Portfolio />
+          <Testimonials />
+          <Achievements />
+          <Contact />
+          <Footer />
+          <TidioChat />
           <BrowserRouter>
             <Routes></Routes>
           </BrowserRouter>

@@ -1078,6 +1078,7 @@ button:hover .button-text {
     justify-content: center;
   }
 }
+
 .click {
   font-size: 15px;
   font-weight: 500;
@@ -1822,8 +1823,18 @@ body.dark-mode .project_pagination .ant-pagination-item-active {
   padding: 1.5rem 2rem;
   border-radius: 1.5rem;
   margin-bottom: 3rem;
-  height: 200px !important;
+  height: 220px !important;
   font-family: "Funnel Sans", serif;
+}
+
+.testimonial__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ratingStar {
+  position: absolute;
+  bottom: 5%;
 }
 
 .testimonial__img {
@@ -1836,7 +1847,6 @@ body.dark-mode .project_pagination .ant-pagination-item-active {
 .testimonial__name {
   font-size: 1rem;
   font-weight: 500;
-  margin-top: 0.5rem;
 }
 
 body.dark-mode .testimonial__name {
@@ -1854,7 +1864,7 @@ body.dark-mode .testimonial__description {
 }
 
 .swiper-pagination-bullet {
-  background-color: hsl(0, 0%, 46%);
+  background-color: hsl(0, 0%, 100%);
 }
 
 .swiper-pagination-bullet-active {

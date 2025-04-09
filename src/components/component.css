@@ -6,19 +6,24 @@
   z-index: 100;
   background-color: hsl(0, 0%, 98%);
 }
+
 body.dark-mode .header {
   background-color: #1f1f1f;
 }
+
 body.dark-mode .navbar-text {
   color: white;
 }
+
 .navbar-text {
   font-family: "Funnel Sans", serif;
 }
+
 .nav__logo img {
   width: 50px;
   border-radius: 50%;
 }
+
 /* Navbar */
 
 .dark-mode-toggle {
@@ -57,7 +62,7 @@ body.dark-mode .navbar-text {
   transform: scale(0);
 }
 
-.st-sunMoonThemeToggleBtn svg mask > circle {
+.st-sunMoonThemeToggleBtn svg mask>circle {
   transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
   transform: translate(0px, 0px);
 }
@@ -65,29 +70,36 @@ body.dark-mode .navbar-text {
 .st-sunMoonThemeToggleBtn svg .sunRay2 {
   animation-delay: 0.05s !important;
 }
+
 .st-sunMoonThemeToggleBtn svg .sunRay3 {
   animation-delay: 0.1s !important;
 }
+
 .st-sunMoonThemeToggleBtn svg .sunRay4 {
   animation-delay: 0.17s !important;
 }
+
 .st-sunMoonThemeToggleBtn svg .sunRay5 {
   animation-delay: 0.25s !important;
 }
+
 .st-sunMoonThemeToggleBtn svg .sunRay5 {
   animation-delay: 0.29s !important;
 }
 
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg {
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg {
   transform: rotate(90deg);
 }
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg mask > circle {
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg mask>circle {
   transform: translate(16px, -3px);
 }
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunMoon {
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg .sunMoon {
   transform: scale(0.55);
 }
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunRay {
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg .sunRay {
   animation: showRay1832 0.4s ease 0s 1 forwards;
 }
 
@@ -95,6 +107,7 @@ body.dark-mode .navbar-text {
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }
@@ -116,9 +129,11 @@ body.dark-mode .navbar-text {
 
 .logo-hat {
   position: absolute;
-  top: -15px; /* Adjust for proper positioning */
+  top: -15px;
+  /* Adjust for proper positioning */
   left: 5px;
-  width: 50px; /* Adjust size to match */
+  width: 50px;
+  /* Adjust size to match */
   transform: rotate(20deg);
   z-index: 10;
   scale: 0.8;
@@ -129,17 +144,21 @@ body.dark-mode .navbar-text {
   color: hsl(0, 0%, 20%);
   font-weight: 500;
 }
+
 .nav__list a {
   color: hsl(0, 0%, 20%);
   transition: all 0.2s ease-in-out;
 }
+
 .nav__list a:hover {
   font-weight: 700;
 }
+
 .nav__list {
   display: flex;
   column-gap: 2rem;
 }
+
 .nav__link {
   display: flex;
   flex-direction: column;
@@ -155,6 +174,7 @@ body.dark-mode .navbar-text {
 .nav__toggle {
   display: none;
 }
+
 /* show menu */
 
 /* active link */
@@ -163,25 +183,32 @@ body.dark-mode .navbar-text {
 .nav__link:hover {
   color: hsl(0, 0%, 0%);
 }
+
 .mobile-navbar {
   display: none;
 }
+
 @media screen and (max-width: 768px) {
   .nav {
     height: 3rem;
   }
+
   .mobile-navbar {
     display: block;
   }
+
   .nav__menu {
     display: none;
   }
+
   .ser {
     margin-left: 2rem;
   }
+
   .nav__icon {
     font-size: 1.2rem;
   }
+
   .nav__icon,
   .nav__close,
   .nav__toggle {
@@ -221,13 +248,17 @@ body.dark-mode .navbar-text {
   .mobile_nav-icon {
     font-size: 5vw;
   }
+
   .button2::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 120%; /* Position above the icon */
+    bottom: 120%;
+    /* Position above the icon */
     left: 50%;
-    transform: translateX(-50%) translateY(10px); /* Start slightly below */
-    background-color: rgba(245, 243, 243, 0.9); /* Darker background */
+    transform: translateX(-50%) translateY(10px);
+    /* Start slightly below */
+    background-color: rgba(245, 243, 243, 0.9);
+    /* Darker background */
     color: black;
     padding: 6px 10px;
     border-radius: 8px;
@@ -243,13 +274,15 @@ body.dark-mode .navbar-text {
   .button2:hover::after {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0); /* Slide into position */
+    transform: translateX(-50%) translateY(0);
+    /* Slide into position */
   }
 
   .button2::before {
     content: "";
     position: absolute;
-    bottom: 115%; /* Position for the triangle */
+    bottom: 115%;
+    /* Position for the triangle */
     left: 50%;
     transform: translateX(-50%);
     border-width: 6px;
@@ -266,6 +299,7 @@ body.dark-mode .navbar-text {
     visibility: visible;
     transform: translateX(-50%) translateY(0);
   }
+
   .mobile-navbar.show {
     transform: translateY(0);
     opacity: 1;
