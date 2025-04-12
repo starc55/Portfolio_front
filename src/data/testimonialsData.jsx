@@ -14,6 +14,7 @@ import t13 from "../imgs/t13.jpg";
 import t14 from "../imgs/t14.jpg";
 import t15 from "../imgs/t15.jpg";
 import t16 from "../imgs/t16.jpg";
+import t17 from "../imgs/t17.jpg";
 
 export const Data = [
   {
@@ -32,7 +33,7 @@ export const Data = [
     description:
       "Innovative, creative, and excellent service in web development. Thank you!",
     rating: 4,
-    position: "Customer"
+    position: "Customer",
   },
   {
     id: 3,
@@ -159,5 +160,14 @@ export const Data = [
       "Jony did an exceptional job — professional, dedicated, and truly a pleasure to work with!",
     rating: 5,
     position: "Marketing Manager",
+  },
+  {
+    id: 17,
+    image: t17,
+    title: "Дмитрий Сергеевич",
+    description:
+      "Ogabek — отличный фронтенд-разработчик. Работа выполнена быстро и качественно. Рекомендую!",
+    rating: 4.5,
+    position: "Фулстек-разработчик",
   },
 ];
