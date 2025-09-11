@@ -69,7 +69,7 @@ function Coding() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 85%", // viewportga kirganda
+            start: window.innerWidth < 768 ? "top 95%" : "top 85%",
             toggleActions: "play none none reverse",
           },
         }
