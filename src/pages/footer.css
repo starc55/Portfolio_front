@@ -1,0 +1,194 @@
+.footer {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(to bottom, #1f1f1f, #171717);
+}
+
+.footer_title {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Red Hat Display", sans-serif;
+  color: rgb(236, 236, 236);
+}
+
+.footer_links {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.footer_links a {
+  text-decoration: none;
+  font-size: 17px;
+  color: rgb(231, 231, 231);
+}
+
+.copy {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .footer_links a {
+    font-size: 12px;
+  }
+}
+
+.wrapper {
+  display: inline-flex;
+  list-style: none;
+  height: 120px;
+  width: 100%;
+  padding-top: 40px;
+  font-family: "Funnel Sans", serif;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.Btn_footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: #0a66c2;
+}
+
+.Btn_footer2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: #171717;
+}
+
+.Btn_footer3 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: #f25d00;
+}
+
+.sign {
+  width: 100%;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 25px;
+}
+
+.sign svg path {
+  fill: white;
+}
+
+.social_tit {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+}
+
+.Btn_footer:hover {
+  width: 135px;
+  border-radius: 40px;
+  transition-duration: 0.3s;
+}
+
+.Btn_footer2:hover {
+  width: 135px;
+  border-radius: 40px;
+  transition-duration: 0.3s;
+}
+
+.Btn_footer3:hover {
+  width: 135px;
+  border-radius: 40px;
+  transition-duration: 0.3s;
+}
+
+.Btn_footer:hover .sign {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 10px;
+}
+
+.Btn_footer2:hover .sign {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 10px;
+}
+
+.Btn_footer3:hover .sign {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 10px;
+}
+
+.Btn_footer:hover .social_tit {
+  opacity: 1;
+  width: 70%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+
+.Btn_footer:active {
+  transform: translate(2px, 2px);
+}
+
+.Btn_footer2:hover .social_tit {
+  opacity: 1;
+  width: 70%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+
+.Btn_footer2:active {
+  transform: translate(2px, 2px);
+}
+
+.Btn_footer3:hover .social_tit {
+  opacity: 1;
+  width: 70%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+
+.Btn_footer3:active {
+  transform: translate(2px, 2px);
+}

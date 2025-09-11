@@ -1,0 +1,6 @@
+.favicon_label {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* Aylana shakl uchun */
+  overflow: hidden;
+}
