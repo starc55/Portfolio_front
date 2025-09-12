@@ -3,8 +3,7 @@ import { FaInstagram, FaTelegram, FaGithub, FaStore } from "react-icons/fa";
 import "./Page.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import logo_white from "../imgs/logo_white.svg";
 import DarkVeil from "../components/DarkVeil";
 import me from "../imgs/me.webp";
@@ -12,82 +11,89 @@ import TextType from "../components/TextType";
 import ShinyText from "../components/ShinyText";
 
 gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
   const wordsRef = useRef(null);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const navigate = useNavigate();
 
+  // Track scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setLastScrollY(currentScrollY);
+      setLastScrollY(window.scrollY);
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  useEffect(() => {
-    import("https://cdn.lordicon.com/lordicon.js");
-
-    // Animatsiyani boshlash
-    gsap.fromTo(
-      wordsRef.current.children,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        stagger: 0.3,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: wordsRef.current,
-          start: "top 80%", // Sahifada 80% joyga kelganda boshlanadi
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navigate = useNavigate();
+  // Animate words on scroll
+  useEffect(() => {
+    // Add lordicon script dynamically (better: move to public/index.html)
+    const script = document.createElement("script");
+    script.src = "https://cdn.lordicon.com/lordicon.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    if (wordsRef.current) {
+      gsap.fromTo(
+        wordsRef.current.children,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          stagger: 0.3,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: wordsRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div id="home">
       <div style={{ width: "100%", height: "670px", position: "absolute" }}>
         <DarkVeil />
       </div>
+
       <Link to="/" className="nav__logo">
         <div className="logo-container">
           <img src={logo_white} alt="logo" />
         </div>
       </Link>
+
       <div className="home_f">
+        {/* Social links */}
         <div className="home_social">
-          <a href="https://github.com/starc55">
+          <a href="https://github.com/starc55" aria-label="GitHub">
             <button className="btn">
               <FaGithub className="icon_git" />
             </button>
           </a>
-          <a href="https://www.instagram.com/oga_vine25?igsh=b2V1ZWE2NWVzMjNn">
+          <a
+            href="https://www.instagram.com/oga_vine25?igsh=b2V1ZWE2NWVzMjNn"
+            aria-label="Instagram"
+          >
             <button className="btn">
               <FaInstagram className="icon_ins" />
             </button>
           </a>
-          <a href="https://t.me/myblogprogramm">
+          <a href="https://t.me/myblogprogramm" aria-label="Telegram">
             <button className="btn">
               <FaTelegram className="icon_teg" />
             </button>
           </a>
         </div>
 
+        {/* Hero text */}
         <div className="home_title">
           <TextType
             className="tit_sub"
@@ -97,6 +103,7 @@ const Home = () => {
             showCursor={true}
             cursorCharacter="|"
           />
+
           <div className="content">
             <br />
             <div className="quote_text">
@@ -104,14 +111,14 @@ const Home = () => {
                 className="lordicon"
                 dangerouslySetInnerHTML={{
                   __html: `
-                <lord-icon
-                  src="https://cdn.lordicon.com/bsdkzyjd.json"
-                  trigger="loop"
-                  delay="2000"
-                  colors="primary:#fff,secondary:#08a88a"
-                  style="width: 40px; height: 40px;">
-                </lord-icon>
-              `,
+                  <lord-icon
+                    src="https://cdn.lordicon.com/bsdkzyjd.json"
+                    trigger="loop"
+                    delay="2000"
+                    colors="primary:#fff,secondary:#08a88a"
+                    style="width: 40px; height: 40px;">
+                  </lord-icon>
+                `,
                 }}
               />
               <div ref={wordsRef} className="animated_words">
@@ -120,12 +127,14 @@ const Home = () => {
                 <span className="wave-text">Impactful</span>
               </div>
             </div>
+
             <ShinyText
               text="Let’s build something remarkable together!"
               disabled={false}
               speed={2}
               className="custom-class quote"
             />
+
             <button className="available-for-btn">
               <div className="circle_ava">
                 <div className="dot_ava"></div>
@@ -134,6 +143,8 @@ const Home = () => {
               Available for new project
             </button>
           </div>
+
+          {/* Buttons */}
           <div className="home_btn">
             <a href="#contact">
               <button className="contact_btn">
@@ -158,10 +169,11 @@ const Home = () => {
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                     strokeLinejoin="round"
                     strokeLinecap="round"
-                  ></path>
+                  />
                 </svg>
               </button>
             </a>
+
             <button
               className="contact_btn contact_btn_1"
               onClick={() => navigate("/coding")}
@@ -175,7 +187,7 @@ const Home = () => {
                 <span className="text_2">CODES</span>
               </div>
               <svg
-                stroke-width="2"
+                strokeWidth="2"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -185,16 +197,18 @@ const Home = () => {
               >
                 <path
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                ></path>
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
           </div>
         </div>
-        <img src={me} alt="" className="home_img" />
+
+        <img src={me} alt="Profile" className="home_img" />
       </div>
 
+      {/* Scroll indicator */}
       <div className="container_mouse">
         <a href="#about">
           <span className="mouse-btn">
@@ -204,6 +218,7 @@ const Home = () => {
         <p className="scroll_text">Scroll Down</p>
       </div>
 
+      {/* Sticky shop button */}
       <a
         href="https://obrano.store/"
         target="_blank"

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { Pagination } from "antd";
 import "./Page.css";
@@ -46,30 +46,34 @@ const items = [
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/CFLEGBH9?sharingId=F3BA35B3751C3983",
   },
 ];
+
 const pageSize = 4;
 
 export default function HoverImageEffect() {
   const imageRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
-
   const itemsRef = useRef([]);
 
+  // Initial image state
   useEffect(() => {
     gsap.set(imageRef.current, { autoAlpha: 0, scale: 0.8 });
   }, []);
 
+  // Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const line = entry.target.querySelector(".line");
-            gsap.to(line, {
-              scaleX: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: 0.2,
-            });
+            if (line) {
+              gsap.to(line, {
+                scaleX: 1,
+                duration: 1,
+                ease: "power3.out",
+                delay: 0.2,
+              });
+            }
             observer.unobserve(entry.target);
           }
         });
@@ -82,9 +86,10 @@ export default function HoverImageEffect() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [currentPage]); // Page o‘zgarganda qayta kuzatadi
 
-  const handleMouseEnter = (image) => {
+  // Event Handlers optimized with useCallback
+  const handleMouseEnter = useCallback((image) => {
     gsap.to(imageRef.current, {
       autoAlpha: 1,
       scale: 1,
@@ -92,33 +97,32 @@ export default function HoverImageEffect() {
       ease: "power2.out",
     });
     imageRef.current.src = image;
-  };
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     gsap.to(imageRef.current, {
       autoAlpha: 0,
       scale: 0.8,
       duration: 0.3,
       ease: "power2.out",
     });
-  };
+  }, []);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
+    const { offsetWidth, offsetHeight } = imageRef.current;
     gsap.to(imageRef.current, {
-      x: e.clientX - 100,
-      y: e.clientY - 600,
+      x: e.clientX - offsetWidth / 2,
+      y: e.clientY - offsetHeight / 2 - 200,
       duration: 0.2,
       ease: "power2.out",
     });
-  };
+  }, []);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  const handlePageChange = (page) => setCurrentPage(page);
 
   const handleClick = (link) => {
     if (link) {
-      window.location.href = link;
+      window.open(link, "_blank", "noopener,noreferrer");
     }
   };
 
@@ -129,14 +133,14 @@ export default function HoverImageEffect() {
 
   return (
     <div className="achievement-container" id="achievements">
-      
       <div className="achievements_header">
         <p>Achievements</p>
         <span className="achievements_sub">My achievements</span>
       </div>
+
       {paginatedItems.map((item, index) => (
         <div
-          key={index}
+          key={`${currentPage}-${index}`} // unique key
           className="hover-item"
           ref={(el) => (itemsRef.current[index] = el)}
           onMouseEnter={() => handleMouseEnter(item.image)}
@@ -148,6 +152,7 @@ export default function HoverImageEffect() {
           <span className="line"></span>
         </div>
       ))}
+
       <Pagination
         current={currentPage}
         pageSize={pageSize}
@@ -155,6 +160,7 @@ export default function HoverImageEffect() {
         onChange={handlePageChange}
         className="project_pagination achievements_pagination"
       />
+
       <img ref={imageRef} className="hover-image" alt="hover preview" />
     </div>
   );

@@ -11,43 +11,35 @@ import logoWhite from "../imgs/logo_white.svg";
 import MagicBento from "../components/MagicBento";
 
 const techLogos = [
-  { node: <FaReact />, title: "React" },
-  { node: <PiFigmaLogoFill />, title: "Figma" },
+  { node: <FaReact aria-label="React" />, title: "React" },
+  { node: <PiFigmaLogoFill aria-label="Figma" />, title: "Figma" },
+  { node: <BiLogoTypescript aria-label="TypeScript" />, title: "TypeScript" },
+  { node: <MdCss aria-label="CSS3" />, title: "CSS3" },
+  { node: <FaJsSquare aria-label="JavaScript" />, title: "JS" },
+  { node: <SiCanva aria-label="Canva" />, title: "Canva" },
   {
-    node: <BiLogoTypescript />,
-    title: "TypeScript",
-  },
-  {
-    node: <MdCss />,
-    title: "CSS3",
-  },
-  {
-    node: <FaJsSquare />,
-    title: "JS",
-  },
-  {
-    node: <SiCanva />,
-    title: "Canva",
-  },
-  {
-    node: (
-      <img
-        src={logoWhite}
-        alt="Logo"
-        style={{ width: "48px", height: "48px" }}
-      />
-    ),
+    node: <img src={logoWhite} alt="OBRANO Coding Logo" className="logo-img" />,
     title: "OBRANO Coding",
   },
 ];
+const magicBentoProps = {
+  textAutoHide: true,
+  enableStars: true,
+  enableSpotlight: true,
+  enableBorderGlow: true,
+  enableTilt: true,
+  enableMagnetism: true,
+  clickEffect: true,
+  spotlightRadius: 300,
+  particleCount: 12,
+  glowColor: "132, 0, 255",
+};
 
 const About = () => {
   return (
     <div id="about" className="about">
       <div>
-        <div
-          style={{ height: "300px", position: "relative", overflow: "hidden" }}
-        >
+        <div className="logo-loop-container">
           <LogoLoop
             logos={techLogos}
             speed={120}
@@ -61,22 +53,13 @@ const About = () => {
             ariaLabel="Technology partners"
           />
         </div>
+
         <div className="header_about">
           <p className="head_icon_">About</p>
-          <span className="sub_head">My introduction </span>
+          <span className="sub_head">My introduction</span>
         </div>
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={300}
-          particleCount={12}
-          glowColor="132, 0, 255"
-        />
+
+        <MagicBento {...magicBentoProps} />
       </div>
     </div>
   );

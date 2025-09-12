@@ -61,11 +61,10 @@ const Services = () => {
                         "I position your company brand.",
                         "Design and mockups of products for companies.",
                         "Creating a responsive design.",
-                        "Creating telegram web applications.",
-                        "Creating web applications.",
-                        "Creating mobile applications.",
-                        "Creating desktop applications.",
+                        "Creating telegram web applications & Bots",
+                        "Creating web & mobile & desktop applications.",
                         "Creating web tools.",
+                        "Creating & manage google extensions."
                       ],
                     })
                   }

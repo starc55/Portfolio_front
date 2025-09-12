@@ -14,6 +14,8 @@ import figma2 from "../imgs/figma2.webp";
 import food from "../imgs/food.webp";
 import port from "../imgs/port.webp";
 import obrano from "../imgs/obrano.webp";
+import water from "../imgs/water.webp";
+import blog from "../imgs/blog.webp";
 
 const works = [
   {
@@ -29,7 +31,13 @@ const works = [
     title: "3D site example",
     tags: ["Three.js", "JavaScript", "CSS", "HTML5"],
   },
-
+  {
+    category: "Web",
+    img: water,
+    title: "Water order app",
+    tags: ["React", "JavaScript", "CSS", "HTML5", "Api", "Strapi"],
+    link: "https://suvchi-water-delivery.lovable.app",
+  },
   {
     category: "Figma",
     img: figma1,
@@ -65,6 +73,13 @@ const works = [
     img: food,
     title: "Food delivery example",
     tags: ["React", "JavaScript", "CSS", "HTML5", "Api", "Strapi"],
+  },
+  {
+    category: "Web",
+    img: blog,
+    title: "Random blog news web Site",
+    tags: ["React", "JavaScript", "CSS", "HTML5", "Api", "Strapi"],
+    link: "https://mini-blog-app-nine.vercel.app/"
   },
   {
     category: "Web",

@@ -1,12 +1,13 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css"; // dark theme for modal; o'zgartirsa bo'ladi
+import "prismjs/themes/prism-tomorrow.css";
 import "../pages/codingPage.css";
 
 export default function CodeModal({ isOpen, onClose, code, language, title }) {
   const codeRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -17,11 +18,17 @@ export default function CodeModal({ isOpen, onClose, code, language, title }) {
         }
       }, 50);
     } else {
-      // modal yopilganda faqat animatsiya tugagach yo‘q qilamiz
       const timer = setTimeout(() => setVisible(false), 300);
       return () => clearTimeout(timer);
     }
   }, [isOpen, code, language]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code || "").then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  };
 
   if (!visible) return null;
 
@@ -56,13 +63,8 @@ export default function CodeModal({ isOpen, onClose, code, language, title }) {
         </div>
 
         <div className="cg-modal-footer">
-          <button
-            className="cg-btn cg-btn-blue"
-            onClick={() => {
-              navigator.clipboard.writeText(code || "");
-            }}
-          >
-            Copy
+          <button className="cg-btn cg-btn-blue" onClick={handleCopy}>
+            {copied ? "Copied!" : "Copy"}
           </button>
           <a
             className="cg-btn cg-btn-green"

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CodeModal from "../components/CodeModal";
@@ -24,36 +24,40 @@ function Coding() {
 
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewHtml, setPreviewHtml] = useState("");
-
   const [previewTheme, setPreviewTheme] = useState({});
+
   const gridRef = useRef(null);
 
-  const scrollTop = () => {
+  // 🌀 Scroll to top
+  const scrollTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
+  // 🌀 Fetch templates
   useEffect(() => {
-    setLoading(true);
-    fetch("https://portfolio-strapi-backend-kjih.onrender.com/api/templates")
-      .then((res) => res.json())
-      .then((data) => {
+    const loadTemplates = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(
+          "https://portfolio-strapi-backend-kjih.onrender.com/api/templates"
+        );
+        const data = await res.json();
         setTemplates(data.data || []);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Failed to load templates:", err);
         setTemplates([]);
         setServerSleep(true);
-      })
-      .finally(() => {
+      } finally {
         setTimeout(() => setLoading(false), 350);
-      });
+      }
+    };
+    loadTemplates();
   }, []);
 
-  // GSAP animation on scroll
+  // 🌀 GSAP animation
   useEffect(() => {
     if (!gridRef.current) return;
 
-    // Har safar templates o‘zgarsa, eski triggerlarni tozalaymiz
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
     const cards = gridRef.current.querySelectorAll(".cg-card");
@@ -75,42 +79,97 @@ function Coding() {
         }
       );
     });
-  }, [templates, loading]);
+  }, [templates]);
 
-  const openPreviewModal = (iframeHtml) => {
-    setPreviewHtml(iframeHtml);
-    setPreviewOpen(true);
-  };
-
-  const categories = Array.from(
-    new Set(
-      templates.map((t) => t.category).filter((c) => c && c.trim() !== "")
-    )
+  // 🌀 Categories optimized
+  const categories = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          templates.map((t) => t.category).filter((c) => c && c.trim() !== "")
+        )
+      ),
+    [templates]
   );
 
-  const filtered = templates.filter((tpl) => {
-    const titleMatch = tpl.title?.toLowerCase().includes(search.toLowerCase());
-    const catMatch = category ? tpl.category === category : true;
-    return titleMatch && catMatch;
-  });
+  // 🌀 Filtered templates optimized
+  const filtered = useMemo(() => {
+    return templates.filter((tpl) => {
+      const titleMatch = tpl.title
+        ?.toLowerCase()
+        .includes(search.toLowerCase());
+      const catMatch = category ? tpl.category === category : true;
+      return titleMatch && catMatch;
+    });
+  }, [templates, search, category]);
 
-  const openCodeModal = (code, lang, title) => {
+  // 🌀 Modal openers
+  const openCodeModal = useCallback((code, lang, title) => {
     setModalCode(code || "");
     setModalLang(lang || "markup");
     setModalTitle(title || "Code");
     setModalOpen(true);
-  };
+  }, []);
 
-  const togglePreviewTheme = (id) => {
+  const openPreviewModal = useCallback((iframeHtml) => {
+    setPreviewHtml(iframeHtml);
+    setPreviewOpen(true);
+  }, []);
+
+  const togglePreviewTheme = useCallback((id) => {
     setPreviewTheme((p) => ({
       ...p,
       [id]: p[id] === "dark" ? "light" : "dark",
     }));
-  };
+  }, []);
+
+  // 🌀 Iframe HTML'larni oldindan hisoblab olish
+  const iframeHtmls = useMemo(() => {
+    return templates.map((tpl) => {
+      const theme = previewTheme[tpl.id] || "light";
+      const html = `
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <style>
+            :root { --bg: ${theme === "dark" ? "#0b1220" : "#ffffff"};
+                    --fg: ${theme === "dark" ? "#e6eef8" : "#0b1220"}; }
+            html, body {
+              width : 100%;
+              height: 100%;
+              margin: 0;
+              background: var(--bg);
+              color: var(--fg);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              overflow: hidden;
+              transition: background 0.4s ease, color 0.4s ease;
+            }
+            * { box-sizing: border-box; }
+            ${tpl.code_css || ""}
+          </style>
+          ${(tpl.libs || [])
+            .map((lib) => `<script src="${lib}"></script>`)
+            .join("\n")}
+        </head>
+        <body>
+          <div class="preview-wrapper">
+            ${tpl.code_html || ""}
+          </div>
+          <script>${tpl.code_js || ""}</script>
+        </body>
+      </html>`;
+      return { id: tpl.id, html };
+    });
+  }, [templates, previewTheme]);
 
   return (
     <div className="tg-container">
       <ServerNotice show={serverSleep} />
+
+      {/* 🔍 Search + Categories */}
       <div className="cg-topbar">
         <div className="cg-search-wrap">
           <FiSearch className="cg-search-icon" />
@@ -124,7 +183,7 @@ function Coding() {
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-btn" onClick={() => setOpen(!open)}>
+          <button className="dropdown-btn" onClick={() => setOpen((o) => !o)}>
             {selected}
           </button>
           {open && (
@@ -147,7 +206,7 @@ function Coding() {
         </div>
       </div>
 
-      {/* 🌀 Loading state */}
+      {/* 🌀 Loading / Empty / Grid */}
       {loading ? (
         <div className="cg-loading">
           <div className="cg-spinner" />
@@ -159,14 +218,17 @@ function Coding() {
         <div className="tg-grid" ref={gridRef}>
           {filtered.map((tpl) => {
             const theme = previewTheme[tpl.id] || "light";
-            const iframeHtml = `
+
+            const iframeHtml = iframeHtmls.find((i) => i.id === tpl.id)?.html || ""(
+              () => `
               <html>
                 <head>
                   <meta charset="utf-8">
                   <meta name="viewport" content="width=device-width, initial-scale=1">
                   <style>
-                    :root { --bg: ${theme === "dark" ? "#0b1220" : "#ffffff"};
-                            --fg: ${theme === "dark" ? "#e6eef8" : "#0b1220"}; }
+                    :root { --bg: ${
+                      theme === "dark" ? "#0b1220" : "#ffffff"
+                    }; --fg: ${theme === "dark" ? "#e6eef8" : "#0b1220"}; }
                     html, body {
                       width : 100%;
                       height: 100%;
@@ -190,10 +252,12 @@ function Coding() {
                   <div class="preview-wrapper">
                     ${tpl.code_html || ""}
                   </div>
-                  <script>${tpl.code_js || ""}<\/script>
+                  <script>${tpl.code_js || ""}</script>
                 </body>
-              </html>
-              `;
+              </html>`,
+              [tpl, theme]
+            );
+
             return (
               <div className="cg-card" key={tpl.id}>
                 <div className="cg-card-head">
@@ -202,6 +266,7 @@ function Coding() {
                     <button
                       className="cg-small"
                       onClick={() => togglePreviewTheme(tpl.id)}
+                      aria-label="Toggle preview theme"
                     >
                       {theme === "dark" ? <FiSun /> : <FiMoon />}
                     </button>
@@ -264,8 +329,8 @@ function Coding() {
                     Full Preview
                   </button>
 
-                  <div className="cg-right-actions">
-                    {tpl.download_link && (
+                  {tpl.download_link && (
+                    <div className="cg-right-actions">
                       <a
                         className="cg-download"
                         href={tpl.download_link}
@@ -274,8 +339,8 @@ function Coding() {
                       >
                         Download ZIP
                       </a>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -283,7 +348,7 @@ function Coding() {
         </div>
       )}
 
-      {/* Modal */}
+      {/* 🌀 Code Modal */}
       <CodeModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
@@ -292,6 +357,7 @@ function Coding() {
         title={modalTitle}
       />
 
+      {/* 🌀 Preview Modal */}
       {previewOpen && (
         <div
           className={`preview-modal ${previewOpen ? "show" : "hide"}`}
@@ -306,6 +372,7 @@ function Coding() {
               <button
                 className="close-btn"
                 onClick={() => setPreviewOpen(false)}
+                aria-label="Close preview"
               >
                 ✕
               </button>
@@ -319,7 +386,11 @@ function Coding() {
         </div>
       )}
 
-      <button className="scroll-top-btn" onClick={scrollTop}>
+      <button
+        className="scroll-top-btn"
+        onClick={scrollTop}
+        aria-label="Scroll to top"
+      >
         <FiArrowUp size={22} />
       </button>
     </div>

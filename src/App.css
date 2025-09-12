@@ -239,7 +239,7 @@ Loading style
 =============== */
 
 @media only screen and (max-width: 768px) {
-  .loading-text{
+  .loading-text {
     font-size: 1rem;
     margin-top: 15px;
   }

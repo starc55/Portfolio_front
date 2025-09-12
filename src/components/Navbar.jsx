@@ -1,43 +1,44 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./component.css";
 import Dock from "./Dock";
 import { FiHome } from "react-icons/fi";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
 import { GrProjects } from "react-icons/gr";
 import { IoIosContact } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
 import { RiCodeSSlashFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+  // scroll logikasi
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY.current) {
-        // pastga scroll qilyapti → yashir
-        setVisible(false);
-      } else {
-        // tepaga scroll qilyapti → ko‘rsat
-        setVisible(true);
-      }
+    if (currentScrollY > lastScrollY.current) {
+      // pastga → yashir
+      setVisible(false);
+    } else {
+      // tepaga → ko‘rsat
+      setVisible(true);
+    }
 
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    lastScrollY.current = currentScrollY;
   }, []);
 
-  const scrollToSection = (id) => {
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  const scrollToSection = useCallback((id) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  };
+  }, []);
 
   const items = [
     { icon: <FiHome size={18} />, label: "Home", onClick: () => navigate("/") },

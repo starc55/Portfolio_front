@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import "../pages/Page.css";
 import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 
@@ -7,21 +7,25 @@ const VideoCard = ({ src, poster }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
+  // video bilan state sync
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+      if (isPlaying) {
+        videoRef.current.play().catch(() => {}); // autoplay error fix
+      } else {
+        videoRef.current.pause();
+      }
     }
-    setIsPlaying(!isPlaying);
-  };
+  }, [isPlaying, isMuted]);
 
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
+  const togglePlay = useCallback(() => {
+    setIsPlaying((prev) => !prev);
+  }, []);
+
+  const toggleMute = useCallback(() => {
+    setIsMuted((prev) => !prev);
+  }, []);
 
   return (
     <div className="video-wrapper">
@@ -34,7 +38,7 @@ const VideoCard = ({ src, poster }) => {
         loop
         muted
         playsInline
-        preload="none"
+        preload="metadata"
       />
 
       <div className="video-controls">

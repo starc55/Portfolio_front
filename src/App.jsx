@@ -1,21 +1,22 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import "./App.css";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 import Navbar from "./components/Navbar";
+import LoadingOverlay from "./components/LoadingOverlay";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import Testimonials from "./pages/Testimonials";
-import Contact from "./pages/Contact";
-import { Footer } from "./pages/Footer";
 import Achievements from "./pages/Achievements";
+import Contact from "./pages/Contact";
 import Coding from "./pages/Coding";
-import { ToastContainer } from "react-toastify";
+import { Footer } from "./pages/Footer";
+
 import "react-toastify/dist/ReactToastify.css";
-import LoadingOverlay from "./components/LoadingOverlay";
+import "./App.css";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -25,9 +26,8 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <LoadingOverlay />;
-  }
+  if (loading) return <LoadingOverlay />;
+
   return (
     <BrowserRouter>
       <Navbar />

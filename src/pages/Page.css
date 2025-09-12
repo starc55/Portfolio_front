@@ -775,6 +775,18 @@ Resume button style
   }
 }
 
+.logo-loop-container {
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-img {
+  width: 48px;
+  height: 48px;
+}
+
+
 .resume-button-wrapper {
   display: flex;
   justify-content: center;
@@ -811,6 +823,8 @@ Resume button style
   animation: borderFlow 6s linear infinite;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
