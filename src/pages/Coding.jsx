@@ -71,7 +71,7 @@ function Coding() {
       try {
         setLoading(true);
         const res = await fetch(
-          "https://portfolio-strapi-backend-kjih.onrender.com/api/templates"
+          "https://portfolio-strapi-backend-kjih.onrender.com/api/templates?pagination[pageSize]=1000"
         );
         const data = await res.json();
         setTemplates(data.data || []);
@@ -203,33 +203,31 @@ function Coding() {
           />
         </div>
 
-        <div className="flex-in__mobile">
-          <div className="dropdown">
-            <button className="dropdown-btn" onClick={() => setOpen((o) => !o)}>
-              {selected}
-            </button>
-            {open && (
-              <ul className="dropdown-list">
-                {["All Categories", ...categories].map((c, i) => (
-                  <li
-                    key={i}
-                    className="dropdown-item"
-                    onClick={() => {
-                      setSelected(c);
-                      setCategory(c === "All Categories" ? "" : c);
-                      setOpen(false);
-                    }}
-                  >
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <div className="cg-count">
-            Showing <span>{count}</span> of <span>{templates.length}</span>{" "}
-            templates
-          </div>
+        <div className="dropdown">
+          <button className="dropdown-btn" onClick={() => setOpen((o) => !o)}>
+            {selected}
+          </button>
+          {open && (
+            <ul className="dropdown-list">
+              {["All Categories", ...categories].map((c, i) => (
+                <li
+                  key={i}
+                  className="dropdown-item"
+                  onClick={() => {
+                    setSelected(c);
+                    setCategory(c === "All Categories" ? "" : c);
+                    setOpen(false);
+                  }}
+                >
+                  {c}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="cg-count">
+          Showing <span>{count}</span> of <span>{templates.length}</span>{" "}
+          templates
         </div>
       </div>
 
