@@ -16,6 +16,7 @@ function Coding() {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("All Categories");
+  const [count, setCount] = useState(0);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalCode, setModalCode] = useState("");
@@ -28,10 +29,41 @@ function Coding() {
 
   const gridRef = useRef(null);
 
+  // 🌀 Filtered templates optimized
+  const filtered = useMemo(() => {
+    return templates.filter((tpl) => {
+      const titleMatch = tpl.title
+        ?.toLowerCase()
+        .includes(search.toLowerCase());
+      const catMatch = category ? tpl.category === category : true;
+      return titleMatch && catMatch;
+    });
+  }, [templates, search, category]);
+
   // 🌀 Scroll to top
   const scrollTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  useEffect(() => {
+    let start = 0;
+    const end = filtered.length;
+    const duration = 800; // ms
+    const stepTime = 1000 / 60;
+    const increment = end / (duration / stepTime);
+
+    let current = start;
+    function animate() {
+      current += increment;
+      if (current < end) {
+        setCount(Math.floor(current));
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    }
+    animate();
+  }, [filtered.length]);
 
   // 🌀 Fetch templates
   useEffect(() => {
@@ -91,17 +123,6 @@ function Coding() {
       ),
     [templates]
   );
-
-  // 🌀 Filtered templates optimized
-  const filtered = useMemo(() => {
-    return templates.filter((tpl) => {
-      const titleMatch = tpl.title
-        ?.toLowerCase()
-        .includes(search.toLowerCase());
-      const catMatch = category ? tpl.category === category : true;
-      return titleMatch && catMatch;
-    });
-  }, [templates, search, category]);
 
   // 🌀 Modal openers
   const openCodeModal = useCallback((code, lang, title) => {
@@ -182,27 +203,33 @@ function Coding() {
           />
         </div>
 
-        <div className="dropdown">
-          <button className="dropdown-btn" onClick={() => setOpen((o) => !o)}>
-            {selected}
-          </button>
-          {open && (
-            <ul className="dropdown-list">
-              {["All Categories", ...categories].map((c, i) => (
-                <li
-                  key={i}
-                  className="dropdown-item"
-                  onClick={() => {
-                    setSelected(c);
-                    setCategory(c === "All Categories" ? "" : c);
-                    setOpen(false);
-                  }}
-                >
-                  {c}
-                </li>
-              ))}
-            </ul>
-          )}
+        <div className="flex-in__mobile">
+          <div className="dropdown">
+            <button className="dropdown-btn" onClick={() => setOpen((o) => !o)}>
+              {selected}
+            </button>
+            {open && (
+              <ul className="dropdown-list">
+                {["All Categories", ...categories].map((c, i) => (
+                  <li
+                    key={i}
+                    className="dropdown-item"
+                    onClick={() => {
+                      setSelected(c);
+                      setCategory(c === "All Categories" ? "" : c);
+                      setOpen(false);
+                    }}
+                  >
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="cg-count">
+            Showing <span>{count}</span> of <span>{templates.length}</span>{" "}
+            templates
+          </div>
         </div>
       </div>
 
@@ -219,8 +246,10 @@ function Coding() {
           {filtered.map((tpl) => {
             const theme = previewTheme[tpl.id] || "light";
 
-            const iframeHtml = iframeHtmls.find((i) => i.id === tpl.id)?.html || ""(
-              () => `
+            const iframeHtml =
+              iframeHtmls.find((i) => i.id === tpl.id)?.html ||
+              ""(
+                () => `
               <html>
                 <head>
                   <meta charset="utf-8">
@@ -255,8 +284,8 @@ function Coding() {
                   <script>${tpl.code_js || ""}</script>
                 </body>
               </html>`,
-              [tpl, theme]
-            );
+                [tpl, theme]
+              );
 
             return (
               <div className="cg-card" key={tpl.id}>

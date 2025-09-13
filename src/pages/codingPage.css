@@ -15,6 +15,20 @@
     margin-bottom: 18px;
 }
 
+@media only screen and (max-width: 768px) {
+    .cg-topbar {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+
+    .flex-in__mobile {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        gap: 1%;
+    }
+}
+
 @media (min-width: 860px) {
     .cg-topbar {
         flex-direction: row;
@@ -22,7 +36,10 @@
         justify-content: space-between;
     }
 }
-
+.flex-in__mobile{
+    display: flex;
+    gap: 1rem;
+}
 /* Search */
 .cg-search-wrap {
     display: flex;
@@ -55,7 +72,7 @@
 /* Category buttons */
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: inline;
     position: relative;
     z-index: 100;
 }
@@ -71,7 +88,7 @@
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
-    min-width: 220px;
+    min-width: 150px;
     transition: all 0.3s ease;
     position: static;
     top: 0;
@@ -537,4 +554,31 @@
         padding: 10px;
         font-size: 14px;
     }
+}
+
+
+.cg-count {
+    font-size: 14px;
+    color: #444;
+    margin-left: auto;
+    background: #f5f7fa;
+    padding: 6px 14px;
+    border-radius: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cg-count span {
+    font-weight: 700;
+    color: #0b1220;
+    font-variant-numeric: tabular-nums;
+    /* raqamlar tekis chiqishi uchun */
+    transition: color 0.4s ease;
+}
+
+.cg-count span:first-child {
+    color: #0077ff;
 }
