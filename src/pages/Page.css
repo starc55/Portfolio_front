@@ -22,6 +22,29 @@ body {
   text-decoration: none;
   z-index: 9999;
   transition: all 0.3s ease;
+  animation: floatAround 3s ease-in-out infinite;
+}
+
+@keyframes floatAround {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-5px, -5px) rotate(-3deg);
+  }
+
+  50% {
+    transform: translate(0, -8px) rotate(3deg);
+  }
+
+  75% {
+    transform: translate(5px, -5px) rotate(-3deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
 
 .sticky-shop-btn:hover {

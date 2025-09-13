@@ -227,7 +227,7 @@ const Home = () => {
       >
         <FaStore className="shop-icon" />
         <span className="shop-text">OBRANO shop</span>
-      </a>
+      </a> 
     </div>
   );
 };
