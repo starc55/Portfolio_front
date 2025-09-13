@@ -17,15 +17,17 @@
 
 @media only screen and (max-width: 768px) {
     .cg-topbar {
-        display: grid;
-        grid-template-columns: repeat(1, 2fr);
+        width: 100% !important;
     }
 
+    .cg-search-wrap{
+        width: 100% !important;
+    }
     .flex-in__mobile {
         display: flex;
         justify-content: center;
         margin: auto;
-        gap: 1%;
+        gap: 1% !important;
     }
 }
 
