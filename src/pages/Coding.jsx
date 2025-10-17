@@ -29,7 +29,6 @@ function Coding() {
 
   const gridRef = useRef(null);
 
-  // 🌀 Filtered templates optimized
   const filtered = useMemo(() => {
     return templates.filter((tpl) => {
       const titleMatch = tpl.title
@@ -40,7 +39,6 @@ function Coding() {
     });
   }, [templates, search, category]);
 
-  // 🌀 Scroll to top
   const scrollTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -48,7 +46,7 @@ function Coding() {
   useEffect(() => {
     let start = 0;
     const end = filtered.length;
-    const duration = 800; // ms
+    const duration = 800;
     const stepTime = 1000 / 60;
     const increment = end / (duration / stepTime);
 
@@ -65,13 +63,12 @@ function Coding() {
     animate();
   }, [filtered.length]);
 
-  // 🌀 Fetch templates
   useEffect(() => {
     const loadTemplates = async () => {
       try {
         setLoading(true);
         const res = await fetch(
-          "https://portfolio-strapi-backend-kjih.onrender.com/api/templates?pagination[pageSize]=1000"
+          "https://portfolio-back-sjny.onrender.com/api/templates?pagination[pageSize]=1000"
         );
         const data = await res.json();
         setTemplates(data.data || []);
@@ -86,7 +83,6 @@ function Coding() {
     loadTemplates();
   }, []);
 
-  // 🌀 GSAP animation
   useEffect(() => {
     if (!gridRef.current) return;
 
@@ -113,7 +109,6 @@ function Coding() {
     });
   }, [templates]);
 
-  // 🌀 Categories optimized
   const categories = useMemo(
     () =>
       Array.from(
@@ -124,7 +119,6 @@ function Coding() {
     [templates]
   );
 
-  // 🌀 Modal openers
   const openCodeModal = useCallback((code, lang, title) => {
     setModalCode(code || "");
     setModalLang(lang || "markup");
@@ -144,7 +138,6 @@ function Coding() {
     }));
   }, []);
 
-  // 🌀 Iframe HTML'larni oldindan hisoblab olish
   const iframeHtmls = useMemo(() => {
     return templates.map((tpl) => {
       const theme = previewTheme[tpl.id] || "light";
@@ -190,7 +183,6 @@ function Coding() {
     <div className="tg-container">
       <ServerNotice show={serverSleep} />
 
-      {/* 🔍 Search + Categories */}
       <div className="cg-topbar">
         <div className="cg-search-wrap">
           <FiSearch className="cg-search-icon" />
@@ -231,7 +223,6 @@ function Coding() {
         </div>
       </div>
 
-      {/* 🌀 Loading / Empty / Grid */}
       {loading ? (
         <div className="cg-loading">
           <div className="cg-spinner" />
@@ -375,7 +366,6 @@ function Coding() {
         </div>
       )}
 
-      {/* 🌀 Code Modal */}
       <CodeModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
@@ -384,7 +374,6 @@ function Coding() {
         title={modalTitle}
       />
 
-      {/* 🌀 Preview Modal */}
       {previewOpen && (
         <div
           className={`preview-modal ${previewOpen ? "show" : "hide"}`}

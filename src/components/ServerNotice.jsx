@@ -16,11 +16,13 @@ export default function ServerNotice({ show }) {
   if (!visible) return null;
 
   return (
-    <div className="server-notice">
-      <FiAlertTriangle className="notice-icon" />
-      <p className="notice-text">
-        The server may have gone to sleep. Please wait a moment ⏳
-      </p>
+    <div className="server-notice glass-effect">
+      <div className="notice-content">
+        <FiAlertTriangle className="notice-icon" />
+        <p className="notice-text">
+          The server may have gone to sleep. Please wait a moment ⏳
+        </p>
+      </div>
     </div>
   );
 }

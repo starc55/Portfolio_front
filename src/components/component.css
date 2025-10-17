@@ -119,56 +119,51 @@ Dock navbar style
 server notice 
 ================= */
 
+/* === Base container === */
 .server-notice {
   position: fixed;
   top: 20px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.9);
-  width: 80%;
-  max-width: 500px;
-  padding: 16px 20px;
-  border-radius: 18px;
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
+  right: 20px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  z-index: 9999;
-  animation: slideDown 0.6s ease, fadeOut 1s 4s forwards;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  gap: 10px;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  z-index: 999;
+  max-width: 340px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
+/* === REAL liquid glass effect === */
+.glass-notice {
+  background: rgba(255, 255, 255, 0.15); /* <-- less white */
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.3),
+    0 4px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* === Hover effect === */
+.glass-notice:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* === Text & Icon colors fixed === */
 .notice-icon {
-  font-size: 22px;
-  color: #ffcc70;
-  flex-shrink: 0;
+  font-size: 1.6rem;
+  color: #ffb800;
+  z-index: 2;
 }
 
 .notice-text {
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-}
-
-/* Animations */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-20px) scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px) scale(0.95);
-  }
+  color: #000;
+  z-index: 2;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
 }
