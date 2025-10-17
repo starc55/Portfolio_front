@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaInstagram, FaTelegram, FaGithub, FaStore } from "react-icons/fa";
+import { FaInstagram, FaTelegram, FaGithub } from "react-icons/fa";
 import "./Page.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,17 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const wordsRef = useRef(null);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
-
-  // Track scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      setLastScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Animate words on scroll
   useEffect(() => {
@@ -218,8 +208,7 @@ const Home = () => {
         <p className="scroll_text">Scroll Down</p>
       </div>
 
-      {/* Sticky shop button */}
-      <a
+      {/* <a
         href="https://obrano.store/"
         target="_blank"
         rel="noopener noreferrer"
@@ -227,7 +216,7 @@ const Home = () => {
       >
         <FaStore className="shop-icon" />
         <span className="shop-text">OBRANO shop</span>
-      </a> 
+      </a>   */}
     </div>
   );
 };

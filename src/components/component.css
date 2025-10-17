@@ -47,19 +47,21 @@ Dock navbar style
 }
 
 .dock-item {
-  position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background-color: #060010da;
-  border: 1px solid #222222da;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50%;
+  padding: 0.6rem;
   cursor: pointer;
-  outline: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #000;
+}
+
+/* Hoverda yumshoq kattalashish */
+.dock-item:hover {
+  transform: scale(1.3); /* 30% kattalashish */
+  z-index: 10; /* Oldinga chiqishi uchun */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .dock-icon {
@@ -81,6 +83,75 @@ Dock navbar style
   font-size: 0.75rem;
   color: #fff;
   transform: translateX(-50%);
+}
+
+.navbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 1000;
+}
+
+.navbar.hide {
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
+}
+
+.liquidGlass-wrapper {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+}
+
+.liquidGlass-effect {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  filter: url(#glass-distortion);
+}
+
+.liquidGlass-tint {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  /* box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.5); */
+}
+
+.liquidGlass-text {
+  position: relative;
+  z-index: 2;
+}
+
+.dock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0.5rem;
+}
+
+.dock-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: rgba(255, 255, 255, 0.15); */
+  border-radius: 50%;
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: black;
 }
 
 
@@ -119,51 +190,56 @@ Dock navbar style
 server notice 
 ================= */
 
-/* === Base container === */
 .server-notice {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  width: 80%;
+  max-width: 500px;
+  padding: 16px 20px;
+  border-radius: 18px;
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  z-index: 999;
-  max-width: 340px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  overflow: hidden;
+  gap: 12px;
+  z-index: 9999;
+  animation: slideDown 0.6s ease, fadeOut 1s 4s forwards;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* === REAL liquid glass effect === */
-.glass-notice {
-  background: rgba(255, 255, 255, 0.15); /* <-- less white */
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.3),
-    0 4px 25px rgba(0, 0, 0, 0.25);
-}
-
-/* === Hover effect === */
-.glass-notice:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* === Text & Icon colors fixed === */
 .notice-icon {
-  font-size: 1.6rem;
-  color: #ffb800;
-  z-index: 2;
+  font-size: 22px;
+  color: #ffcc70;
+  flex-shrink: 0;
 }
 
 .notice-text {
-  color: #000;
-  z-index: 2;
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px) scale(0.95);
+  }
 }
