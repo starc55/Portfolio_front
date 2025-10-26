@@ -16,6 +16,7 @@ import port from "../imgs/port.webp";
 import obrano from "../imgs/obrano.webp";
 import water from "../imgs/water.webp";
 import blog from "../imgs/blog.webp";
+import wash from "../imgs/wash.webp";
 
 const works = [
   {
@@ -73,6 +74,13 @@ const works = [
     img: food,
     title: "Food delivery example",
     tags: ["React", "JavaScript", "CSS", "HTML5", "Api", "Strapi"],
+  },
+  {
+    category: "Web",
+    img: wash,
+    title: "WashCam car site example",
+    tags: ["React", "JavaScript", "CSS", "HTML5"],
+    link: "https://wash-cam.vercel.app/"
   },
   {
     category: "Web",
