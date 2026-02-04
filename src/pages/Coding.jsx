@@ -1,189 +1,233 @@
 import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CodeModal from "../components/CodeModal";
-import { FiSun, FiMoon, FiSearch, FiArrowUp } from "react-icons/fi";
-import "./codingPage.css";
-import ServerNotice from "../components/ServerNotice";
+import CodeModal from "components/sections/CodeModal";
+import Notification from "components/ui/Notification";
+import { fetchTemplates } from "lib/api";
+import { FiSearch, FiArrowUp, FiHome } from "react-icons/fi";
+import "styles/codingPage.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Coding() {
-  const [serverSleep, setServerSleep] = useState(false);
   const [templates, setTemplates] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(true);
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState("All Categories");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [count, setCount] = useState(0);
 
-  const [modalOpen, setModalOpen] = useState(false);
+  const [codeModalOpen, setCodeModalOpen] = useState(false);
   const [modalCode, setModalCode] = useState("");
-  const [modalLang, setModalLang] = useState("html");
+  const [modalLanguage, setModalLanguage] = useState("html");
   const [modalTitle, setModalTitle] = useState("");
 
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewHtml, setPreviewHtml] = useState("");
-  const [previewTheme, setPreviewTheme] = useState({});
+
+  const [notification, setNotification] = useState(null);
 
   const gridRef = useRef(null);
 
-  const filtered = useMemo(() => {
+  const showNotification = useCallback((type, title, message) => {
+    setNotification({ type, title, message });
+    if (type !== "success") {
+      setTimeout(() => setNotification(null), 5000);
+    }
+  }, []);
+
+  const filteredTemplates = useMemo(() => {
     return templates.filter((tpl) => {
-      const titleMatch = tpl.title
+      const matchesSearch = tpl.title
         ?.toLowerCase()
         .includes(search.toLowerCase());
-      const catMatch = category ? tpl.category === category : true;
-      return titleMatch && catMatch;
+      const matchesCategory = category ? tpl.category === category : true;
+      return matchesSearch && matchesCategory;
     });
   }, [templates, search, category]);
 
-  const scrollTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  const categories = useMemo(() => {
+    return Array.from(
+      new Set(templates.map((t) => t.category).filter(Boolean))
+    );
+  }, [templates]);
 
-  useEffect(() => {
-    let start = 0;
-    const end = filtered.length;
-    const duration = 800;
-    const stepTime = 1000 / 60;
-    const increment = end / (duration / stepTime);
-
-    let current = start;
-    function animate() {
-      current += increment;
-      if (current < end) {
-        setCount(Math.floor(current));
-        requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    }
-    animate();
-  }, [filtered.length]);
+  const iframeHtmls = useMemo(() => {
+    return templates.map((tpl) => {
+      const html = `
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+              :root { --bg: #ffffff; --fg: #0b1220; }
+              html, body {
+                width: 100%; height: 100%; margin: 0; padding: 0;
+                background: var(--bg); color: var(--fg);
+                display: flex; justify-content: center; align-items: center;
+                overflow: hidden;
+              }
+              * { box-sizing: border-box; }
+              ${tpl.code_css || ""}
+            </style>
+            ${(tpl.libs || [])
+              .map((lib) => `<script src="${lib}"></script>`)
+              .join("\n")}
+          </head>
+          <body>
+            <div class="preview-wrapper">${tpl.code_html || ""}</div>
+            <script>${tpl.code_js || ""}</script>
+          </body>
+        </html>`;
+      return { id: tpl.id, html };
+    });
+  }, [templates]);
 
   useEffect(() => {
     const loadTemplates = async () => {
+      setLoading(true);
+      showNotification(
+        "info",
+        "Loading...",
+        "Loading templates, please wait a moment."
+      );
+
       try {
-        setLoading(true);
-        const res = await fetch(
-          "https://portfolio-back-sjny.onrender.com/api/templates?pagination[pageSize]=1000"
-        );
-        const data = await res.json();
-        setTemplates(data.data || []);
+        const data = await fetchTemplates();
+        setTemplates(data || []);
+
+        if (data && data.length > 0) {
+          showNotification(
+            "success",
+            "Success!",
+            `${data.length} template loaded`
+          );
+        } else {
+          showNotification("warning", "Empty", "No templates available yet");
+        }
       } catch (err) {
-        console.error("Failed to load templates:", err);
+        console.error("Templates loading error:", err);
         setTemplates([]);
-        setServerSleep(true);
+        showNotification(
+          "error",
+          "Error",
+          "Unable to load templates. There may be a problem connecting to the server."
+        );
       } finally {
-        setTimeout(() => setLoading(false), 350);
+        setTimeout(() => setLoading(false), 600);
       }
     };
+
     loadTemplates();
-  }, []);
+  }, [showNotification]);
 
   useEffect(() => {
-    if (!gridRef.current) return;
+    let current = 0;
+    const target = filteredTemplates.length;
+    if (target === 0) {
+      setCount(0);
+      return;
+    }
+
+    const duration = 900;
+    const step = target / (duration / 16);
+    let frame;
+
+    const animate = () => {
+      current += step;
+      if (current < target) {
+        setCount(Math.floor(current));
+        frame = requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [filteredTemplates.length]);
+
+  useEffect(() => {
+    if (!gridRef.current || !filteredTemplates.length) return;
 
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
     const cards = gridRef.current.querySelectorAll(".cg-card");
-
     cards.forEach((card) => {
       gsap.fromTo(
         card,
-        { y: 50, opacity: 0 },
+        { y: 60, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: 0.9,
           ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: window.innerWidth < 768 ? "top 95%" : "top 85%",
+            start: "top 90%",
             toggleActions: "play none none reverse",
           },
         }
       );
     });
-  }, [templates]);
-
-  const categories = useMemo(
-    () =>
-      Array.from(
-        new Set(
-          templates.map((t) => t.category).filter((c) => c && c.trim() !== "")
-        )
-      ),
-    [templates]
-  );
+  }, [filteredTemplates]);
 
   const openCodeModal = useCallback((code, lang, title) => {
     setModalCode(code || "");
-    setModalLang(lang || "markup");
+    setModalLanguage(lang || "markup");
     setModalTitle(title || "Code");
-    setModalOpen(true);
+    setCodeModalOpen(true);
   }, []);
 
-  const openPreviewModal = useCallback((iframeHtml) => {
-    setPreviewHtml(iframeHtml);
+  const closeCodeModal = useCallback(() => {
+    setCodeModalOpen(false);
+  }, []);
+
+  const openPreview = useCallback((html) => {
+    setPreviewHtml(html);
     setPreviewOpen(true);
   }, []);
 
-  const togglePreviewTheme = useCallback((id) => {
-    setPreviewTheme((p) => ({
-      ...p,
-      [id]: p[id] === "dark" ? "light" : "dark",
-    }));
+  const closePreview = useCallback(() => {
+    setPreviewOpen(false);
   }, []);
 
-  const iframeHtmls = useMemo(() => {
-    return templates.map((tpl) => {
-      const theme = previewTheme[tpl.id] || "light";
-      const html = `
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <style>
-            :root { --bg: ${theme === "dark" ? "#0b1220" : "#ffffff"};
-                    --fg: ${theme === "dark" ? "#e6eef8" : "#0b1220"}; }
-            html, body {
-              width : 100%;
-              height: 100%;
-              margin: 0;
-              background: var(--bg);
-              color: var(--fg);
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              overflow: hidden;
-              transition: background 0.4s ease, color 0.4s ease;
-            }
-            * { box-sizing: border-box; }
-            ${tpl.code_css || ""}
-          </style>
-          ${(tpl.libs || [])
-            .map((lib) => `<script src="${lib}"></script>`)
-            .join("\n")}
-        </head>
-        <body>
-          <div class="preview-wrapper">
-            ${tpl.code_html || ""}
-          </div>
-          <script>${tpl.code_js || ""}</script>
-        </body>
-      </html>`;
-      return { id: tpl.id, html };
-    });
-  }, [templates, previewTheme]);
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const goToHome = useCallback(() => {
+    window.location.href = "/";
+  }, []);
 
   return (
     <div className="tg-container">
-      <ServerNotice show={serverSleep} />
+      {notification && (
+        <div
+          style={{
+            position: "fixed",
+            top: 24,
+            right: 24,
+            zIndex: 1000,
+          }}
+        >
+          <Notification
+            type={notification.type}
+            title={notification.title}
+            message={notification.message}
+            showProgress={notification.type === "info"}
+            onClose={() => setNotification(null)}
+            autoClose={notification.type !== "info" ? 5 : undefined}
+          />
+        </div>
+      )}
 
       <div className="cg-topbar">
+        <button className="home-btn" onClick={goToHome} aria-label="Go to Home">
+          <FiHome size={24} />
+        </button>
         <div className="cg-search-wrap">
           <FiSearch className="cg-search-icon" />
           <input
@@ -196,27 +240,42 @@ function Coding() {
         </div>
 
         <div className="dropdown">
-          <button className="dropdown-btn" onClick={() => setOpen((o) => !o)}>
-            {selected}
+          <button
+            className="dropdown-btn"
+            onClick={() => setDropdownOpen((prev) => !prev)}
+          >
+            {selectedCategory}
           </button>
-          {open && (
+
+          {dropdownOpen && (
             <ul className="dropdown-list">
-              {["All Categories", ...categories].map((c, i) => (
+              <li
+                className="dropdown-item"
+                onClick={() => {
+                  setSelectedCategory("All Categories");
+                  setCategory("");
+                  setDropdownOpen(false);
+                }}
+              >
+                All Categories
+              </li>
+              {categories.map((cat) => (
                 <li
-                  key={i}
+                  key={cat}
                   className="dropdown-item"
                   onClick={() => {
-                    setSelected(c);
-                    setCategory(c === "All Categories" ? "" : c);
-                    setOpen(false);
+                    setSelectedCategory(cat);
+                    setCategory(cat);
+                    setDropdownOpen(false);
                   }}
                 >
-                  {c}
+                  {cat}
                 </li>
               ))}
             </ul>
           )}
         </div>
+
         <div className="cg-count">
           Showing <span>{count}</span> of <span>{templates.length}</span>{" "}
           templates
@@ -226,69 +285,22 @@ function Coding() {
       {loading ? (
         <div className="cg-loading">
           <div className="cg-spinner" />
-          <p>Loading templates...</p>
+          <p>Shablonlar yuklanmoqda...</p>
         </div>
-      ) : filtered.length === 0 ? (
-        <div className="cg-empty">No templates found.</div>
+      ) : filteredTemplates.length === 0 ? (
+        <div className="cg-empty">
+          No templates found. Try changing your search.
+        </div>
       ) : (
         <div className="tg-grid" ref={gridRef}>
-          {filtered.map((tpl) => {
-            const theme = previewTheme[tpl.id] || "light";
-
-            const iframeHtml =
-              iframeHtmls.find((i) => i.id === tpl.id)?.html ||
-              ""(
-                () => `
-              <html>
-                <head>
-                  <meta charset="utf-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1">
-                  <style>
-                    :root { --bg: ${
-                      theme === "dark" ? "#0b1220" : "#ffffff"
-                    }; --fg: ${theme === "dark" ? "#e6eef8" : "#0b1220"}; }
-                    html, body {
-                      width : 100%;
-                      height: 100%;
-                      margin: 0;
-                      background: var(--bg);
-                      color: var(--fg);
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      overflow: hidden;
-                      transition: background 0.4s ease, color 0.4s ease;
-                    }
-                    * { box-sizing: border-box; }
-                    ${tpl.code_css || ""}
-                  </style>
-                  ${(tpl.libs || [])
-                    .map((lib) => `<script src="${lib}"></script>`)
-                    .join("\n")}
-                </head>
-                <body>
-                  <div class="preview-wrapper">
-                    ${tpl.code_html || ""}
-                  </div>
-                  <script>${tpl.code_js || ""}</script>
-                </body>
-              </html>`,
-                [tpl, theme]
-              );
+          {filteredTemplates.map((tpl) => {
+            const iframeSrc =
+              iframeHtmls.find((i) => i.id === tpl.id)?.html || "";
 
             return (
               <div className="cg-card" key={tpl.id}>
                 <div className="cg-card-head">
                   <h3 className="cg-title">{tpl.title}</h3>
-                  <div className="cg-head-actions">
-                    <button
-                      className="cg-small"
-                      onClick={() => togglePreviewTheme(tpl.id)}
-                      aria-label="Toggle preview theme"
-                    >
-                      {theme === "dark" ? <FiSun /> : <FiMoon />}
-                    </button>
-                  </div>
                 </div>
 
                 <p className="cg-desc">{tpl.description}</p>
@@ -296,8 +308,9 @@ function Coding() {
                 <div className="cg-preview-wrap">
                   <iframe
                     title={`preview-${tpl.id}`}
-                    srcDoc={iframeHtml}
+                    srcDoc={iframeSrc}
                     className="cg-iframe"
+                    sandbox="allow-scripts"
                   />
                 </div>
 
@@ -342,22 +355,20 @@ function Coding() {
                   )}
                   <button
                     className="cg-btn"
-                    onClick={() => openPreviewModal(iframeHtml)}
+                    onClick={() => openPreview(iframeSrc)}
                   >
                     Full Preview
                   </button>
 
                   {tpl.download_link && (
-                    <div className="cg-right-actions">
-                      <a
-                        className="cg-download"
-                        href={tpl.download_link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Download ZIP
-                      </a>
-                    </div>
+                    <a
+                      className="cg-download"
+                      href={tpl.download_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Download ZIP
+                    </a>
                   )}
                 </div>
               </div>
@@ -367,29 +378,22 @@ function Coding() {
       )}
 
       <CodeModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
+        isOpen={codeModalOpen}
+        onClose={closeCodeModal}
         code={modalCode}
-        language={modalLang}
+        language={modalLanguage}
         title={modalTitle}
       />
 
       {previewOpen && (
-        <div
-          className={`preview-modal ${previewOpen ? "show" : "hide"}`}
-          onClick={() => setPreviewOpen(false)}
-        >
+        <div className="preview-modal show" onClick={closePreview}>
           <div
             className="preview-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="preview-header">
               <h3>Live Preview</h3>
-              <button
-                className="close-btn"
-                onClick={() => setPreviewOpen(false)}
-                aria-label="Close preview"
-              >
+              <button className="close-btn" onClick={closePreview}>
                 ✕
               </button>
             </div>
@@ -397,18 +401,21 @@ function Coding() {
               title="full-preview"
               srcDoc={previewHtml}
               className="preview-iframe"
+              sandbox="allow-scripts"
             />
           </div>
         </div>
       )}
 
-      <button
-        className="scroll-top-btn"
-        onClick={scrollTop}
-        aria-label="Scroll to top"
-      >
-        <FiArrowUp size={22} />
-      </button>
+      <div className="floating-action-buttons">
+        <button
+          className="scroll-top-btn"
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+        >
+          <FiArrowUp size={24} />
+        </button>
+      </div>
     </div>
   );
 }

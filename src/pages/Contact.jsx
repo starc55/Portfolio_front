@@ -1,158 +1,230 @@
 import React, { useState, useCallback } from "react";
-import "./Contact.css";
-import { MdOutlineAttachEmail } from "react-icons/md";
-import { notification, Progress } from "antd";
-import emailjs from "emailjs-com";
+import "styles/Contact.css";
+// import { MdOutlineAttachEmail } from "react-icons/md";
+import { motion } from "framer-motion";
+import SectionTitle from "components/ui/SectionTitle";
+import { useTranslation } from "react-i18next";
+import Notification from "components/ui/Notification";
 
-const SERVICE_ID = "ogabek67";
-const TEMPLATE_ID = "template_ydezhzu";
-const PUBLIC_KEY = "Ert7ISwYIs_HL32bW";
+const MAKE_WEBHOOK_URL =
+  "https://hook.eu2.make.com/7f13avvybn3qljhmb1dccg8esvfcce5k";
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   const [form, setForm] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    phone: "",
     message: "",
     suggestion: "",
   });
-  const [progress, setProgress] = useState(0);
 
-  // 🔹 inputlarni umumiy handler orqali boshqarish
+  const [notification, setNotification] = useState(null);
+
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }, []);
 
-  const openNotification = useCallback(() => {
-    notification.open({
-      message: "Sending Message",
-      description: (
-        <Progress percent={progress} showInfo={false} status="active" />
-      ),
-      icon: <MdOutlineAttachEmail style={{ color: "#108ee9" }} />,
-      duration: 3,
-    });
-  }, [progress]);
+  const showNotification = useCallback((type, title, message) => {
+    setNotification({ type, title, message });
+
+    if (type !== "info") {
+      setTimeout(() => {
+        setNotification(null);
+      }, 5000);
+    }
+  }, []);
 
   const handleSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
-      openNotification();
 
-      const templateParams = { ...form };
-
-      let counter = 0;
-      const progressInterval = setInterval(() => {
-        counter += 20;
-        setProgress(counter);
-        if (counter >= 100) clearInterval(progressInterval);
-      }, 500);
-
-      emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY).then(
-        () => {
-          notification.success({
-            message: "Message Sent Successfully",
-            description: "Your message has been sent!",
-            icon: <MdOutlineAttachEmail style={{ color: "#52c41a" }} />,
-            duration: 3,
-          });
-          setForm({ name: "", email: "", message: "", suggestion: "" });
-          setProgress(0);
-        },
-        () => {
-          notification.error({
-            message: "Message Failed",
-            description: "Failed to send message. Please try again.",
-            icon: <MdOutlineAttachEmail style={{ color: "#ff4d4f" }} />,
-            duration: 3,
-          });
-        }
+      showNotification(
+        "info",
+        t("contactPage.sending") || "Yuborilmoqda...",
+        t("contactPage.sendingDesc") ||
+          "Ma'lumotlaringiz yuborilmoqda, biroz kuting"
       );
+
+      try {
+        const response = await fetch(MAKE_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+
+        if (response.ok) {
+          showNotification(
+            "success",
+            t("contactPage.success") || "Muvaffaqiyat!",
+            t("contactPage.successDesc") ||
+              "Xabaringiz muvaffaqiyatli yuborildi"
+          );
+
+          setForm({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            message: "",
+            suggestion: "",
+          });
+        } else {
+          throw new Error("Server response not ok");
+        }
+      } catch (err) {
+        showNotification(
+          "error",
+          t("contactPage.error") || "Xatolik yuz berdi",
+          t("contactPage.errorDesc") ||
+            "Xabarni yuborishda muammo yuz berdi. Iltimos qayta urinib ko‘ring."
+        );
+      }
     },
-    [form, openNotification]
+    [form, showNotification, t]
   );
 
   return (
-    <div id="contact">
-      <div className="contact_container">
-        <div className="contact_head">
-          <p>Hire Me</p>
-          <p className="c_s_title">Write me your project</p>
-        </div>
+    <section id="contact" className="contact-section">
+      <div className="container">
+        <SectionTitle
+          title={t("contactPage.title")}
+          subtitle={t("contactPage.subtitle")}
+          centered={true}
+        />
 
-        <div className="contact_content">
-          <span
-            className="contact_lord"
-            dangerouslySetInnerHTML={{
-              __html: `<lord-icon src="https://cdn.lordicon.com/ipyszerf.json" trigger="loop" delay="500" style="width:250px;height:250px"></lord-icon>`,
+        {notification && (
+          <div
+            style={{
+              position: "fixed",
+              top: 24,
+              right: 24,
+              zIndex: 1000,
             }}
-          />
-          <div className="contact_input">
-            <form onSubmit={handleSubmit} className="form">
-              {[
-                { label: "Your name", name: "name", type: "text" },
-                { label: "Your email", name: "email", type: "email" },
-              ].map(({ label, name, type }) => (
-                <div className="input-group" key={name}>
-                  <input
-                    autoComplete="off"
-                    required
-                    type={type}
-                    name={name}
-                    className="input"
-                    value={form[name]}
-                    onChange={handleChange}
-                  />
-                  <label className="user-label">{label}</label>
-                </div>
-              ))}
-
-              {[
-                { label: "New Project", name: "message" },
-                { label: "Your suggestion", name: "suggestion" },
-              ].map(({ label, name }) => (
-                <div className="input-group" key={name}>
-                  <textarea
-                    autoComplete="off"
-                    required
-                    name={name}
-                    className="input"
-                    value={form[name]}
-                    onChange={handleChange}
-                  />
-                  <label className="user-label">{label}</label>
-                </div>
-              ))}
-
-              <button type="submit" className="submit-btn">
-                <div className="text">
-                  <span>Submit</span>
-                  <span>Message</span>
-                </div>
-                <div className="clone">
-                  <span>Hire</span>
-                  <span>Me</span>
-                </div>
-                <svg
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20px"
-                >
-                  <path
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </button>
-            </form>
+          >
+            <Notification
+              type={notification.type}
+              title={notification.title}
+              message={notification.message}
+              showProgress={notification.type === "info"}
+              onClose={() => setNotification(null)}
+              autoClose={notification.type !== "info" ? 5 : undefined}
+            />
           </div>
-        </div>
+        )}
+
+        <motion.div
+          className="contact-card"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="card-content">
+            {/* <div className="image-side">
+              <img
+                src="https://thumbs.dreamstime.com/b/digital-collaboration-futuristic-handshake-symbolizing-technology-partnership-composed-interconnected-lines-glowing-nodes-346712703.jpg"
+                alt="Collaboration & Connection"
+                className="contact-hero-img"
+              />
+            </div> */}
+
+            <div className="form-side">
+              <form onSubmit={handleSubmit} className="compact-form">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    name="firstName"
+                    required
+                    value={form.firstName}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="compact-input"
+                  />
+                  <label>{t("contactPage.firstName")}</label>
+                </div>
+
+                <div className="input-group">
+                  <input
+                    type="text"
+                    name="lastName"
+                    required
+                    value={form.lastName}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="compact-input"
+                  />
+                  <label>{t("contactPage.lastName")}</label>
+                </div>
+
+                <div className="input-group">
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="compact-input"
+                  />
+                  <label>{t("contactPage.email")}</label>
+                </div>
+
+                <div className="input-group">
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="compact-input"
+                  />
+                  <label>{t("contactPage.phone")}</label>
+                </div>
+
+                <div className="input-group">
+                  <textarea
+                    name="message"
+                    required
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="compact-textarea"
+                  />
+                  <label>{t("contactPage.message")}</label>
+                </div>
+
+                <div className="input-group">
+                  <textarea
+                    name="suggestion"
+                    value={form.suggestion}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className="compact-textarea small"
+                  />
+                  <label>{t("contactPage.suggestion")}</label>
+                </div>
+
+                <motion.button
+                  type="submit"
+                  className="compact-submit"
+                  whileHover={{
+                    scale: 1.04,
+                    boxShadow: "0 12px 32px rgba(96,165,250,0.45)",
+                  }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  {t("contactPage.submit")}
+                </motion.button>
+              </form>
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

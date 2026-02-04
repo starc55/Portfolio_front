@@ -1,0 +1,165 @@
+.portfolio-hero {
+    min-height: 100vh;
+    position: relative;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+.hero-main {
+    position: relative;
+    top: -9rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+.name-stack {
+    position: relative;
+}
+
+.big-name {
+    font-size: clamp(5rem, 16vw, 18rem);
+    font-weight: 900;
+    line-height: 0.75;
+    letter-spacing: -0.05em;
+    margin: 0;
+    color: #c3e41d;
+    font-family: "Courier New", Courier, monospace;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.big-name.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.big-name.delay {
+    transition-delay: 0.5s;
+}
+
+.profile-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    background-color: #000;
+    border-radius: 40px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.12);
+}
+
+.tagline-container {
+    position: absolute;
+    bottom: 16vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+}
+
+.tagline {
+    font-size: clamp(1rem, 3.2vw, 1.5rem);
+    color: #999;
+    font-family: "Georgia", serif;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.5s ease;
+}
+
+.tagline.animate.delay-2 {
+    transition-delay: 1s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.scroll-prompt {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.scroll-link {
+    color: #888;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mouse-icon {
+    width: 32px;
+    height: 56px;
+    border: 2px solid #777;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-dot {
+    width: 6px;
+    height: 12px;
+    background: #c3e41d;
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    animation: scrollAnim 2s infinite;
+}
+
+.scroll-text {
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+}
+
+@keyframes scrollAnim {
+    0% {
+        top: 12px;
+        opacity: 1;
+    }
+
+    50% {
+        top: 32px;
+        opacity: 0.3;
+    }
+
+    100% {
+        top: 12px;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .big-name {
+        font-size: clamp(6rem, 14vw, 14rem);
+        line-height: 1.2;
+    }
+
+    .profile-photo {
+        width: 100px;
+        height: 160px;
+    }
+}

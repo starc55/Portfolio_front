@@ -1,0 +1,163 @@
+.container {
+  width: 80%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: rgba(17, 17, 17, 0.65);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+}
+
+.card-content {
+  display: flex;
+  max-height: 600px;
+}
+
+.image-side {
+  flex: 1;
+  min-width: 40%;
+  position: relative;
+}
+
+.contact-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.image-side:hover .contact-hero-img {
+  transform: scale(1.08);
+}
+
+.form-side {
+  flex: 1;
+  padding: 50px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.compact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  position: relative;
+}
+
+.compact-input,
+.compact-textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(35, 35, 35, 0.7);
+  color: #f1f5f9;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.compact-input:focus,
+.compact-textarea:focus {
+  background: rgba(35, 35, 35, 0.9);
+  box-shadow: 0 0 0 4px rgba(221, 246, 59, 0.3);
+  outline: none;
+}
+
+.compact-textarea {
+  max-height: 70px;
+  resize: vertical;
+}
+
+.compact-textarea.small {
+  max-height: 70px;
+}
+
+.compact-input::placeholder,
+.compact-textarea::placeholder {
+  color: transparent;
+}
+
+.compact-input+label,
+.compact-textarea+label {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+
+.compact-input:focus+label,
+.compact-input:not(:placeholder-shown)+label,
+.compact-textarea:focus+label,
+.compact-textarea:not(:placeholder-shown)+label {
+  top: -12px;
+  left: 14px;
+  font-size: 13px;
+  color: #dbe63b;
+  background: #0f172a;
+  padding: 0 8px;
+  border-radius: 6px;
+}
+
+.compact-submit {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #c3e41d, #d3c229);
+  color: white;
+  font-weight: 600;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  align-self: flex-start;
+  box-shadow: 0 10px 30px rgba(230, 246, 59, 0.4);
+  transition: background 0.3s ease;
+}
+
+.compact-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(230, 246, 59, 0.6);
+  background: linear-gradient(90deg, #d3c229, #c3e41d);
+}
+
+@media (max-width: 1024px) {
+  .card-content {
+    flex-direction: column;
+  }
+
+  .image-side {
+    min-width: 100%;
+    height: 320px;
+  }
+
+  .form-side {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-side {
+    padding: 30px 20px;
+  }
+
+  .compact-submit {
+    align-self: center;
+    width: 100%;
+    max-width: 320px;
+  }
+}

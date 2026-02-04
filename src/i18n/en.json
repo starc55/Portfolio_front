@@ -1,0 +1,256 @@
+{
+  "home": "Home",
+  "about": "About",
+  "projects": "Projects",
+  "contact": "Contact",
+  "codes": "Codes",
+  "tagline": "Designing human experiences in code.",
+  "scroll_down": "Scroll Down",
+  "building_smart": "Building Smart Interfaces",
+  "react_crm": "React & React Native | CRM & Admin Panels",
+
+  "aboutPage": {
+    "title": "Building Smart Interfaces",
+    "subtitle": "React & React Native | CRM & Admin Panels"
+  },
+  "skills": {
+    "title": "Skills",
+    "html5": "HTML5",
+    "css3": "CSS3",
+    "javascript": "JavaScript",
+    "react": "React",
+    "react_native": "React Native",
+    "git": "Git",
+    "gsap": "GSAP",
+    "web_developing": "Web Developing",
+    "capcut": "CapCut",
+    "canva": "Canva",
+    "figma": "Figma",
+    "framer_motion": "Framer Motion"
+  },
+  "about_me": {
+    "title": "Know about me",
+    "description": "Frontend Developer specializing in building scalable web and mobile applications, including CRM systems and Admin Panels. Experienced with React.js and React Native, creating responsive, high-performance interfaces with a strong focus on usability, security, and clean architecture. Skilled in transforming complex business requirements into intuitive digital solutions."
+  },
+  "resume": {
+    "button": "View Resume"
+  },
+  "services": {
+    "title": "What I Do Best",
+    "subtitle": "From clean UI to powerful functionality — I build solutions that actually work.",
+    "marquee": "ALWAYS ✦ BE ✦ CREATIVE ✦ WITH ✦ OBRANO ✦ CODING ✦",
+    "items": {
+      "frontend_development": {
+        "title": "Frontend Development",
+        "alt": "Frontend Development illustration"
+      },
+      "react_development": {
+        "title": "React Development",
+        "alt": "React Development illustration"
+      },
+      "ui_ux_implementation": {
+        "title": "UI / UX Implementation",
+        "alt": "UI/UX Implementation illustration"
+      },
+      "responsive_design": {
+        "title": "Responsive Design",
+        "alt": "Responsive Design illustration"
+      },
+      "performance_optimization": {
+        "title": "Performance Optimization",
+        "alt": "Performance Optimization illustration"
+      },
+      "api_integration": {
+        "title": "API Integration",
+        "alt": "API Integration illustration"
+      },
+      "website_maintenance": {
+        "title": "Website Maintenance",
+        "alt": "Website Maintenance illustration"
+      },
+      "technical_consulting": {
+        "title": "Technical Consulting",
+        "alt": "Technical Consulting illustration"
+      }
+    }
+  },
+  "projectsPage": {
+    "obrano": { "title": "OBRANO" },
+    "barber": { "title": "Barber booking website" },
+    "express": { "title": "Logistic company platform" },
+    "ozak": { "title": "OZAK" },
+    "company": { "title": "Company full website" },
+    "english_test": { "title": "Test for English learners" },
+    "vypex": { "title": "Vypex landing page" },
+    "coffee_delivery": { "title": "Coffee Delivery" },
+    "uplift_design": { "title": "Uplift new design" },
+    "telegram_ad_bot": { "title": "Telegram ad link bot" },
+    "ecommerce_landing": { "title": "E-commerce landing page" },
+    "food_delivery": { "title": "Food delivery example" },
+    "washcam": { "title": "WashCam car site example" },
+    "mini_blog": { "title": "Random blog news website" },
+    "html_css_test": { "title": "Test for developer html and css questions" },
+    "web_dev_test": { "title": "Test for web developer html and css questions" }
+  },
+
+  "view_project": "View Project",
+  "category": {
+    "Web": "Web",
+    "Figma": "Figma",
+    "Web,Platform": "Web & Platform"
+  },
+  "featured_projects": {
+    "title": "Featured Projects",
+    "subtitle": "Web & Mobile — Real projects with real impact"
+  },
+  "testimonials_section": {
+    "title": "From Code to Career",
+    "subtitle": "What developers say about learning and building with me"
+  },
+  "testimonials": {
+    "sofia": {
+      "title": "Sofia",
+      "position": "CEO of Web Solutions",
+      "description": "A really good job, all aspects of the project were followed step by step and with good results."
+    },
+    "shavkatof_husniddin": {
+      "title": "Shavkatof Husniddin",
+      "description": "Innovative, creative, and excellent service in web development. Thank you!",
+      "position": "Customer"
+    },
+    "eldor_dustov": {
+      "title": "Eldor Dustov",
+      "description": "Outstanding frontend development with great attention to detail. Highly recommended!",
+      "position": "Employee"
+    },
+    "tulaganov_fathulla": {
+      "title": "Tulaganov Fathulla",
+      "description": "Outstanding frontend development with great attention to detail. Highly recommended!",
+      "position": "Freelancer"
+    },
+    "rustamov_javohir": {
+      "title": "Rustamov Javohir",
+      "description": "Exceptional frontend skills, delivering a visually stunning and highly functional website. Truly exceeded all expectations!",
+      "position": "Customer"
+    },
+    "jony1": {
+      "title": "Jony",
+      "description": "Impressive creativity and technical expertise in frontend development, delivering a seamless user experience. Highly satisfied!",
+      "position": "Web Developer"
+    },
+    "sarah": {
+      "title": "Sarah",
+      "description": "Jony delivers high-quality web solutions with creativity and precision. A reliable and talented freelancer!",
+      "position": "Blogger"
+    },
+    "jony2": {
+      "title": "Jony",
+      "description": "Working with Jony was a pleasure; his professionalism and dedication impressed me, consistently delivering high-quality results!",
+      "position": "Designer"
+    },
+    "mechail": {
+      "title": "Mechail",
+      "description": "Jony is a true professional; he delivered outstanding results that left me very impressed!",
+      "position": "Customer"
+    },
+    "durdona_ikromova": {
+      "title": "Durdona Ikromova",
+      "description": "Working with Jony was a pleasure. He is professional and creative, always offering solutions that perfectly match the client's needs.",
+      "position": "Customer"
+    },
+    "earl": {
+      "title": "Earl",
+      "description": "Jony's approach is always modern and innovative. He knows how to quickly solve even the most complex issues. Highly recommended!",
+      "position": "Customer"
+    },
+    "dilshoda": {
+      "title": "Dilshoda",
+      "description": "Timely execution and high-quality work. Jony's expertise and consistency are exceptional.",
+      "position": "Project Manager"
+    },
+    "abduvali_kozimov": {
+      "title": "Abduvali Kozimov",
+      "description": "I really appreciate his approach to creating and utilizing new ideas. Jony is always creative and effective in his work",
+      "position": "Customer"
+    },
+    "davron_hojiqurbonov": {
+      "title": "Davron Hojiqurbonov",
+      "description": "Collaborating with Jony is always smooth. His working style is clear and efficient, ensuring that projects are completed successfully.",
+      "position": "Customer"
+    },
+    "yaxshiboyeva_maxliyo": {
+      "title": "Yaxshiboyeva Maxliyo",
+      "description": "Amazing service! Jony transformed our ideas into a stunning website. Thank you!",
+      "position": "Company Owner"
+    },
+    "shodmonov_jonibek": {
+      "title": "Shodmonov Jonibek",
+      "description": "Excellent work! Jony's expertise and dedication truly stand out. Thank you!",
+      "position": "Customer"
+    },
+    "bozorova_gulnora": {
+      "title": "Bozorova Gulnora",
+      "description": "Jony did an exceptional job — professional, dedicated, and truly a pleasure to work with!",
+      "position": "Marketing Manager"
+    },
+    "dmitriy_sergeevich": {
+      "title": "Dmitriy Sergeevich",
+      "description": "Ogabek is an excellent frontend developer. The work was done quickly and with high quality. I recommend!",
+      "position": "Fullstack Developer"
+    }
+  },
+  "achievements_section": {
+    "title": "Built by Code",
+    "subtitle": "Projects, experience, and growth as a developer"
+  },
+  "achievements": {
+    "hover_preview": "Achievement Preview",
+    "react_state_events": "React state and events",
+    "react_data_properties": "Working with data and properties in React components",
+    "get_started_react": "Get started with React",
+    "web_accessibility_basics": "Learn the basics of web accessibility",
+    "vs_code_web_dev": "Get started with web development using Visual Studio Code",
+    "first_react_apps": "Creating your first web apps with React",
+    "monday_academy": "Monday Academy Certificate",
+    "ms365_copilot_intro": "Introduction to Microsoft 365 Copilot"
+  },
+  "contactPage": {
+    "title": "Let’s Build Something Together",
+    "subtitle": "Have a project or idea? Let’s talk and make it real.",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "message": "About the Project",
+    "suggestion": "Suggestion (optional)",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "sendingDesc": "Your information is being sent, please wait a moment",
+    "success": "Success!",
+    "successDesc": "Your message has been sent to Telegram.",
+    "error": "Error",
+    "errorDesc": "There was a problem sending the message. Please try again."
+  },
+  "footer": {
+    "tagline": "Where ideas become scalable digital products.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect",
+    "links": {
+      "projects": "Projects",
+      "achievements": "Achievements",
+      "about": "About me",
+      "contact": "Contact"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "telegram": "Telegram",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "backToTop": "Back to top",
+    "top": "Top",
+    "copyright": "All rights reserved."
+  }
+}

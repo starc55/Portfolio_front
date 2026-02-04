@@ -1,48 +1,49 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
-import { Pagination } from "antd";
-import "./Page.css";
-import "antd/dist/reset.css";
+import { motion } from "framer-motion";
+import "styles/Page.css";
+import SectionTitle from "components/ui/SectionTitle";
+import { useTranslation } from "react-i18next";
 
 const items = [
   {
-    text: "React state and events",
-    image: require("../imgs/1.webp"),
+    textKey: "achievements.react_state_events",
+    image: require("assets/imgs/1.webp"),
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/DC43U48J?sharingId=F3BA35B3751C3983",
   },
   {
-    text: "Working with data and properties in React components",
-    image: require("../imgs/2.webp"),
+    textKey: "achievements.react_data_properties",
+    image: require("assets/imgs/2.webp"),
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/YQN4P9PR?sharingId=F3BA35B3751C3983",
   },
   {
-    text: "Get started with React",
-    image: require("../imgs/3.webp"),
+    textKey: "achievements.get_started_react",
+    image: require("assets/imgs/3.webp"),
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/J9KH3Y8T?sharingId=F3BA35B3751C3983",
   },
   {
-    text: "Learn the basics of web accessibility",
-    image: require("../imgs/4.webp"),
+    textKey: "achievements.web_accessibility_basics",
+    image: require("assets/imgs/4.webp"),
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/B6PUGKCD?sharingId=F3BA35B3751C3983",
   },
   {
-    text: "Get started with web development using Visual Studio Code",
-    image: require("../imgs/5.webp"),
+    textKey: "achievements.vs_code_web_dev",
+    image: require("assets/imgs/5.webp"),
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/4LQC57HK?sharingId=F3BA35B3751C3983",
   },
   {
-    text: "Creating your first web apps with React",
-    image: require("../imgs/6.webp"),
+    textKey: "achievements.first_react_apps",
+    image: require("assets/imgs/6.webp"),
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/2BATJALV?sharingId=F3BA35B3751C3983",
   },
   {
-    text: "Monday Academy Certificate",
-    image: require("../imgs/achieve.webp"),
+    textKey: "achievements.monday_academy",
+    image: require("assets/imgs/achieve.webp"),
     link: "",
   },
   {
-    text: "Introduction to Microsoft 365 Copilot",
-    image: require("../imgs/7.webp"),
+    textKey: "achievements.ms365_copilot_intro",
+    image: require("assets/imgs/7.webp"),
     link: "https://learn.microsoft.com/api/achievements/share/en-us/OrziyevOgabek-6974/CFLEGBH9?sharingId=F3BA35B3751C3983",
   },
 ];
@@ -50,16 +51,21 @@ const items = [
 const pageSize = 4;
 
 export default function HoverImageEffect() {
+  const { t } = useTranslation();
   const imageRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsRef = useRef([]);
 
-  // Initial image state
+  const totalPages = Math.ceil(items.length / pageSize);
+  const paginatedItems = items.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
   useEffect(() => {
     gsap.set(imageRef.current, { autoAlpha: 0, scale: 0.8 });
   }, []);
 
-  // Intersection Observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -86,9 +92,8 @@ export default function HoverImageEffect() {
     });
 
     return () => observer.disconnect();
-  }, [currentPage]); // Page o‘zgarganda qayta kuzatadi
+  }, [currentPage]);
 
-  // Event Handlers optimized with useCallback
   const handleMouseEnter = useCallback((image) => {
     gsap.to(imageRef.current, {
       autoAlpha: 1,
@@ -118,29 +123,22 @@ export default function HoverImageEffect() {
     });
   }, []);
 
-  const handlePageChange = (page) => setCurrentPage(page);
-
   const handleClick = (link) => {
     if (link) {
       window.open(link, "_blank", "noopener,noreferrer");
     }
   };
 
-  const paginatedItems = items.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize
-  );
-
   return (
     <div className="achievement-container" id="achievements">
-      <div className="achievements_header">
-        <p>Achievements</p>
-        <span className="achievements_sub">My achievements</span>
-      </div>
+      <SectionTitle
+        title={t("achievements_section.title")}
+        subtitle={t("achievements_section.subtitle")}
+      />
 
       {paginatedItems.map((item, index) => (
         <div
-          key={`${currentPage}-${index}`} // unique key
+          key={`${currentPage}-${index}`}
           className="hover-item"
           ref={(el) => (itemsRef.current[index] = el)}
           onMouseEnter={() => handleMouseEnter(item.image)}
@@ -148,20 +146,38 @@ export default function HoverImageEffect() {
           onMouseMove={handleMouseMove}
           onClick={() => handleClick(item.link)}
         >
-          {item.text}
+          {t(item.textKey)}
           <span className="line"></span>
         </div>
       ))}
 
-      <Pagination
-        current={currentPage}
-        pageSize={pageSize}
-        total={items.length}
-        onChange={handlePageChange}
-        className="project_pagination achievements_pagination"
-      />
+      {totalPages > 1 && (
+        <div className="testimonial__pagination">
+          {Array.from({ length: totalPages }, (_, i) => {
+            const pageNum = i + 1;
+            return (
+              <motion.button
+                key={pageNum}
+                className={`pagination__button ${
+                  currentPage === pageNum ? "active" : ""
+                }`}
+                onClick={() => setCurrentPage(pageNum)}
+                whileHover={{ scale: 1.22 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                {pageNum}
+              </motion.button>
+            );
+          })}
+        </div>
+      )}
 
-      <img ref={imageRef} className="hover-image" alt="hover preview" />
+      <img
+        ref={imageRef}
+        className="hover-image"
+        alt={t("achievements.hover_preview")}
+      />
     </div>
   );
 }

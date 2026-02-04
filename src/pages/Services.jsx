@@ -1,172 +1,100 @@
-import React, { useState } from "react";
-import { MdWeb } from "react-icons/md";
-import { TfiVideoClapper } from "react-icons/tfi";
-import { PiNetworkLight } from "react-icons/pi";
-import { Modal } from "antd";
-import "./Page.css";
-import CurvedLoop from "../components/CurvedLoop";
+import React from "react";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import SectionTitle from "components/ui/SectionTitle";
+import CurvedLoop from "../components/sections/CurvedLoop";
 
-const Services = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({
-    title: "",
-    description: "",
-    points: [],
-  });
+import comp from "assets/icon/comp.png";
+import comp2 from "assets/icon/comp2.png";
+import comp3 from "assets/icon/comp3.png";
+import comp4 from "assets/icon/comp4.png";
+import computer from "assets/icon/computer.png";
+import front from "assets/icon/front.png";
+import site from "assets/icon/site.png";
+import web from "assets/icon/web.png";
 
-  const showModal = (content) => {
-    setModalContent(content);
-    document.body.classList.add("modal-open");
-    setModalOpen(true);
-  };
+const services = [
+  { image: comp, key: "frontend_development" },
+  { image: comp2, key: "react_development" },
+  { image: comp3, key: "ui_ux_implementation" },
+  { image: comp4, key: "responsive_design" },
+  { image: computer, key: "performance_optimization" },
+  { image: front, key: "api_integration" },
+  { image: site, key: "website_maintenance" },
+  { image: web, key: "technical_consulting" },
+];
 
-  const handleOk = () => {
-    document.body.classList.remove("modal-open");
-    setModalOpen(false);
-  };
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12 },
+  },
+};
 
-  const handleCancel = () => {
-    document.body.classList.remove("modal-open");
-    setModalOpen(false);
-  };
+const itemVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.92 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  },
+};
+
+export default function Services() {
+  const { t } = useTranslation();
 
   return (
     <div id="service">
       <div className="services_header">
-        <div className="service_header-text">
-          <p className="service-text">Services</p>
-          <span className="service_sub">What I offer</span>
-        </div>
-        <div className="service_card">
-          <div className="parent">
-            <div className="card3">
-              <div className="content-box">
-                <span className="service_icon">
-                  <MdWeb />
-                </span>
-                <br />
-                <span className="card-title">Frontend</span>
-                <br />
-                <span
-                  className="see-more"
-                  onClick={() =>
-                    showModal({
-                      title: "Frontend Development",
-                      description:
-                        "Services with more than 3+ years of experience. Providing quality work to clients and companies.",
-                      points: [
-                        "I develop the user interface.",
-                        "Web page development.",
-                        "I create UI element interactions.",
-                        "I position your company brand.",
-                        "Design and mockups of products for companies.",
-                        "Creating a responsive design.",
-                        "Creating telegram web applications & Bots",
-                        "Creating web & mobile & desktop applications.",
-                        "Creating web tools.",
-                        "Creating & manage google extensions."
-                      ],
-                    })
-                  }
-                >
-                  See More...
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="parent">
-            <div className="card3">
-              <div className="content-box">
-                <span className="service_icon">
-                  <TfiVideoClapper />
-                </span>
-                <br />
-                <span className="card-title">Web Designing</span>
-                <br />
-                <span
-                  className="see-more"
-                  onClick={() =>
-                    showModal({
-                      title: "Web Designing",
-                      description: "2+ years experience with web designing.",
-                      points: [
-                        "Ability to work with Figma",
-                        "Designing web pages",
-                        "Creating mockups",
-                        "Creating logos",
-                        "Creating banners",
-                        "Creating business cards",
-                        "Creating posters",
-                      ],
-                    })
-                  }
-                >
-                  See More...
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="parent">
-            <div className="card3">
-              <div className="content-box">
-                <span className="service_icon">
-                  <PiNetworkLight />
-                </span>
-                <br />
-                <span className="card-title">Other</span>
-                <br />
-                <span
-                  className="see-more"
-                  onClick={() =>
-                    showModal({
-                      title: "Other Services",
-                      description: "I can do a lot more computer work!",
-                      points: [
-                        "Preparing a wonderful and attractive presentation",
-                        "Ability to work with Canva",
-                        "Lots of computer work",
-                        "Word, Excel, Power Point",
-                        "Computer tutoring",
-                        "English tutoring",
-                        "Video editing with Capcut",
-                        "And many more...",
-                      ],
-                    })
-                  }
-                >
-                  See More...
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <CurvedLoop
-          marqueeText="WITH ✦ OBRANO ✦ ALWAYS ✦ BE ✦ CREATIVE ✦"
-          speed={3}
-          curveAmount={500}
-          direction="right"
-          interactive={true}
-          className="custom-text-style"
+        <SectionTitle
+          title={t("services.title")}
+          subtitle={t("services.subtitle")}
         />
       </div>
 
-      <Modal
-        title={modalContent.title}
-        open={modalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        centered
-        footer={null}
+      <motion.div
+        className="services-hero-grid-container"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
       >
-        <p>{modalContent.description}</p>
-        <ul>
-          {modalContent.points.map((point, index) => (
-            <li key={index}>{point}</li>
+        <div className="services-icon-grid">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className="service-icon-item"
+              variants={itemVariants}
+            >
+              <div className="image-wrapper">
+                <img
+                  src={service.image}
+                  alt={t(`services.items.${service.key}.alt`)}
+                  className="service-image"
+                  loading="lazy"
+                />
+              </div>
+              <span className="service-label">
+                {t(`services.items.${service.key}.title`)}
+              </span>
+            </motion.div>
           ))}
-        </ul>
-      </Modal>
+        </div>
+      </motion.div>
+
+      <CurvedLoop
+        marqueeText={t("services.marquee")}
+        speed={3}
+        curveAmount={500}
+        direction="right"
+        interactive={true}
+        className="custom-text-style"
+      />
     </div>
   );
-};
-
-export default Services;
+}

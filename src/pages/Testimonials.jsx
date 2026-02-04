@@ -1,16 +1,18 @@
-import React from "react";
-import "./Page.css";
+import React, { useState } from "react";
+import "../styles/Page.css";
 import { Data } from "../data/testimonialsData";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, EffectCreative } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import SectionTitle from "components/ui/SectionTitle";
+import { useTranslation } from "react-i18next";
 
 const STAR_STYLE = { fontSize: "18px" };
 
+const ITEMS_PER_PAGE = 7;
+
 const Testimonials = () => {
-  // ⭐ Star rendering helper
+  const { t } = useTranslation();
+  const [currentPage, setCurrentPage] = useState(1);
+
   const renderStars = (rating) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -19,96 +21,156 @@ const Testimonials = () => {
     for (let i = 1; i <= 5; i++) {
       if (i <= fullStars) {
         stars.push(
-          <span key={i} style={{ ...STAR_STYLE, color: "#ffc107" }}>
+          <motion.span
+            key={i}
+            style={{ ...STAR_STYLE, color: "#c3e41d" }}
+            whileHover={{ scale: 1.3, rotate: 10 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             ★
-          </span>
+          </motion.span>
         );
       } else if (i === fullStars + 1 && hasHalfStar) {
         stars.push(
-          <span key={i} style={{ ...STAR_STYLE, color: "#ffc107" }}>
+          <motion.span
+            key={i}
+            style={{ ...STAR_STYLE, color: "#c3e41d" }}
+            whileHover={{ scale: 1.3, rotate: 10 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             ☆
-          </span>
+          </motion.span>
         );
       } else {
         stars.push(
-          <span key={i} style={{ ...STAR_STYLE, color: "#e4e5e9" }}>
+          <motion.span
+            key={i}
+            style={{ ...STAR_STYLE, color: "#e4e5e9" }}
+            whileHover={{ scale: 1.3, rotate: 10 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             ★
-          </span>
+          </motion.span>
         );
       }
     }
     return stars;
   };
 
+  const totalPages = Math.ceil(Data.length / ITEMS_PER_PAGE);
+  const paginatedData = Data.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const handlePageChange = (page) => setCurrentPage(page);
+
   return (
     <section className="testimonial section" id="testimonials">
-      <header className="testimonial_header">
-        <p>Testimonials</p>
-        <span className="testimonial_sub">My clients saying</span>
-      </header>
+      <SectionTitle
+        title={t("testimonials_section.title")}
+        subtitle={t("testimonials_section.subtitle")}
+      />
 
-      <Swiper
-        className="testimonial__container"
-        effect="creative"
-        creativeEffect={{
-          prev: {
-            shadow: true,
-            translate: ["-120%", 0, -500],
-            rotate: [0, 0, -15],
-          },
-          next: {
-            translate: ["120%", 0, -500],
-            rotate: [0, 0, 15],
-          },
-        }}
-        loop
-        grabCursor
-        speed={1000}
-        slidesPerView={1}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        pagination={{ clickable: true }}
-        modules={[Pagination, Autoplay, EffectCreative]}
-      >
-        {Data.map(({ id, image, title, description, rating, position }) => (
-          <SwiperSlide className="testimonial__card" key={id}>
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
-            >
-              <div className="testi_title">
-                <motion.img
-                  src={image}
-                  alt={title}
-                  className="testimonial__img"
-                  whileHover={{ scale: 1.1, rotate: 2 }}
-                  transition={{ type: "spring", stiffness: 200 }}
-                />
-                <div className="testimonial__info">
-                  <h3 className="testimonial__name">{title}</h3>
-                  <hr />
-                  <h6 className="testimonial__position">{position}</h6>
-                </div>
-              </div>
-
-              <motion.p
-                className="testimonial__description"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
+      <div className="testimonial__grid">
+        <AnimatePresence>
+          {paginatedData.map(
+            ({
+              id,
+              image,
+              titleKey,
+              descriptionKey,
+              rating,
+              positionKey,
+              audioUrl,
+              videoUrl,
+            }) => (
+              <motion.div
+                key={id}
+                className="testimonial__card"
+                initial={{ opacity: 0, scale: 0.92, y: 40 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: -40 }}
+                whileHover={{
+                  scale: 1.04,
+                  boxShadow: "0 16px 40px rgba(0, 0, 0, 0.3)",
+                  transition: { duration: 0.3 },
+                }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                {description}
-              </motion.p>
+                <div className="testi_title">
+                  <motion.img
+                    src={image}
+                    alt={t(titleKey)}
+                    className="testimonial__img"
+                    whileHover={{ scale: 1.15, rotate: 8 }}
+                    transition={{ type: "spring", stiffness: 180 }}
+                  />
+                  <div className="testimonial__info">
+                    <h3 className="testimonial__name">{t(titleKey)}</h3>
+                    <hr className="testimonial__hr" />
+                    <h6 className="testimonial__position">{t(positionKey)}</h6>
+                  </div>
+                </div>
 
-              <div className="ratingStar">{renderStars(rating)}</div>
-            </motion.div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+                {videoUrl ? (
+                  <motion.video
+                    src={videoUrl}
+                    controls
+                    className="testimonial__media"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.25 }}
+                  />
+                ) : audioUrl ? (
+                  <motion.audio
+                    src={audioUrl}
+                    controls
+                    className="testimonial__media"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.25 }}
+                  />
+                ) : (
+                  <motion.p
+                    className="testimonial__description"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.25 }}
+                  >
+                    {t(descriptionKey)}
+                  </motion.p>
+                )}
+
+                <div className="ratingStar">{renderStars(rating)}</div>
+              </motion.div>
+            )
+          )}
+        </AnimatePresence>
+      </div>
+
+      {totalPages > 1 && (
+        <div className="testimonial__pagination">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <motion.button
+              key={i + 1}
+              className={`pagination__button ${
+                currentPage === i + 1 ? "active" : ""
+              }`}
+              onClick={() => handlePageChange(i + 1)}
+              whileHover={{
+                scale: 1.25,
+                backgroundColor: "#f0f0f0",
+                color: "#1f1f1f",
+              }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            >
+              {i + 1}
+            </motion.button>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

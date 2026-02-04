@@ -1,0 +1,36 @@
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    z-index: 100;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.logo-img {
+    height: 55px;
+    width: auto;
+}
+
+.loading-text {
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10%;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-container {
+        padding: 1rem 2rem;
+    }
+
+    .loading-text {
+        font-size: 1.2rem;
+    }
+
+}

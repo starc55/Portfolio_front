@@ -1,9 +1,7 @@
-/*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3rem;
 
   /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
   --hue: 0;
   --sat: 0%;
   --title-color: hsl(var(--hue), var(--sat), 20%);
@@ -12,30 +10,28 @@
   --body-color: hsl(var(--hue), var(--sat), 98%);
   --container-color: #fff;
 
-  /* Global scroll style */
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: transparent;
     border-radius: 15px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #c3e41d;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #454545;
+    background: #a2c015;
   }
 
   /*========== Font and typography ==========*/
-  --body-font: "Poppins",
-  sans-serif;
+  --body-font: "Source Code Pro",
+  monospace;
 
-  /*.5rem = 8px | 1rem = 16px ...*/
   --big-font-size: 3.5rem;
   --h1-font-size: 2.25rem;
   --h2-font-size: 1.5rem;
@@ -51,7 +47,6 @@
   --font-semi-bold: 600;
 
   /*========== Margenes Bottom ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
   --mb-0-25: 0.25rem;
   --mb-0-5: 0.5rem;
   --mb-0-75: 0.75rem;
@@ -68,7 +63,6 @@
 
 }
 
-/* Responsive typography */
 @media screen and (max-width: 992px) {
   :root {
     --big-font-size: 2.75rem;
@@ -81,7 +75,6 @@
   }
 }
 
-/*=============== BASE ===============*/
 * {
   margin: 0;
   padding: 0;
@@ -101,7 +94,7 @@ textarea {
 }
 
 body {
-  background-color: var(--body-color);
+  background: #000;
   color: var(--text-color);
 }
 
@@ -131,109 +124,6 @@ img {
   height: auto;
 }
 
-/*=============== REUSABLE CSS CLASSES ===============*/
-.section {
-  padding: 6rem 0 2rem;
-}
-
-.section__title {
-  font-size: var(--h1-font-size);
-  color: var(--title-color);
-}
-
-.section__subtitle {
-  display: block;
-  font-size: var(--small-font-size);
-  margin-bottom: 4rem;
-}
-
-.section__title,
-.section__subtitle {
-  text-align: center;
-}
-
-/*=============== LAYOUT ===============*/
-.container {
-  max-width: 968px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-/*=============== BUTTONS ===============*/
-.button {
-  display: inline-block;
-  background-color: var(--title-color);
-  color: var(--container-color);
-  padding: 1.25rem 2rem;
-  border-radius: 1rem;
-  font-weight: var(--font-medium);
-}
-
-.button:hover {
-  background-color: var(--title-color-dark);
-}
-
-.button__icon {
-  margin-left: var(--mb-0-5);
-}
-
-.button--flex {
-  display: inline-flex;
-  align-items: center;
-}
-
-/*=============== BREAKPOINTS ===============*/
-/* For large devices */
-@media screen and (max-width: 992px) {
-  .container {
-    margin-left: var(--mb-1-5);
-    margin-right: var(--mb-1-5);
-  }
-
-  .button {
-    padding: 1rem 1.75rem;
-  }
-
-  .button__icon {
-    width: 22px;
-    height: 22px;
-  }
-}
-
-/* For medium devices */
-@media screen and (max-width: 768px) {
-  body {
-    margin: 0 0 var(--header-height) 0;
-  }
-
-  .section {
-    padding: 2rem 0 4rem;
-  }
-
-  .section__subtitle {
-    margin-bottom: var(--mb-3);
-  }
-}
-
-@media screen and (max-width: 576px) {}
-
-/* For small devices */
-@media screen and (max-width: 350px) {
-  :root {
-    --big-font-size: 2.25rem;
-  }
-
-  .container {
-    margin-left: var(--mb-1);
-    margin-right: var(--mb-1);
-  }
-}
-
 /* =============
 Loading style
 =============== */
@@ -251,7 +141,7 @@ Loading style
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #030417, #050520);
+  background: linear-gradient(135deg, #000000, #090909);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -263,7 +153,7 @@ Loading style
 .jelly {
   --uib-size: 40px;
   --uib-speed: .8s;
-  --uib-color: #ffffff;
+  --uib-color: #c3e41d;
   position: relative;
   height: calc(var(--uib-size) / 2);
   width: var(--uib-size);
@@ -339,5 +229,17 @@ Loading style
 
   50% {
     transform: scale(0.65) translateX(75%);
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  tap-highlight-color: transparent !important;
+}
+
+@media (pointer: coarse) {
+  * {
+    -webkit-tap-highlight-color: transparent !important;
+    tap-highlight-color: transparent !important;
   }
 }

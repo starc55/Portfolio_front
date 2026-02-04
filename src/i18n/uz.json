@@ -1,0 +1,254 @@
+{
+  "home": "Bosh sahifa",
+  "about": "Haqida",
+  "projects": "Loyihalar",
+  "contact": "Aloqa",
+  "codes": "Kodlar",
+  "tagline": "Kod orqali insoniy tajribalarni loyihalash.",
+  "scroll_down": "Pastga suring",
+  "building_smart": "Aqlli interfeyslar yaratish",
+  "react_crm": "React & React Native | CRM va Admin panellar",
+  "aboutPage": {
+    "title": "Aqlli interfeyslar yaratish",
+    "subtitle": "React & React Native | CRM va Admin panellar"
+  },
+  "skills": {
+    "title": "Ko‘nikmalar",
+    "html5": "HTML5",
+    "css3": "CSS3",
+    "javascript": "JavaScript",
+    "react": "React",
+    "react_native": "React Native",
+    "git": "Git",
+    "gsap": "GSAP",
+    "web_developing": "Veb dasturlash",
+    "capcut": "CapCut",
+    "canva": "Canva",
+    "figma": "Figma",
+    "framer_motion": "Framer Motion"
+  },
+  "about_me": {
+    "title": "Men haqimda",
+    "description": "Frontend dasturchi, kengaytiriladigan veb va mobil ilovalarni, shu jumladan CRM tizimlari va Admin panellarini yaratishga ixtisoslashgan. React.js va React Native bilan tajribaga ega, foydalanuvchilarga qulay, xavfsiz va toza arxitekturaga ega responsiv, yuqori samarali interfeyslar yarataman. Murakkab biznes talablarini intuitiv raqamli yechimlarga aylantirishda tajribaga egaman."
+  },
+  "resume": {
+    "button": "Rezyumeni ko‘rish"
+  },
+  "services": {
+    "title": "Men eng yaxshi qiladigan ishlar",
+    "subtitle": "Toza UI dan kuchli funksionallikka qadar — men haqiqatda ishlaydigan yechimlarni yarataman.",
+    "marquee": "HAR DOIM ✦ IJODIY ✦ BO‘LING ✦ OBRANO ✦ CODING BILAN ✦",
+    "items": {
+      "frontend_development": {
+        "title": "Frontend ishlab chiqish",
+        "alt": "Frontend ishlab chiqish illyustratsiyasi"
+      },
+      "react_development": {
+        "title": "React ishlab chiqish",
+        "alt": "React ishlab chiqish illyustratsiyasi"
+      },
+      "ui_ux_implementation": {
+        "title": "UI / UX amalga oshirish",
+        "alt": "UI/UX amalga oshirish illyustratsiyasi"
+      },
+      "responsive_design": {
+        "title": "Responsiv dizayn",
+        "alt": "Responsiv dizayn illyustratsiyasi"
+      },
+      "performance_optimization": {
+        "title": "Ishlashni optimallashtirish",
+        "alt": "Ishlashni optimallashtirish illyustratsiyasi"
+      },
+      "api_integration": {
+        "title": "API integratsiyasi",
+        "alt": "API integratsiyasi illyustratsiyasi"
+      },
+      "website_maintenance": {
+        "title": "Veb-saytni qo‘llab-quvvatlash",
+        "alt": "Veb-saytni qo‘llab-quvvatlash illyustratsiyasi"
+      },
+      "technical_consulting": {
+        "title": "Texnik maslahat",
+        "alt": "Texnik maslahat illyustratsiyasi"
+      }
+    }
+  },
+  "projectsPage": {
+    "obrano": { "title": "OBRANO" },
+    "barber": { "title": "Barber bron qilish veb-sayti" },
+    "express": { "title": "Logistika kompaniyasi platformasi" },
+    "ozak": { "title": "OZAK" },
+    "company": { "title": "Kompaniya to‘liq veb-sayti" },
+    "english_test": { "title": "Ingliz tili o‘rganuvchilar uchun test" },
+    "vypex": { "title": "Vypex landing sahifasi" },
+    "coffee_delivery": { "title": "Kofe yetkazib berish" },
+    "uplift_design": { "title": "Uplift yangi dizayn" },
+    "telegram_ad_bot": { "title": "Telegram reklama havola bot" },
+    "ecommerce_landing": { "title": "E-tijorat landing sahifasi" },
+    "food_delivery": { "title": "Ovqat yetkazib berish namunasi" },
+    "washcam": { "title": "WashCam avtomobil sayti namunasi" },
+    "mini_blog": { "title": "Tasodifiy blog yangiliklar sayti" },
+    "html_css_test": {
+      "title": "HTML va CSS savollari uchun test (dasturchilar)"
+    },
+    "web_dev_test": { "title": "Veb-dasturchilar uchun HTML va CSS testi" }
+  },
+
+  "view_project": "Loyihani ko‘rish",
+  "category": {
+    "Web": "Veb",
+    "Figma": "Figma",
+    "Web,Platform": "Veb & Platforma"
+  },
+  "title": "Tanlangan loyihalar",
+  "subtitle": "Veb va mobil — Haqiqiy ta'sirga ega real loyihalar",
+  "testimonials_section": {
+    "title": "Kodlashdan Kasbga",
+    "subtitle": "Dasturchilar men bilan o'rganish va qurish haqida nima deyishadi"
+  },
+  "testimonials": {
+    "sofia": {
+      "title": "Sofia",
+      "position": "Web Solutions kompaniyasi rahbari",
+      "description": "Haqiqatan ham yaxshi ish, loyiha barcha jihatlari bosqichma-bosqich va yaxshi natijalar bilan amalga oshirildi."
+    },
+    "shavkatof_husniddin": {
+      "title": "Shavkatof Husniddin",
+      "description": "Innovatsion, ijodiy va veb-dasturlashda ajoyib xizmat. Rahmat!",
+      "position": "Mijoz"
+    },
+    "eldor_dustov": {
+      "title": "Eldor Dustov",
+      "description": "Ajoyib frontend dasturlash, tafsilotlarga katta e'tibor. Tavsiya etiladi!",
+      "position": "Xodim"
+    },
+    "tulaganov_fathulla": {
+      "title": "Tulaganov Fathulla",
+      "description": "Ajoyib frontend dasturlash, tafsilotlarga katta e'tibor. Tavsiya etiladi!",
+      "position": "Frilanser"
+    },
+    "rustamov_javohir": {
+      "title": "Rustamov Javohir",
+      "description": "Ajoyib frontend ko'nikmalar, vizual jihatdan ajoyib va yuqori funksional sayt yaratish. Haqiqatan ham barcha kutganlardan oshib ketdi!",
+      "position": "Mijoz"
+    },
+    "jony1": {
+      "title": "Jony",
+      "description": "Ajoyib ijodkorlik va texnik ekspertiza frontend dasturlashda, uzluksiz foydalanuvchi tajribasini ta'minlash. Yuqori darajada mamnun!",
+      "position": "Veb-dasturchi"
+    },
+    "sarah": {
+      "title": "Sarah",
+      "description": "Jony yuqori sifatli veb yechimlarini ijodkorlik va aniqlik bilan ta'minlaydi. Ishonchli va iqtidorli frilanser!",
+      "position": "Bloger"
+    },
+    "jony2": {
+      "title": "Jony",
+      "description": "Jony bilan ishlash zavq edi; uning professionalizmi va fidoyiligi meni hayratda qoldirdi, doim yuqori sifatli natijalarni ta'minlaydi!",
+      "position": "Dizayner"
+    },
+    "mechail": {
+      "title": "Mechail",
+      "description": "Jony haqiqiy professional; u ajoyib natijalarni taqdim etdi va meni juda hayratda qoldirdi!",
+      "position": "Mijoz"
+    },
+    "durdona_ikromova": {
+      "title": "Durdona Ikromova",
+      "description": "Jony bilan ishlash zavq edi. U professional va ijodiy, har doim mijoz ehtiyojlariga mos keladigan yechimlarni taklif qiladi.",
+      "position": "Mijoz"
+    },
+    "earl": {
+      "title": "Earl",
+      "description": "Jony yondashuvi har doim zamonaviy va innovatsion. U hatto eng murakkab masalalarni tez hal qilishni biladi. Tavsiya etiladi!",
+      "position": "Mijoz"
+    },
+    "dilshoda": {
+      "title": "Dilshoda",
+      "description": "Vaqtida bajarish va yuqori sifatli ish. Jony ekspertizasi va izchilligi ajoyib.",
+      "position": "Loyiha menejeri"
+    },
+    "abduvali_kozimov": {
+      "title": "Abduvali Kozimov",
+      "description": "Men uning yangi g'oyalar yaratish va ulardan foydalanish yondashuvini juda qadrlayman. Jony har doim ijodiy va samarali ishlaydi.",
+      "position": "Mijoz"
+    },
+    "davron_hojiqurbonov": {
+      "title": "Davron Hojiqurbonov",
+      "description": "Jony bilan hamkorlik har doim muammosiz. Uning ish uslubi aniq va samarali, loyihalarning muvaffaqiyatli yakunlanishini ta'minlaydi.",
+      "position": "Mijoz"
+    },
+    "yaxshiboyeva_maxliyo": {
+      "title": "Yaxshiboyeva Maxliyo",
+      "description": "Ajoyib xizmat! Jony bizning g'oyalarimizni ajoyib saytga aylantirdi. Rahmat!",
+      "position": "Kompaniya egasi"
+    },
+    "shodmonov_jonibek": {
+      "title": "Shodmonov Jonibek",
+      "description": "Ajoyib ish! Jony ekspertizasi va fidoyiligi haqiqatan ham ajralib turadi. Rahmat!",
+      "position": "Mijoz"
+    },
+    "bozorova_gulnora": {
+      "title": "Bozorova Gulnora",
+      "description": "Jony ajoyib ish qildi — professional, fidoyi va haqiqatan ham ishlash zavqi!",
+      "position": "Marketing menejeri"
+    },
+    "dmitriy_sergeevich": {
+      "title": "Dmitriy Sergeevich",
+      "description": "Ogabek ajoyib frontend dasturchi. Ish tez va sifatli bajarildi. Tavsiya etaman!",
+      "position": "Fullstack dasturchi"
+    }
+  },
+  "achievements_section": {
+    "title": "Kod orqali qurilgan",
+    "subtitle": "Loyihalar, tajriba va dasturchi sifatida o'sish"
+  },
+  "achievements": {
+    "hover_preview": "Sertifikat oldindan ko'rinishi",
+    "react_state_events": "React holati va hodisalari",
+    "react_data_properties": "React komponentlarida ma'lumotlar va xususiyatlar bilan ishlash",
+    "get_started_react": "React bilan boshlash",
+    "web_accessibility_basics": "Veb-saytlarning ochiqligi asoslari",
+    "vs_code_web_dev": "Visual Studio Code yordamida veb-dasturlashni boshlash",
+    "first_react_apps": "React bilan birinchi veb-ilovalarni yaratish",
+    "monday_academy": "Monday Academy Sertifikati",
+    "ms365_copilot_intro": "Microsoft 365 Copilot bilan tanishuv"
+  },
+  "contactPage": {
+    "title": "Keling, Birga Ishlaymiz",
+    "subtitle": "Loyiha yoki g'oyangiz bormi? Xabaringizni yuboring — tez orada bog'lanamiz!",
+    "firstName": "Ism",
+    "lastName": "Familiya",
+    "email": "Email",
+    "phone": "Telefon raqami",
+    "message": "Loyiha haqida",
+    "suggestion": "Taklif (ixtiyoriy)",
+    "submit": "Xabarni Yuborish",
+    "sending": "Yuborilmoqda...",
+    "success": "Muvaffaqiyat!",
+    "successDesc": "Xabar Telegramga yetib bordi.",
+    "error": "Xato",
+    "errorDesc": "Xabar yuborishda muammo. Qayta urinib ko'ring."
+  },
+  "footer": {
+    "tagline": "G'oyalar ko'lamli raqamli mahsulotlarga aylanishi mumkin bo'lgan joy.",
+    "quickLinks": "Tez Havolalar",
+    "connect": "Bog'lanish",
+    "links": {
+      "projects": "Loyihalar",
+      "achievements": "Yutuqlar",
+      "about": "Men haqimda",
+      "contact": "Bog'lanish"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "telegram": "Telegram",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    },
+    "backToTop": "Yuqoriga qaytish",
+    "top": "Yuqori",
+    "copyright": "Barcha huquqlar himoyalangan."
+  }
+}

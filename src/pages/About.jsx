@@ -1,27 +1,10 @@
 import React from "react";
-import "./Page.css";
-import LogoLoop from "../components/LogoLoop";
-import { PiFigmaLogoFill } from "react-icons/pi";
-import { FaReact } from "react-icons/fa6";
-import { BiLogoTypescript } from "react-icons/bi";
-import { FaJsSquare } from "react-icons/fa";
-import { MdCss } from "react-icons/md";
-import { SiCanva } from "react-icons/si";
-import logoWhite from "../imgs/logo_white.svg";
-import MagicBento from "../components/MagicBento";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import "styles/Page.css";
+import MagicBento from "components/sections/MagicBento";
+import SectionTitle from "components/ui/SectionTitle";
 
-const techLogos = [
-  { node: <FaReact aria-label="React" />, title: "React" },
-  { node: <PiFigmaLogoFill aria-label="Figma" />, title: "Figma" },
-  { node: <BiLogoTypescript aria-label="TypeScript" />, title: "TypeScript" },
-  { node: <MdCss aria-label="CSS3" />, title: "CSS3" },
-  { node: <FaJsSquare aria-label="JavaScript" />, title: "JS" },
-  { node: <SiCanva aria-label="Canva" />, title: "Canva" },
-  {
-    node: <img src={logoWhite} alt="OBRANO Coding Logo" className="logo-img" />,
-    title: "OBRANO Coding",
-  },
-];
 const magicBentoProps = {
   textAutoHide: true,
   enableStars: true,
@@ -32,37 +15,80 @@ const magicBentoProps = {
   clickEffect: true,
   spotlightRadius: 300,
   particleCount: 12,
-  glowColor: "132, 0, 255",
+  glowColor: "195, 228, 29",
 };
 
-const About = () => {
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.25,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const subtitleVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const bentoVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.9,
+      ease: "easeOut",
+      type: "spring",
+      stiffness: 85,
+      damping: 17,
+    },
+  },
+};
+
+export default function About() {
+  const { t } = useTranslation();
+
   return (
-    <div id="about" className="about">
-      <div>
-        <div className="logo-loop-container">
-          <LogoLoop
-            logos={techLogos}
-            speed={120}
-            direction="left"
-            logoHeight={48}
-            gap={70}
-            pauseOnHover
-            scaleOnHover
-            fadeOut
-            fadeOutColor="black"
-            ariaLabel="Technology partners"
-          />
-        </div>
+    <motion.div
+      id="about"
+      className="about"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+    >
+      <SectionTitle
+        title={
+          <motion.span variants={titleVariants}>{t("aboutPage.title")}</motion.span>
+        }
+        subtitle={
+          <motion.span variants={subtitleVariants}>
+            {t("aboutPage.subtitle")}
+          </motion.span>
+        }
+      />
 
-        <div className="header_about">
-          <p className="head_icon_">About</p>
-          <span className="sub_head">My introduction</span>
-        </div>
-
+      <motion.div variants={bentoVariants}>
         <MagicBento {...magicBentoProps} />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
-};
-
-export default About;
+}
