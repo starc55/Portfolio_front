@@ -12,7 +12,6 @@ import test3 from "assets/imgs/test3.png";
 import vypex from "assets/imgs/vypex.png";
 import ozak from "assets/imgs/ozak.png";
 import company from "assets/imgs/company.png";
-import express from "assets/imgs/express.png";
 import barber from "assets/imgs/barber.png";
 
 const works = [
@@ -29,13 +28,6 @@ const works = [
     titleKey: "projectsPage.barber.title",
     tags: ["React", "TypeScript", "CSS", "Vite", "Telegram Api"],
     link: "https://bymcutsp9rj.setmore.com/",
-  },
-  {
-    category: "Web",
-    img: express,
-    titleKey: "projectsPage.express.title",
-    tags: ["React", "TypeScript", "CSS", "Vite"],
-    link: "https://express-pi-two.vercel.app/",
   },
   {
     category: "Web",
