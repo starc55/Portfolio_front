@@ -89,6 +89,7 @@
     "food_delivery": { "title": "Food delivery example" },
     "washcam": { "title": "WashCam car site example" },
     "mini_blog": { "title": "Random blog news website" },
+    "tariff": { "title": "Rates page" },
     "html_css_test": { "title": "Test for developer html and css questions" },
     "web_dev_test": { "title": "Test for web developer html and css questions" }
   },

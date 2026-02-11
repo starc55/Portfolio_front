@@ -13,6 +13,7 @@ import vypex from "assets/imgs/vypex.png";
 import ozak from "assets/imgs/ozak.png";
 import company from "assets/imgs/company.png";
 import barber from "assets/imgs/barber.png";
+import tariff from "assets/imgs/tariff.png";
 
 const works = [
   {
@@ -28,6 +29,13 @@ const works = [
     titleKey: "projectsPage.barber.title",
     tags: ["React", "TypeScript", "CSS", "Vite", "Telegram Api"],
     link: "https://bymcutsp9rj.setmore.com/",
+  },
+  {
+    category: "Web",
+    img: tariff,
+    titleKey: "projectsPage.tariff.title",
+    tags: ["React", "TypeScript", "Next.js", "CSS", "Vite"],
+    link: "https://tariff-seven.vercel.app/",
   },
   {
     category: "Web",

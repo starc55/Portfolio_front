@@ -98,6 +98,7 @@
     "food_delivery": { "title": "Пример доставки еды" },
     "washcam": { "title": "Пример сайта WashCam для автомобилей" },
     "mini_blog": { "title": "Случайный новостной блог" },
+    "tariff": { "title": "Страница тарифов" },
     "html_css_test": { "title": "Тест по HTML и CSS для разработчиков" },
     "web_dev_test": { "title": "Тест по HTML и CSS для веб-разработчиков" }
   },

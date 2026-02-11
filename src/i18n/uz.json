@@ -91,6 +91,7 @@
     "html_css_test": {
       "title": "HTML va CSS savollari uchun test (dasturchilar)"
     },
+    "tariff": { "title": "Tariflar sahifasi" },
     "web_dev_test": { "title": "Veb-dasturchilar uchun HTML va CSS testi" }
   },
 
