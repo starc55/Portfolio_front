@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import BubbleMenu from "components/sections/BubbleMenu";
-import logo_white from "assets/imgs/logo-white.png";
+import logoRamadan from "assets/imgs/logo-ramadan.png";
 
 const languages = [
   { code: "uz", label: "Uz", full: "O‘zbekcha" },
@@ -17,7 +17,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isLangOpen, setIsLangOpen] = useState(false);
 
-  const currentLang = i18n.language ? i18n.language.split("-")[0] : "en";
+  const currentLang = i18n.language
+    ? i18n.language.split("-")[0]
+    : "en";
 
   const handleHome = () => {
     navigate("/");
@@ -122,7 +124,7 @@ const Navbar = () => {
         />
 
         <Link onClick={handleHome} className="logo">
-          <img src={logo_white} alt="Logo" className="logo-img" />
+          <img src={logoRamadan} alt="Logo" className="logo-img" />
         </Link>
 
         <div
@@ -134,6 +136,9 @@ const Navbar = () => {
             zIndex: 9999,
           }}
         >
+          {/* ================= Ramadan Update ================= */}
+
+          {/*
           <button
             type="button"
             onClick={(e) => {
@@ -156,6 +161,37 @@ const Navbar = () => {
           >
             {languages.find((l) => l.code === currentLang)?.label || "EN"}
           </button>
+          */}
+
+          {/* Ramadan Version */}
+          <motion.button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLangOpen((prev) => !prev);
+            }}
+            aria-expanded={isLangOpen}
+            whileHover={{
+              boxShadow: "0 0 18px rgba(212,175,55,0.6)",
+              borderColor: "#D4AF37",
+              scale: 1.06,
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            style={{
+              background: "transparent",
+              border: "1px solid rgba(212,175,55,0.3)",
+              color: "#ffffff",
+              fontWeight: 600,
+              fontSize: "1rem",
+              padding: "0.5rem 1rem",
+              borderRadius: "6px",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
+          >
+            {languages.find((l) => l.code === currentLang)?.label || "EN"}
+          </motion.button>
 
           <AnimatePresence>
             {isLangOpen && (
@@ -186,7 +222,9 @@ const Navbar = () => {
                     key={lang.code}
                     custom={index}
                     variants={itemVariants}
-                    whileHover={{ background: "rgba(255, 255, 255, 0.08)" }}
+                    whileHover={{
+                      background: "rgba(255, 255, 255, 0.08)",
+                    }}
                     style={{ margin: 0 }}
                   >
                     <button
@@ -201,7 +239,9 @@ const Navbar = () => {
                         background: "none",
                         border: "none",
                         color:
-                          currentLang === lang.code ? "#c3e41d" : "#ffffff",
+                          currentLang === lang.code
+                            ? "#c3e41d"
+                            : "#ffffff",
                         textAlign: "left",
                         cursor: "pointer",
                         fontSize: "0.95rem",

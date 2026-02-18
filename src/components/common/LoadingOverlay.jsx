@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
+import { FaRegMoon } from "react-icons/fa";
 
 const LoadingOverlay = () => {
   const [fadeOut, setFadeOut] = useState(false);
@@ -11,6 +12,10 @@ const LoadingOverlay = () => {
 
   return (
     <div className={`loading-wrapper ${fadeOut ? "fade-out" : ""}`}>
+
+      {/* ================= Ramadan Update ================= */}
+
+      {/*
       <div className="jelly" />
 
       <svg width="0" height="0" className="jelly-maker" aria-hidden="true">
@@ -35,9 +40,21 @@ const LoadingOverlay = () => {
           </filter>
         </defs>
       </svg>
+      */}
 
+      {/* Ramadan Moon Loader */}
+      <div className="ramadan-moon-loader">
+        <FaRegMoon />
+      </div>
+
+      {/*
       <h2 className="loading-text">
         You’re in the right place. Getting things ready…
+      </h2>
+      */}
+
+      <h2 className="loading-text ramadan-text">
+        Ramadan Kareem <FaRegMoon  style={{color: "#FFD700"}}/> Preparing something meaningful…
       </h2>
     </div>
   );
