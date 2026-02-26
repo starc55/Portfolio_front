@@ -100,7 +100,8 @@
     "mini_blog": { "title": "Случайный новостной блог" },
     "tariff": { "title": "Страница тарифов" },
     "html_css_test": { "title": "Тест по HTML и CSS для разработчиков" },
-    "web_dev_test": { "title": "Тест по HTML и CSS для веб-разработчиков" }
+    "web_dev_test": { "title": "Тест по HTML и CSS для веб-разработчиков" },
+    "school": { "title": "Школьная платформа" }
   },
   "testimonials_section": {
     "title": "От кода к карьере",

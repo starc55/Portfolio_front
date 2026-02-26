@@ -92,7 +92,8 @@
       "title": "HTML va CSS savollari uchun test (dasturchilar)"
     },
     "tariff": { "title": "Tariflar sahifasi" },
-    "web_dev_test": { "title": "Veb-dasturchilar uchun HTML va CSS testi" }
+    "web_dev_test": { "title": "Veb-dasturchilar uchun HTML va CSS testi" },
+    "school": { "title": "Maktab platformasi" }
   },
 
   "view_project": "Loyihani ko‘rish",

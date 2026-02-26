@@ -3,7 +3,6 @@ import testNewsite from "assets/imgs/testNewsite.webp";
 import tgweb1 from "assets/imgs/game.webp";
 import figma1 from "assets/imgs/figma1.png";
 import figma2 from "assets/imgs/figma2.webp";
-import food from "assets/imgs/food.webp";
 import obrano from "assets/imgs/obrano.webp";
 import blog from "assets/imgs/blog.webp";
 import wash from "assets/imgs/wash.webp";
@@ -14,6 +13,7 @@ import ozak from "assets/imgs/ozak.png";
 import company from "assets/imgs/company.png";
 import barber from "assets/imgs/barber.png";
 import tariff from "assets/imgs/tariff.png";
+import school from "assets/imgs/school.png";
 
 const works = [
   {
@@ -22,6 +22,13 @@ const works = [
     titleKey: "projectsPage.obrano.title",
     tags: ["React", "JavaScript", "CSS", "HTML5", "Api", "Strapi", "Shopify"],
     link: "https://obrano.store/",
+  },
+  {
+    category: "Web",
+    img: school,
+    titleKey: "projectsPage.school.title",
+    tags: ["React", "TypeScript", "CSS", "HTML5", "Api"],
+    link: "https://edu-algoritm.uz/",
   },
   {
     category: "Web",
@@ -101,12 +108,6 @@ const works = [
     titleKey: "projectsPage.ecommerce_landing.title",
     tags: ["Figma", "Libraries", "Components", "Prototyping"],
     link: "https://www.figma.com/make/GRRwnwLMknbsvaHWm4irLA/E-commerce-Landing-Page?node-id=0-1&t=JmXxTvA61jiaTjFq-1",
-  },
-  {
-    category: "Web",
-    img: food,
-    titleKey: "projectsPage.food_delivery.title",
-    tags: ["React", "JavaScript", "CSS", "HTML5", "Api", "Strapi"],
   },
   {
     category: "Web",
