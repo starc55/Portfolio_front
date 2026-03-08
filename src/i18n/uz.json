@@ -75,6 +75,7 @@
   },
   "projectsPage": {
     "obrano": { "title": "OBRANO" },
+    "furniture": { "title": "Mebel yetkazib berish veb-sayti" },
     "barber": { "title": "Barber bron qilish veb-sayti" },
     "express": { "title": "Logistika kompaniyasi platformasi" },
     "ozak": { "title": "OZAK" },

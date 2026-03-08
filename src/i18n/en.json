@@ -76,6 +76,7 @@
   },
   "projectsPage": {
     "obrano": { "title": "OBRANO" },
+    "furniture": { "title": "Furniture store website" },
     "barber": { "title": "Barber booking website" },
     "express": { "title": "Logistic company platform" },
     "ozak": { "title": "OZAK" },

@@ -14,6 +14,8 @@ import company from "assets/imgs/company.png";
 import barber from "assets/imgs/barber.png";
 import tariff from "assets/imgs/tariff.png";
 import school from "assets/imgs/school.png";
+import furniture from "assets/imgs/furniture.png";
+
 
 const works = [
   {
@@ -50,6 +52,13 @@ const works = [
     titleKey: "projectsPage.ozak.title",
     tags: ["React", "JavaScript", "CSS"],
     link: "https://glowing-lolly-05698c.netlify.app/",
+  },
+  {
+    category: "Web",
+    img: furniture,
+    titleKey: "projectsPage.furniture.title",
+    tags: ["React","Vite", "CSS", "HTML5", "Api",],
+    link: "http://furniture-jade-iota.vercel.app/",
   },
   {
     category: "Web",
