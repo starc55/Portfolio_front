@@ -2,9 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import "styles/FloatingCodingButton.css";
-// import myLogo from "assets/imgs/logo-white.png";
-// Ramadan update
-import logoRamadan from "assets/imgs/logo-ramadan.png";
+import myLogo from "assets/imgs/logo-white.png";
 
 const FloatingCodingButton = () => {
   const navigate = useNavigate();
@@ -54,7 +52,7 @@ const FloatingCodingButton = () => {
       >
         <div className="btn-content">
           <img
-            src={logoRamadan}
+            src={myLogo}
             alt="Logo"
             className="code-icon"
             style={{ width: 20, height: 20 }}

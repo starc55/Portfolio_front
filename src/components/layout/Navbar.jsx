@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import BubbleMenu from "components/sections/BubbleMenu";
-import logoRamadan from "assets/imgs/logo-ramadan.png";
+import logoWhite from "assets/imgs/logo-white.png";
 
 const languages = [
   { code: "uz", label: "Uz", full: "O‘zbekcha" },
@@ -17,9 +17,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isLangOpen, setIsLangOpen] = useState(false);
 
-  const currentLang = i18n.language
-    ? i18n.language.split("-")[0]
-    : "en";
+  const currentLang = i18n.language ? i18n.language.split("-")[0] : "en";
 
   const handleHome = () => {
     navigate("/");
@@ -124,7 +122,7 @@ const Navbar = () => {
         />
 
         <Link onClick={handleHome} className="logo">
-          <img src={logoRamadan} alt="Logo" className="logo-img" />
+          <img src={logoWhite} alt="Logo" className="logo-img" />
         </Link>
 
         <div
@@ -136,8 +134,6 @@ const Navbar = () => {
             zIndex: 9999,
           }}
         >
-          {/* ================= Ramadan Update ================= */}
-
           {/*
           <button
             type="button"
@@ -163,7 +159,6 @@ const Navbar = () => {
           </button>
           */}
 
-          {/* Ramadan Version */}
           <motion.button
             type="button"
             onClick={(e) => {
@@ -239,9 +234,7 @@ const Navbar = () => {
                         background: "none",
                         border: "none",
                         color:
-                          currentLang === lang.code
-                            ? "#c3e41d"
-                            : "#ffffff",
+                          currentLang === lang.code ? "#c3e41d" : "#ffffff",
                         textAlign: "left",
                         cursor: "pointer",
                         fontSize: "0.95rem",

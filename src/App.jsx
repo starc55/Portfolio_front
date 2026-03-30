@@ -17,7 +17,6 @@ import { Footer } from "./components/layout/Footer";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import FloatingCodingButton from "components/common/FloatingCodingButton";
-import MoonCursor from "components/common/MoonCursor";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -31,7 +30,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <MoonCursor />
       <ToastContainer />
       <Routes>
         <Route
