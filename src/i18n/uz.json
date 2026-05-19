@@ -4,7 +4,7 @@
   "projects": "Loyihalar",
   "contact": "Aloqa",
   "codes": "Kodlar",
-  "tagline": "Kod orqali insoniy tajribalarni loyihalash.",
+  "tagline": "Shunchaki interfeys emas, haqiqiy mahsulotlar.",
   "scroll_down": "Pastga suring",
   "building_smart": "Aqlli interfeyslar yaratish",
   "react_crm": "React & React Native | CRM va Admin panellar",
@@ -25,11 +25,43 @@
     "capcut": "CapCut",
     "canva": "Canva",
     "figma": "Figma",
-    "framer_motion": "Framer Motion"
+    "framer_motion": "Framer Motion",
+    "ai tools": "AI vositalari",
+    "crm": "CRM tizimlari",
+    "vite": "Vite",
+    "tailwind": "Tailwind CSS",
+    "nextjs": "Next.js",
+    "nodejs": "Node.js",
+    "typescript": "TypeScript"
   },
   "about_me": {
     "title": "Men haqimda",
     "description": "Frontend dasturchi, kengaytiriladigan veb va mobil ilovalarni, shu jumladan CRM tizimlari va Admin panellarini yaratishga ixtisoslashgan. React.js va React Native bilan tajribaga ega, foydalanuvchilarga qulay, xavfsiz va toza arxitekturaga ega responsiv, yuqori samarali interfeyslar yarataman. Murakkab biznes talablarini intuitiv raqamli yechimlarga aylantirishda tajribaga egaman."
+  },
+  "about_panel": {
+    "signal": "Frontend developer",
+    "headline": "Mahsulotlar uchun aniq, tezkor va chiroyli interfeyslar quraman.",
+    "projects": "Loyihalarni ko'rish",
+    "visual_title": "Product-minded frontend",
+    "skills_note": "Asosiy texnologiyalar va amaliy tajriba darajasi.",
+    "workflow_title": "Qanday quraman",
+    "workflow_subtitle": "G'oyani real ishlaydigan ekranga aylantirish uchun tartibli jarayon.",
+    "stack_title": "Ishonadigan stack",
+    "stack_note": "Responsiv, kengayadigan va parvarish qilish oson UI uchun tanlangan vositalar.",
+    "focus": {
+      "architecture": {
+        "title": "UI arxitektura",
+        "description": "Qayta ishlatiladigan komponentlar va izchil dizayn tizimi."
+      },
+      "interfaces": {
+        "title": "Biznes interfeyslar",
+        "description": "CRM, dashboard va admin panellarni kundalik ishga mos qurish."
+      },
+      "mobile": {
+        "title": "Mobil flowlar",
+        "description": "React Native ekranlari sodda, tez va tushunarli ishlaydi."
+      }
+    }
   },
   "resume": {
     "button": "Rezyumeni ko‘rish"
@@ -70,6 +102,14 @@
       "technical_consulting": {
         "title": "Texnik maslahat",
         "alt": "Texnik maslahat illyustratsiyasi"
+      },
+      "project_management": {
+        "title": "Loyiha boshqaruvi",
+        "alt": "Loyiha boshqaruvi illyustratsiyasi"
+      },
+      "platform_migration": {
+        "title": "CRM & SaaS platformalar",
+        "alt": "CRM & SaaS platformalar illyustratsiyasi"
       }
     }
   },
@@ -79,6 +119,8 @@
     "barber": { "title": "Barber bron qilish veb-sayti" },
     "express": { "title": "Logistika kompaniyasi platformasi" },
     "ozak": { "title": "OZAK" },
+    "transio": { "title": "Transio logistika CRM platformasi" },
+    "uch": { "title": "UCH IT kompaniya veb-sayti" },
     "company": { "title": "Kompaniya to‘liq veb-sayti" },
     "english_test": { "title": "Ingliz tili o‘rganuvchilar uchun test" },
     "vypex": { "title": "Vypex landing sahifasi" },
@@ -129,6 +171,11 @@
       "title": "Tulaganov Fathulla",
       "description": "Ajoyib frontend dasturlash, tafsilotlarga katta e'tibor. Tavsiya etiladi!",
       "position": "Frilanser"
+    },
+    "zulfiya_abduazizova": {
+      "title": "Zulfiya Abduazizova",
+      "description": "Professional, e'tiborli va ishonchli ish. Natija aniq va sifatli topshirildi.",
+      "position": "Mijoz"
     },
     "rustamov_javohir": {
       "title": "Rustamov Javohir",

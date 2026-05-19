@@ -12,6 +12,8 @@ import computer from "assets/icon/computer.png";
 import front from "assets/icon/front.png";
 import site from "assets/icon/site.png";
 import web from "assets/icon/web.png";
+import pm from "assets/icon/pm.png";
+import platform from "assets/icon/platform.png";
 
 const services = [
   { image: comp, key: "frontend_development" },
@@ -22,6 +24,8 @@ const services = [
   { image: front, key: "api_integration" },
   { image: site, key: "website_maintenance" },
   { image: web, key: "technical_consulting" },
+  {image: pm, key: "project_management" },
+  {image: platform, key: "platform_migration" },
 ];
 
 const containerVariants = {

@@ -4,7 +4,7 @@
   "projects": "Projects",
   "contact": "Contact",
   "codes": "Codes",
-  "tagline": "Designing human experiences in code.",
+  "tagline": "Building products, not just interfaces.",
   "scroll_down": "Scroll Down",
   "building_smart": "Building Smart Interfaces",
   "react_crm": "React & React Native | CRM & Admin Panels",
@@ -26,11 +26,43 @@
     "capcut": "CapCut",
     "canva": "Canva",
     "figma": "Figma",
-    "framer_motion": "Framer Motion"
+    "framer_motion": "Framer Motion",
+    "ai tools": "AI Tools",
+    "crm": "CRM",
+    "vite": "Vite",
+    "tailwind": "Tailwind CSS",
+    "nextjs": "Next.js",
+    "nodejs": "Node.js",
+    "typescript": "TypeScript"
   },
   "about_me": {
     "title": "Know about me",
     "description": "Frontend Developer specializing in building scalable web and mobile applications, including CRM systems and Admin Panels. Experienced with React.js and React Native, creating responsive, high-performance interfaces with a strong focus on usability, security, and clean architecture. Skilled in transforming complex business requirements into intuitive digital solutions."
+  },
+  "about_panel": {
+    "signal": "Frontend Developer",
+    "headline": "I build clear, fast, and polished interfaces for real products.",
+    "projects": "View projects",
+    "visual_title": "Product-minded frontend",
+    "skills_note": "Core technologies and practical delivery confidence.",
+    "workflow_title": "How I build",
+    "workflow_subtitle": "A focused process for turning ideas into production-ready screens.",
+    "stack_title": "Stack I rely on",
+    "stack_note": "Tools chosen for responsive, scalable, and maintainable interfaces.",
+    "focus": {
+      "architecture": {
+        "title": "UI architecture",
+        "description": "Reusable React components and consistent design systems."
+      },
+      "interfaces": {
+        "title": "Business interfaces",
+        "description": "CRM, dashboards, and admin panels shaped for daily use."
+      },
+      "mobile": {
+        "title": "Mobile flows",
+        "description": "React Native screens that stay simple, quick, and clear."
+      }
+    }
   },
   "resume": {
     "button": "View Resume"
@@ -71,6 +103,14 @@
       "technical_consulting": {
         "title": "Technical Consulting",
         "alt": "Technical Consulting illustration"
+      },
+      "project_management": {
+        "title": "Project Management",
+        "alt": "Project Management illustration"
+      },
+      "platform_migration": {
+        "title": "CRM & SaaS products",
+        "alt": "CRM & SaaS products illustration"
       }
     }
   },
@@ -80,6 +120,8 @@
     "barber": { "title": "Barber booking website" },
     "express": { "title": "Logistic company platform" },
     "ozak": { "title": "OZAK" },
+    "transio": { "title": "Transio logistics CRM platform" },
+    "uch": { "title": "UCH IT company website" },
     "company": { "title": "Company full website" },
     "english_test": { "title": "Test for English learners" },
     "vypex": { "title": "Vypex landing page" },
@@ -132,6 +174,11 @@
       "title": "Tulaganov Fathulla",
       "description": "Outstanding frontend development with great attention to detail. Highly recommended!",
       "position": "Freelancer"
+    },
+    "zulfiya_abduazizova": {
+      "title": "Zulfiya Abduazizova",
+      "description": "Professional, attentive, and reliable work. The result was delivered clearly and with high quality.",
+      "position": "Customer"
     },
     "rustamov_javohir": {
       "title": "Rustamov Javohir",

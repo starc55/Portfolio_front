@@ -12,13 +12,13 @@ const Notification = ({
   const notificationStyles = {
     success: {
       bg: "#00c853",
-      icon: "✓",
+      icon: "OK",
       iconBg: "#fff",
       iconColor: "#00c853",
     },
     info: {
       bg: "#0a84ff",
-      icon: "?",
+      icon: "i",
       iconBg: "#fff",
       iconColor: "#0a84ff",
     },
@@ -30,7 +30,7 @@ const Notification = ({
     },
     error: {
       bg: "#d50000",
-      icon: "×",
+      icon: "x",
       iconBg: "#fff",
       iconColor: "#d50000",
     },
@@ -39,12 +39,13 @@ const Notification = ({
   const style = notificationStyles[type] || notificationStyles.info;
 
   React.useEffect(() => {
-    if (autoClose) {
-      const timer = setTimeout(() => {
-        onClose?.();
-      }, autoClose * 1000);
-      return () => clearTimeout(timer);
-    }
+    if (!autoClose) return undefined;
+
+    const timer = setTimeout(() => {
+      onClose?.();
+    }, autoClose * 1000);
+
+    return () => clearTimeout(timer);
   }, [autoClose, onClose]);
 
   return (
@@ -62,9 +63,14 @@ const Notification = ({
           </div>
           <span className="sender">{title}</span>
           {onClose && (
-            <span className="close" onClick={onClose}>
-              ×
-            </span>
+            <button
+              type="button"
+              className="close"
+              onClick={onClose}
+              aria-label="Close notification"
+            >
+              x
+            </button>
           )}
         </div>
 

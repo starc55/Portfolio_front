@@ -1,10 +1,15 @@
 import { useRef, useEffect, useCallback, useState } from "react";
 import { gsap } from "gsap";
 import { useTranslation } from "react-i18next";
+import {
+  FaArrowRight,
+  FaCheckCircle,
+  FaCode,
+  FaExternalLinkAlt,
+  FaLayerGroup,
+  FaMobileAlt,
+} from "react-icons/fa";
 import "../../styles/Page.css";
-import VideoCard from "./VideoCard";
-import aboutVideo from "../../assets/video/about.mp4";
-import aboutPoster from "../../assets/imgs/about.webp";
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -15,6 +20,7 @@ const skillsData = [
   { key: "html5", level: 95 },
   { key: "css3", level: 90 },
   { key: "javascript", level: 85 },
+  { key: "ai tools", level: 90 },
   { key: "react", level: 90 },
   { key: "react_native", level: 80 },
   { key: "git", level: 75 },
@@ -24,28 +30,44 @@ const skillsData = [
   { key: "canva", level: 83 },
   { key: "figma", level: 55 },
   { key: "framer_motion", level: 95 },
+  { key: "crm", level: 90 },
+  { key: "vite", level: 90 },
+  { key: "tailwind", level: 85 },
+  { key: "nextjs", level: 80 },
+  { key: "nodejs", level: 70 },
+  { key: "typescript", level: 65 },
 ];
+
+const focusItems = [
+  { key: "architecture", Icon: FaLayerGroup },
+  { key: "interfaces", Icon: FaCode },
+  { key: "mobile", Icon: FaMobileAlt },
+];
+
+const stackItems = [
+  "React",
+  "React Native",
+  "Framer Motion",
+  "GSAP",
+  "REST API",
+  "Responsive UI",
+];
+
+const signalItems = ["React", "React Native", "CRM", "Admin UI"];
 
 const cardData = [
   {
+    type: "intro",
+  },
+  {
     type: "skills",
-    color: "#060010",
     labelKey: "skills.title",
   },
   {
-    type: "about",
-    color: "#060010",
-    labelKey: "about_me.title",
-    descriptionKey: "about_me.description",
+    type: "workflow",
   },
   {
-    type: "video",
-    color: "#060010",
-    video: aboutVideo,
-    poster: aboutPoster,
-  },
-  {
-    type: "resume-button",
+    type: "stack",
   },
 ];
 
@@ -381,7 +403,7 @@ const GlobalSpotlight = ({
 };
 
 const BentoCardGrid = ({ children, gridRef }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
+  <div className="bento-section about-bento-grid" ref={gridRef}>
     {children}
   </div>
 );
@@ -422,11 +444,8 @@ const MagicBento = ({
 
   const cvLink = process.env.PUBLIC_URL + "/Resume.pdf";
 
-  const handleDownload = useCallback(() => {
-    const link = document.createElement("a");
-    link.href = cvLink;
-    link.download = "Resume.pdf";
-    link.click();
+  const handleResumeOpen = useCallback(() => {
+    window.open(cvLink, "_blank", "noopener,noreferrer");
   }, [cvLink]);
 
   return (
@@ -443,24 +462,13 @@ const MagicBento = ({
 
       <BentoCardGrid gridRef={gridRef}>
         {cardData.map((card, index) => {
-          const baseClassName = `card_magic ${
-            textAutoHide ? "card--text-autohide" : ""
-          } ${enableBorderGlow ? "card--border-glow" : ""}`;
-
-          if (card.type === "resume-button") {
-            return (
-              <div key={index} className="resume-button-wrapper">
-                <button className="resume-button" onClick={handleDownload}>
-                  {t("resume.button")}
-                </button>
-              </div>
-            );
-          }
+          const baseClassName = `${textAutoHide ? "card--text-autohide" : ""} ${
+            enableBorderGlow ? "card--border-glow" : ""
+          } about-card about-card--${card.type}`;
 
           const commonProps = {
             className: baseClassName,
             style: {
-              backgroundColor: card.color,
               "--glow-color": glowColor,
             },
             particleCount,
@@ -471,20 +479,102 @@ const MagicBento = ({
             disableAnimations: shouldDisableAnimations,
           };
 
+          if (card.type === "intro") {
+            return (
+              <ParticleCard key={index} {...commonProps}>
+                <div className="about-intro-layout">
+                  <div className="about-intro-copy">
+                    <span className="about-card__label">
+                      {t("about_panel.signal")}
+                    </span>
+                    <h3 className="about-card__headline">
+                      {t("about_panel.headline")}
+                    </h3>
+                    <p className="about-card__text">
+                      {t("about_me.description")}
+                    </p>
+
+                    <div className="about-chip-row" aria-label="Core stack">
+                      {signalItems.map((item) => (
+                        <span key={item} className="about-chip">
+                          <FaCheckCircle aria-hidden="true" />
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="about-action-row">
+                      <button
+                        type="button"
+                        className="about-action about-action--primary"
+                        onClick={handleResumeOpen}
+                      >
+                        <FaExternalLinkAlt aria-hidden="true" />
+                        {t("resume.button")}
+                      </button>
+                      <a
+                        href="#projects"
+                        className="about-action about-action--ghost"
+                      >
+                        {t("about_panel.projects")}
+                        <FaArrowRight aria-hidden="true" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="about-signal-panel" aria-hidden="true">
+                    <div className="about-signal-top">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                    <div className="about-signal-heading">
+                      {t("about_panel.visual_title")}
+                    </div>
+                    <div className="about-signal-copy">
+                      {t("about_panel.skills_note")}
+                    </div>
+                    <div className="about-signal-grid">
+                      <span>UI</span>
+                      <span>API</span>
+                      <span>State</span>
+                      <span>Motion</span>
+                    </div>
+                    <div className="about-terminal-lines">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </div>
+                </div>
+              </ParticleCard>
+            );
+          }
+
           if (card.type === "skills") {
             return (
               <ParticleCard key={index} {...commonProps}>
-                <div className="card__header">
-                  <div className="card__label">{t(card.labelKey)}</div>
+                <div className="about-card__header">
+                  <h3 className="about-card__title">{t(card.labelKey)}</h3>
+                  <p className="about-card__caption">
+                    {t("about_panel.skills_note")}
+                  </p>
                 </div>
                 <div className="card__content skills-card">
-                  <div className="skills-container">
+                  <div className="skills-container about-skills-list">
                     {skillsData.map((skill, i) => (
                       <div key={i} className="skill-item">
                         <span className="skill-name">
                           {t(`skills.${skill.key}`)}
                         </span>
-                        <div className="skill-progress">
+                        <div
+                          className="skill-progress"
+                          role="progressbar"
+                          aria-label={t(`skills.${skill.key}`)}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                          aria-valuenow={skill.level}
+                        >
                           <div
                             className="skill-progress-fill"
                             style={{ width: `${skill.level}%` }}
@@ -499,21 +589,56 @@ const MagicBento = ({
             );
           }
 
-          if (card.type === "video") {
+          if (card.type === "workflow") {
             return (
               <ParticleCard key={index} {...commonProps}>
-                <VideoCard src={card.video} poster={card.poster} />
+                <div className="about-card__header">
+                  <h3 className="about-card__title">
+                    {t("about_panel.workflow_title")}
+                  </h3>
+                  <p className="about-card__caption">
+                    {t("about_panel.workflow_subtitle")}
+                  </p>
+                </div>
+
+                <div className="about-focus-list">
+                  {focusItems.map(({ key, Icon }) => (
+                    <div className="about-focus-item" key={key}>
+                      <span className="about-focus-icon">
+                        <Icon aria-hidden="true" />
+                      </span>
+                      <div>
+                        <h4>{t(`about_panel.focus.${key}.title`)}</h4>
+                        <p>{t(`about_panel.focus.${key}.description`)}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </ParticleCard>
             );
           }
 
           return (
             <ParticleCard key={index} {...commonProps}>
-              <div className="card__header">
-                <div className="card__label">{t(card.labelKey)}</div>
+              <div className="about-card__header">
+                <h3 className="about-card__title">
+                  {t("about_panel.stack_title")}
+                </h3>
+                <p className="about-card__caption">
+                  {t("about_panel.stack_note")}
+                </p>
               </div>
-              <div className="card__content">
-                <p className="card__description">{t(card.descriptionKey)}</p>
+              <div className="about-stack-grid">
+                {stackItems.map((item) => (
+                  <span className="about-stack-pill" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="about-code-frame" aria-hidden="true">
+                <span>const product = clarity + speed;</span>
+                <span>ship(cleanUI);</span>
+                <span>iterate(realFeedback);</span>
               </div>
             </ParticleCard>
           );

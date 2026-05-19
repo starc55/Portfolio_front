@@ -16,6 +16,7 @@ import t15 from "assets/imgs/t15.webp";
 import t16 from "assets/imgs/t16.webp";
 import t17 from "assets/imgs/t17.webp";
 import t18 from "assets/imgs/t18.jpg";
+import t19 from "assets/imgs/t19.png";
 
 export const Data = [
   {
@@ -54,6 +55,16 @@ export const Data = [
   },
   {
     id: 5,
+    image: t19,
+    titleKey: "testimonials.zulfiya_abduazizova.title",
+    rating: 5,
+    descriptionKey: "testimonials.zulfiya_abduazizova.description",
+    positionKey: "testimonials.zulfiya_abduazizova.position",
+    audioUrl:
+      "https://www.dropbox.com/scl/fi/qpq08d0qd7vqkxhlue8df/comment1.ogg?rlkey=h6iqgz1oc9jg20ohjmc14mi7r&st=b7lae2qs&raw=1",
+  },
+  {
+    id: 6,
     image: t4,
     titleKey: "testimonials.rustamov_javohir.title",
     descriptionKey: "testimonials.rustamov_javohir.description",
@@ -61,7 +72,7 @@ export const Data = [
     positionKey: "testimonials.rustamov_javohir.position",
   },
   {
-    id: 6,
+    id: 7,
     image: t5,
     titleKey: "testimonials.jony1.title",
     descriptionKey: "testimonials.jony1.description",
@@ -69,7 +80,7 @@ export const Data = [
     positionKey: "testimonials.jony1.position",
   },
   {
-    id: 7,
+    id: 8,
     image: t6,
     titleKey: "testimonials.sarah.title",
     descriptionKey: "testimonials.sarah.description",
@@ -77,7 +88,7 @@ export const Data = [
     positionKey: "testimonials.sarah.position",
   },
   {
-    id: 8,
+    id: 9,
     image: t7,
     titleKey: "testimonials.jony2.title",
     descriptionKey: "testimonials.jony2.description",
@@ -85,7 +96,7 @@ export const Data = [
     positionKey: "testimonials.jony2.position",
   },
   {
-    id: 9,
+    id: 10,
     image: t8,
     titleKey: "testimonials.mechail.title",
     descriptionKey: "testimonials.mechail.description",
@@ -93,7 +104,7 @@ export const Data = [
     positionKey: "testimonials.mechail.position",
   },
   {
-    id: 10,
+    id: 11,
     image: t9,
     titleKey: "testimonials.durdona_ikromova.title",
     descriptionKey: "testimonials.durdona_ikromova.description",
@@ -101,7 +112,7 @@ export const Data = [
     positionKey: "testimonials.durdona_ikromova.position",
   },
   {
-    id: 11,
+    id: 12,
     image: t10,
     titleKey: "testimonials.earl.title",
     descriptionKey: "testimonials.earl.description",
@@ -109,7 +120,7 @@ export const Data = [
     positionKey: "testimonials.earl.position",
   },
   {
-    id: 12,
+    id: 13,
     image: t11,
     titleKey: "testimonials.dilshoda.title",
     descriptionKey: "testimonials.dilshoda.description",
@@ -117,7 +128,7 @@ export const Data = [
     positionKey: "testimonials.dilshoda.position",
   },
   {
-    id: 13,
+    id: 14,
     image: t12,
     titleKey: "testimonials.abduvali_kozimov.title",
     descriptionKey: "testimonials.abduvali_kozimov.description",
@@ -125,7 +136,7 @@ export const Data = [
     positionKey: "testimonials.abduvali_kozimov.position",
   },
   {
-    id: 14,
+    id: 15,
     image: t13,
     titleKey: "testimonials.davron_hojiqurbonov.title",
     descriptionKey: "testimonials.davron_hojiqurbonov.description",
@@ -133,7 +144,7 @@ export const Data = [
     positionKey: "testimonials.davron_hojiqurbonov.position",
   },
   {
-    id: 15,
+    id: 16,
     image: t14,
     titleKey: "testimonials.yaxshiboyeva_maxliyo.title",
     descriptionKey: "testimonials.yaxshiboyeva_maxliyo.description",
@@ -141,7 +152,7 @@ export const Data = [
     positionKey: "testimonials.yaxshiboyeva_maxliyo.position",
   },
   {
-    id: 16,
+    id: 17,
     image: t15,
     titleKey: "testimonials.shodmonov_jonibek.title",
     descriptionKey: "testimonials.shodmonov_jonibek.description",
@@ -149,7 +160,7 @@ export const Data = [
     positionKey: "testimonials.shodmonov_jonibek.position",
   },
   {
-    id: 17,
+    id: 18,
     image: t16,
     titleKey: "testimonials.bozorova_gulnora.title",
     descriptionKey: "testimonials.bozorova_gulnora.description",
@@ -157,7 +168,7 @@ export const Data = [
     positionKey: "testimonials.bozorova_gulnora.position",
   },
   {
-    id: 18,
+    id: 19,
     image: t17,
     titleKey: "testimonials.dmitriy_sergeevich.title",
     descriptionKey: "testimonials.dmitriy_sergeevich.description",

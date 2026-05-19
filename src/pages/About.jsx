@@ -6,7 +6,7 @@ import MagicBento from "components/sections/MagicBento";
 import SectionTitle from "components/ui/SectionTitle";
 
 const magicBentoProps = {
-  textAutoHide: true,
+  textAutoHide: false,
   enableStars: true,
   enableSpotlight: true,
   enableBorderGlow: true,
@@ -77,7 +77,9 @@ export default function About() {
     >
       <SectionTitle
         title={
-          <motion.span variants={titleVariants}>{t("aboutPage.title")}</motion.span>
+          <motion.span variants={titleVariants}>
+            {t("aboutPage.title")}
+          </motion.span>
         }
         subtitle={
           <motion.span variants={subtitleVariants}>
