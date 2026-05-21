@@ -61,7 +61,7 @@ export const Data = [
     descriptionKey: "testimonials.zulfiya_abduazizova.description",
     positionKey: "testimonials.zulfiya_abduazizova.position",
     audioUrl:
-      "https://www.dropbox.com/scl/fi/qpq08d0qd7vqkxhlue8df/comment1.ogg?rlkey=h6iqgz1oc9jg20ohjmc14mi7r&st=b7lae2qs&raw=1",
+      "https://www.dropbox.com/scl/fi/zkulajf02qgvqkawi240s/Zulfiya.ogg?rlkey=cpj0lcialm275g895rke329fr&st=jjh3qv6e&raw=1",
   },
   {
     id: 6,
