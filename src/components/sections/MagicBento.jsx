@@ -36,6 +36,10 @@ const skillsData = [
   { key: "nextjs", level: 80 },
   { key: "nodejs", level: 70 },
   { key: "typescript", level: 65 },
+  {key: "Project Planning", level: 90},
+  {key: "Trello", level: 85},
+  {key: "Notion", level: 80},
+  {key: "Postman", level: 75},
 ];
 
 const focusItems = [
