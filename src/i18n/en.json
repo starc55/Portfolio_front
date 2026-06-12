@@ -33,7 +33,11 @@
     "tailwind": "Tailwind CSS",
     "nextjs": "Next.js",
     "nodejs": "Node.js",
-    "typescript": "TypeScript"
+    "typescript": "TypeScript",
+    "Project Planning": "Project Planning",
+    "Trello": "Trello",
+    "Notion": "Notion",
+    "Postman": "Postman"
   },
   "about_me": {
     "title": "Know about me",
