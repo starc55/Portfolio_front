@@ -78,7 +78,9 @@
     }
   },
   "resume": {
-    "button": "Rezyumeni ko‘rish"
+    "button": "Rezyumeni ko‘rish",
+    "download": "CV yuklab olish",
+    "file_type": "PDF rezyume"
   },
   "services": {
     "title": "Men eng yaxshi qiladigan ishlar",

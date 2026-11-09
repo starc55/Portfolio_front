@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiCheck, FiChevronDown } from "react-icons/fi";
+import { FiCheck, FiChevronDown, FiDownload } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import logoWhite from "assets/imgs/logo-white.png";
@@ -83,6 +83,24 @@ const Navbar = () => {
       </nav>
 
       <div className="nav-actions">
+        <motion.a
+          href="/Resume.pdf"
+          download="Ogabek-Orziyev-Resume.pdf"
+          className="resume-download"
+          aria-label={t("resume.download")}
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          <span className="resume-download__icon" aria-hidden="true">
+            <FiDownload />
+          </span>
+          <span className="resume-download__copy">
+            <small>{t("resume.file_type")}</small>
+            <strong>{t("resume.download")}</strong>
+          </span>
+          <span className="resume-download__shine" aria-hidden="true" />
+        </motion.a>
+
         <div ref={langRef} className="lang-switcher">
           <button type="button" onClick={() => setIsLangOpen((open) => !open)} aria-expanded={isLangOpen} aria-haspopup="listbox" className="lang-button">
             <span>{languages.find((language) => language.code === currentLang)?.label || "EN"}</span>
@@ -118,6 +136,18 @@ const Navbar = () => {
                 <span>0{index + 1}</span>{link.label}
               </a>
             ))}
+            <a
+              href="/Resume.pdf"
+              download="Ogabek-Orziyev-Resume.pdf"
+              className="mobile-resume-download"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <span className="mobile-resume-download__icon"><FiDownload aria-hidden="true" /></span>
+              <span className="mobile-resume-download__copy">
+                <strong>{t("resume.download")}</strong>
+                <small>{t("resume.file_type")}</small>
+              </span>
+            </a>
           </motion.nav>
         )}
       </AnimatePresence>

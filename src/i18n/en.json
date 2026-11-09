@@ -79,7 +79,9 @@
     }
   },
   "resume": {
-    "button": "View Resume"
+    "button": "View Resume",
+    "download": "Download CV",
+    "file_type": "PDF resume"
   },
   "services": {
     "title": "What I Do Best",
