@@ -1,227 +1,155 @@
-import React, { useState, useCallback } from "react";
-import "styles/Contact.css";
-// import { MdOutlineAttachEmail } from "react-icons/md";
-import { motion } from "framer-motion";
-import SectionTitle from "components/ui/SectionTitle";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiCheck, FiChevronDown } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
+import SectionTitle from "components/ui/SectionTitle";
 import Notification from "components/ui/Notification";
+import "styles/Contact.css";
 
-const MAKE_WEBHOOK_URL =
-  "https://hook.eu2.make.com/7f13avvybn3qljhmb1dccg8esvfcce5k";
+const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/7f13avvybn3qljhmb1dccg8esvfcce5k";
+const INITIAL_FORM = { firstName: "", email: "", phone: "", projectType: "website", budget: "", message: "" };
+const PROJECT_TYPES = ["website", "webapp", "redesign", "other"];
+const BUDGET_OPTIONS = [
+  { value: "starter", label: "$300 — $700" },
+  { value: "growth", label: "$700 — $1,500" },
+  { value: "custom", label: "$1,500+" },
+];
 
 const Contact = () => {
   const { t } = useTranslation();
-
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    message: "",
-    suggestion: "",
-  });
-
+  const [form, setForm] = useState(INITIAL_FORM);
   const [notification, setNotification] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isBudgetOpen, setIsBudgetOpen] = useState(false);
+  const budgetSelectRef = useRef(null);
 
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+  const completion = useMemo(() => {
+    const filled = [form.firstName, form.email, form.phone, form.message].filter(Boolean).length;
+    return Math.round((filled / 4) * 100);
+  }, [form]);
+
+  const handleChange = useCallback((event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
   }, []);
 
   const showNotification = useCallback((type, title, message) => {
     setNotification({ type, title, message });
-
-    if (type !== "info") {
-      setTimeout(() => {
-        setNotification(null);
-      }, 5000);
-    }
+    if (type !== "info") setTimeout(() => setNotification(null), 5000);
   }, []);
 
-  const handleSubmit = useCallback(
-    async (e) => {
-      e.preventDefault();
+  useEffect(() => {
+    const closeBudgetSelect = (event) => {
+      if (!budgetSelectRef.current?.contains(event.target)) setIsBudgetOpen(false);
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setIsBudgetOpen(false);
+    };
+    document.addEventListener("pointerdown", closeBudgetSelect);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeBudgetSelect);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
 
-      showNotification(
-        "info",
-        t("contactPage.sending") || "Yuborilmoqda...",
-        t("contactPage.sendingDesc") ||
-          "Ma'lumotlaringiz yuborilmoqda, biroz kuting"
-      );
+  const selectedBudget = BUDGET_OPTIONS.find((option) => option.value === form.budget);
 
-      try {
-        const response = await fetch(MAKE_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    showNotification("info", t("contactPage.sending"), t("contactPage.sendingDesc"));
 
-        if (response.ok) {
-          showNotification(
-            "success",
-            t("contactPage.success") || "Muvaffaqiyat!",
-            t("contactPage.successDesc") ||
-              "Xabaringiz muvaffaqiyatli yuborildi"
-          );
-
-          setForm({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            message: "",
-            suggestion: "",
-          });
-        } else {
-          throw new Error("Server response not ok");
-        }
-      } catch (err) {
-        showNotification(
-          "error",
-          t("contactPage.error") || "Xatolik yuz berdi",
-          t("contactPage.errorDesc") ||
-            "Xabarni yuborishda muammo yuz berdi. Iltimos qayta urinib ko‘ring."
-        );
-      }
-    },
-    [form, showNotification, t]
-  );
+    try {
+      const response = await fetch(MAKE_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) throw new Error("Request failed");
+      showNotification("success", t("contactPage.success"), t("contactPage.successDesc"));
+      setForm(INITIAL_FORM);
+    } catch (error) {
+      showNotification("error", t("contactPage.error"), t("contactPage.errorDesc"));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="contact-section">
-      <div className="container">
-        <SectionTitle
-          title={t("contactPage.title")}
-          subtitle={t("contactPage.subtitle")}
-          centered={true}
-        />
+      <div className="contact-container">
+        <SectionTitle title={t("contactPage.title")} subtitle={t("contactPage.subtitle")} centered />
 
         {notification && (
-          <div
-            style={{
-              position: "fixed",
-              top: 24,
-              right: 24,
-              zIndex: 1000,
-            }}
-          >
-            <Notification
-              type={notification.type}
-              title={notification.title}
-              message={notification.message}
-              showProgress={notification.type === "info"}
-              onClose={() => setNotification(null)}
-              autoClose={notification.type !== "info" ? 5 : undefined}
-            />
+          <div className="contact-notification">
+            <Notification type={notification.type} title={notification.title} message={notification.message} showProgress={notification.type === "info"} onClose={() => setNotification(null)} autoClose={notification.type !== "info" ? 5 : undefined} />
           </div>
         )}
 
-        <motion.div
-          className="contact-card"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className="card-content">
-            {/* <div className="image-side">
-              <img
-                src="https://thumbs.dreamstime.com/b/digital-collaboration-futuristic-handshake-symbolizing-technology-partnership-composed-interconnected-lines-glowing-nodes-346712703.jpg"
-                alt="Collaboration & Connection"
-                className="contact-hero-img"
-              />
-            </div> */}
-
-            <div className="form-side">
-              <form onSubmit={handleSubmit} className="compact-form">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    name="firstName"
-                    required
-                    value={form.firstName}
-                    onChange={handleChange}
-                    placeholder=" "
-                    className="compact-input"
-                  />
-                  <label>{t("contactPage.firstName")}</label>
-                </div>
-
-                <div className="input-group">
-                  <input
-                    type="text"
-                    name="lastName"
-                    required
-                    value={form.lastName}
-                    onChange={handleChange}
-                    placeholder=" "
-                    className="compact-input"
-                  />
-                  <label>{t("contactPage.lastName")}</label>
-                </div>
-
-                <div className="input-group">
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder=" "
-                    className="compact-input"
-                  />
-                  <label>{t("contactPage.email")}</label>
-                </div>
-
-                <div className="input-group">
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    value={form.phone}
-                    onChange={handleChange}
-                    placeholder=" "
-                    className="compact-input"
-                  />
-                  <label>{t("contactPage.phone")}</label>
-                </div>
-
-                <div className="input-group">
-                  <textarea
-                    name="message"
-                    required
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder=" "
-                    className="compact-textarea"
-                  />
-                  <label>{t("contactPage.message")}</label>
-                </div>
-
-                <div className="input-group">
-                  <textarea
-                    name="suggestion"
-                    value={form.suggestion}
-                    onChange={handleChange}
-                    placeholder=" "
-                    className="compact-textarea small"
-                  />
-                  <label>{t("contactPage.suggestion")}</label>
-                </div>
-
-                <motion.button
-                  type="submit"
-                  className="compact-submit"
-                  whileHover={{
-                    scale: 1.04,
-                    boxShadow: "0 12px 32px rgba(96,165,250,0.45)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  {t("contactPage.submit")}
-                </motion.button>
-              </form>
+        <motion.div className="contact-card" initial={{ opacity: 0, y: 36 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .2 }} transition={{ duration: .7 }}>
+          <aside className="contact-intro">
+            <span className="contact-eyebrow">{t("contactPage.eyebrow")}</span>
+            <h3>{t("contactPage.formTitle")}</h3>
+            <p>{t("contactPage.formCopy")}</p>
+            <div className="contact-promise">
+              <span>01</span><p><strong>{t("contactPage.fastReply")}</strong>{t("contactPage.fastReplyCopy")}</p>
+              <span>02</span><p><strong>{t("contactPage.clearPlan")}</strong>{t("contactPage.clearPlanCopy")}</p>
+              <span>03</span><p><strong>{t("contactPage.directContact")}</strong>{t("contactPage.directContactCopy")}</p>
             </div>
-          </div>
+          </aside>
+
+          <form onSubmit={handleSubmit} className="order-form">
+            <div className="form-progress" aria-label={`${completion}%`}>
+              <span style={{ width: `${completion}%` }} />
+            </div>
+            <div className="form-heading"><span>{t("contactPage.step")}</span><small>{completion}%</small></div>
+
+            <fieldset className="project-type-fieldset">
+              <legend>{t("contactPage.projectType")}</legend>
+              <div className="project-type-options">
+                {PROJECT_TYPES.map((type) => (
+                  <button type="button" key={type} className={form.projectType === type ? "active" : ""} onClick={() => setForm((current) => ({ ...current, projectType: type }))}>
+                    {t(`contactPage.types.${type}`)}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+
+            <div className="form-row">
+              <label className="form-field"><span>{t("contactPage.firstName")}</span><input type="text" name="firstName" required autoComplete="name" value={form.firstName} onChange={handleChange} placeholder={t("contactPage.namePlaceholder")} /></label>
+              <label className="form-field"><span>{t("contactPage.phone")}</span><input type="tel" name="phone" required autoComplete="tel" value={form.phone} onChange={handleChange} placeholder="+998 90 123 45 67" /></label>
+            </div>
+            <div className="form-row">
+              <label className="form-field"><span>{t("contactPage.email")}</span><input type="email" name="email" required autoComplete="email" value={form.email} onChange={handleChange} placeholder="name@company.com" /></label>
+              <div className="form-field budget-field" ref={budgetSelectRef}>
+                <span>{t("contactPage.budget")}</span>
+                <button type="button" className={`budget-select${form.budget ? " has-value" : ""}`} onClick={() => setIsBudgetOpen((open) => !open)} aria-expanded={isBudgetOpen} aria-haspopup="listbox">
+                  <span>{selectedBudget?.label || t("contactPage.budgetPlaceholder")}</span>
+                  <FiChevronDown aria-hidden="true" />
+                </button>
+                <AnimatePresence>
+                  {isBudgetOpen && (
+                    <motion.div className="budget-options" role="listbox" initial={{ opacity: 0, y: -8, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -6, scale: .98 }} transition={{ duration: .18 }}>
+                      {BUDGET_OPTIONS.map((option) => (
+                        <button key={option.value} type="button" role="option" aria-selected={form.budget === option.value} className={form.budget === option.value ? "active" : ""} onClick={() => { setForm((current) => ({ ...current, budget: option.value })); setIsBudgetOpen(false); }}>
+                          <span>{option.label}</span>{form.budget === option.value && <FiCheck aria-hidden="true" />}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+            <label className="form-field"><span>{t("contactPage.message")}</span><textarea name="message" required value={form.message} onChange={handleChange} placeholder={t("contactPage.messagePlaceholder")} rows="4" /></label>
+
+            <button type="submit" className="order-submit" disabled={isSubmitting}>
+              <span>{isSubmitting ? t("contactPage.sending") : t("contactPage.submit")}</span>
+              <span className="submit-arrow" aria-hidden="true">↗</span>
+            </button>
+            <p className="form-privacy">{t("contactPage.privacy")}</p>
+          </form>
         </motion.div>
       </div>
     </section>

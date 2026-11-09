@@ -9,6 +9,8 @@ import school from "assets/imgs/school.webp";
 import furniture from "assets/imgs/furniture.png";
 import uch from "assets/imgs/uch.webp";
 import transio from "assets/imgs/transio.webp";
+import xion from "assets/imgs/xion.png";
+import obrano from "assets/imgs/obrano.png";
 
 const works = [
   {
@@ -17,6 +19,20 @@ const works = [
     titleKey: "projectsPage.transio.title",
     tags: ["React", "CRM", "Logistics", "Dashboard", "API"],
     link: "https://www.trans-io.com",
+  },
+  {
+    category: "Web,Platform",
+    img: obrano,
+    titleKey: "projectsPage.obrano.title",
+    tags: ["React", "CRM", "Education", "Dashboard", "API"],
+    link: "https://obranoacademy.vercel.app/",
+  },
+  {
+    category: "Web,Platform",
+    img: xion,
+    titleKey: "projectsPage.xion.title",
+    tags: ["React", "CRM", "Medicine", "Market", "Dashboard", "API"],
+    link: "https://xion.uz/",
   },
   {
     category: "Web",

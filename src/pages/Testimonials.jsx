@@ -1,175 +1,74 @@
 import React, { useState } from "react";
-import "../styles/Page.css";
-import { Data } from "../data/testimonialsData";
-import { motion, AnimatePresence } from "framer-motion";
-import SectionTitle from "components/ui/SectionTitle";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import SectionTitle from "components/ui/SectionTitle";
+import { Data } from "../data/testimonialsData";
+import "../styles/Page.css";
+import "../styles/Testimonials.css";
 
-const STAR_STYLE = { fontSize: "18px" };
-
-const ITEMS_PER_PAGE = 7;
+const ITEMS_PER_PAGE = 6;
 
 const Testimonials = () => {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
-
-  const renderStars = (rating) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    for (let i = 1; i <= 5; i++) {
-      if (i <= fullStars) {
-        stars.push(
-          <motion.span
-            key={i}
-            style={{ ...STAR_STYLE, color: "#c3e41d" }}
-            whileHover={{ scale: 1.3, rotate: 10 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            ★
-          </motion.span>
-        );
-      } else if (i === fullStars + 1 && hasHalfStar) {
-        stars.push(
-          <motion.span
-            key={i}
-            style={{ ...STAR_STYLE, color: "#c3e41d" }}
-            whileHover={{ scale: 1.3, rotate: 10 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            ☆
-          </motion.span>
-        );
-      } else {
-        stars.push(
-          <motion.span
-            key={i}
-            style={{ ...STAR_STYLE, color: "#e4e5e9" }}
-            whileHover={{ scale: 1.3, rotate: 10 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            ★
-          </motion.span>
-        );
-      }
-    }
-    return stars;
-  };
-
   const totalPages = Math.ceil(Data.length / ITEMS_PER_PAGE);
-  const paginatedData = Data.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
-
-  const handlePageChange = (page) => setCurrentPage(page);
+  const paginatedData = Data.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   return (
     <section className="testimonial section" id="testimonials">
-      <SectionTitle
-        title={t("testimonials_section.title")}
-        subtitle={t("testimonials_section.subtitle")}
-      />
+      <SectionTitle title={t("testimonials_section.title")} subtitle={t("testimonials_section.subtitle")} />
 
-      <div className="testimonial__grid">
-        <AnimatePresence>
-          {paginatedData.map(
-            ({
-              id,
-              image,
-              titleKey,
-              descriptionKey,
-              rating,
-              positionKey,
-              audioUrl,
-              videoUrl,
-            }) => (
-              <motion.div
-                key={id}
-                className="testimonial__card"
-                initial={{ opacity: 0, scale: 0.92, y: 40 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.92, y: -40 }}
-                whileHover={{
-                  scale: 1.04,
-                  boxShadow: "0 16px 40px rgba(0, 0, 0, 0.3)",
-                  transition: { duration: 0.3 },
-                }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              >
-                <div className="testi_title">
-                  <motion.img
-                    src={image}
-                    alt={t(titleKey)}
-                    className="testimonial__img"
-                    whileHover={{ scale: 1.15, rotate: 8 }}
-                    transition={{ type: "spring", stiffness: 180 }}
-                  />
-                  <div className="testimonial__info">
-                    <h3 className="testimonial__name">{t(titleKey)}</h3>
-                    <hr className="testimonial__hr" />
-                    <h6 className="testimonial__position">{t(positionKey)}</h6>
-                  </div>
+      <motion.div className="testimonial__grid" layout>
+        <AnimatePresence mode="popLayout">
+          {paginatedData.map(({ id, image, titleKey, descriptionKey, rating, positionKey, audioUrl, videoUrl }) => (
+            <motion.article
+              key={id}
+              className="testimonial__card"
+              layout
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.36 }}
+            >
+              <span className="testimonial__quote" aria-hidden="true">“</span>
+              <div className="testi_title">
+                <img src={image} alt="" className="testimonial__img" loading="lazy" />
+                <div className="testimonial__info">
+                  <h3 className="testimonial__name">{t(titleKey)}</h3>
+                  <p className="testimonial__position">{t(positionKey)}</p>
                 </div>
+                <div className="ratingStar" aria-label={`${rating} / 5`}>
+                  <span aria-hidden="true">★</span> {rating}
+                </div>
+              </div>
 
-                {videoUrl ? (
-                  <motion.video
-                    src={videoUrl}
-                    controls
-                    className="testimonial__media"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.25 }}
-                  />
-                ) : audioUrl ? (
-                  <motion.audio
-                    src={audioUrl}
-                    controls
-                    className="testimonial__media"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.25 }}
-                  />
-                ) : (
-                  <motion.p
-                    className="testimonial__description"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.25 }}
-                  >
-                    {t(descriptionKey)}
-                  </motion.p>
-                )}
-
-                <div className="ratingStar">{renderStars(rating)}</div>
-              </motion.div>
-            )
-          )}
+              {videoUrl ? (
+                <video src={videoUrl} controls className="testimonial__media" />
+              ) : audioUrl ? (
+                <audio src={audioUrl} controls className="testimonial__media" />
+              ) : (
+                <p className="testimonial__description">{t(descriptionKey)}</p>
+              )}
+            </motion.article>
+          ))}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {totalPages > 1 && (
-        <div className="testimonial__pagination">
-          {Array.from({ length: totalPages }, (_, i) => (
-            <motion.button
-              key={i + 1}
-              className={`pagination__button ${
-                currentPage === i + 1 ? "active" : ""
-              }`}
-              onClick={() => handlePageChange(i + 1)}
-              whileHover={{
-                scale: 1.25,
-                backgroundColor: "#f0f0f0",
-                color: "#1f1f1f",
-              }}
-              whileTap={{ scale: 0.92 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+        <nav className="testimonial__pagination" aria-label={t("testimonials_pages")}>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              type="button"
+              key={index + 1}
+              className={`pagination__button ${currentPage === index + 1 ? "active" : ""}`}
+              onClick={() => setCurrentPage(index + 1)}
+              aria-current={currentPage === index + 1 ? "page" : undefined}
+              aria-label={`${t("page_label")} ${index + 1}`}
             >
-              {i + 1}
-            </motion.button>
+              {index + 1}
+            </button>
           ))}
-        </div>
+        </nav>
       )}
     </section>
   );

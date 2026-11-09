@@ -4,8 +4,18 @@
   "projects": "Loyihalar",
   "contact": "Aloqa",
   "codes": "Kodlar",
+  "floating_contact": "Loyihani boshlash",
+  "navigation_toggle": "Menyuni ochish",
   "tagline": "Shunchaki interfeys emas, haqiqiy mahsulotlar.",
   "scroll_down": "Pastga suring",
+  "hero": {
+    "start_project": "Loyihani boshlash",
+    "explore_work": "Ishlarni ko'rish",
+    "availability": "Yangi loyihalar uchun ochiq"
+  },
+  "projects_open": "loyihani ochish",
+  "testimonials_pages": "Fikrlar sahifalari",
+  "page_label": "Sahifa",
   "building_smart": "Aqlli interfeyslar yaratish",
   "react_crm": "React & React Native | CRM va Admin panellar",
   "aboutPage": {
@@ -118,7 +128,8 @@
     }
   },
   "projectsPage": {
-    "obrano": { "title": "OBRANO" },
+    "obrano": { "title": "OBRANO Academy ta'lim CRM platformasi" },
+    "xion": { "title": "XION tibbiy market CRM platformasi" },
     "furniture": { "title": "Mebel yetkazib berish veb-sayti" },
     "barber": { "title": "Barber bron qilish veb-sayti" },
     "express": { "title": "Logistika kompaniyasi platformasi" },
@@ -281,7 +292,25 @@
     "success": "Muvaffaqiyat!",
     "successDesc": "Xabar Telegramga yetib bordi.",
     "error": "Xato",
-    "errorDesc": "Xabar yuborishda muammo. Qayta urinib ko'ring."
+    "errorDesc": "Xabar yuborishda muammo. Qayta urinib ko'ring.",
+    "sendingDesc": "So'rovingiz yuborilmoqda, biroz kuting.",
+    "eyebrow": "Yangi buyurtma",
+    "formTitle": "G'oyangizni ishga tushirishga tayyormisiz?",
+    "formCopy": "Qisqa ma'lumot qoldiring. Talablaringizni o'rganib, aniq reja bilan sizga javob beraman.",
+    "fastReply": "Tez javob",
+    "fastReplyCopy": "Odatda bir ish kuni ichida.",
+    "clearPlan": "Aniq reja",
+    "clearPlanCopy": "Muddat, bosqichlar va narx shaffof bo'ladi.",
+    "directContact": "Bevosita aloqa",
+    "directContactCopy": "Loyihangizni aynan men olib boraman.",
+    "step": "Qisqa brif",
+    "projectType": "Sizga nima kerak?",
+    "types": { "website": "Web-sayt", "webapp": "Web-ilova", "redesign": "Redizayn", "other": "Boshqa" },
+    "namePlaceholder": "Ismingiz",
+    "budget": "Taxminiy budjet",
+    "budgetPlaceholder": "Oraliqni tanlang",
+    "messagePlaceholder": "Maqsad, kerakli funksiyalar va muddat haqida yozing...",
+    "privacy": "Ma'lumotlaringiz faqat loyiha bo'yicha bog'lanish uchun ishlatiladi."
   },
   "footer": {
     "tagline": "G'oyalar ko'lamli raqamli mahsulotlarga aylanishi mumkin bo'lgan joy.",

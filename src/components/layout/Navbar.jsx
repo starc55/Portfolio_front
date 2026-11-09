@@ -1,255 +1,127 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiCheck, FiChevronDown } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
-import "styles/Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
-import BubbleMenu from "components/sections/BubbleMenu";
+import { Link } from "react-router-dom";
 import logoWhite from "assets/imgs/logo-white.png";
+import "styles/Navbar.css";
 
 const languages = [
-  { code: "uz", label: "Uz", full: "O‘zbekcha" },
-  { code: "ru", label: "Ру", full: "Русский" },
-  { code: "en", label: "En", full: "English" },
+  { code: "uz", label: "UZ", full: "O'zbekcha" },
+  { code: "ru", label: "RU", full: "Русский" },
+  { code: "en", label: "EN", full: "English" },
 ];
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const langRef = useRef(null);
+  const currentLang = i18n.language?.split("-")[0] || "en";
 
-  const currentLang = i18n.language ? i18n.language.split("-")[0] : "en";
-
-  const handleHome = () => {
-    navigate("/");
-  };
-
-  const handleLangChange = (code) => {
-    i18n.changeLanguage(code);
-    setIsLangOpen(false);
-  };
-
-  const items = [
-    {
-      label: t("home"),
-      href: "/",
-      ariaLabel: "Home",
-      rotation: -6,
-      hoverStyles: {
-        bgColor: "#c3e41d",
-        textColor: "#ffffff",
-      },
-    },
-    {
-      label: t("about"),
-      href: "#about",
-      ariaLabel: "About",
-      rotation: 6,
-      hoverStyles: {
-        bgColor: "#047857",
-        textColor: "#ffffff",
-      },
-    },
-    {
-      label: t("projects"),
-      href: "#projects",
-      ariaLabel: "Projects",
-      rotation: 6,
-      hoverStyles: {
-        bgColor: "#b45309",
-        textColor: "#ffffff",
-      },
-    },
-    {
-      label: t("contact"),
-      href: "#contact",
-      ariaLabel: "Contact",
-      rotation: -6,
-      hoverStyles: {
-        bgColor: "#991b1b",
-        textColor: "#ffffff",
-      },
-    },
-    {
-      label: t("codes"),
-      href: "/coding",
-      ariaLabel: "My Codes & Repositories",
-      rotation: -8,
-      hoverStyles: {
-        bgColor: "#6d28d9",
-        textColor: "#ffffff",
-      },
-    },
+  const links = [
+    { label: t("home"), href: "#top" },
+    { label: t("about"), href: "#about" },
+    { label: t("projects"), href: "#projects" },
+    { label: t("contact"), href: "#contact", accent: true },
   ];
 
-  const dropdownVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: -12 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.3, ease: "easeOut" },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.9,
-      y: -12,
-      transition: { duration: 0.2 },
-    },
-  };
+  useEffect(() => {
+    let frame;
+    const updateNavbar = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => setIsScrolled(window.scrollY > 42));
+    };
+    updateNavbar();
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateNavbar);
+    };
+  }, []);
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: (i) => ({
-      opacity: 1,
-      x: 0,
-      transition: { delay: i * 0.05 + 0.1 },
-    }),
-  };
+  useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        setIsLangOpen(false);
+      }
+    };
+    const closeLanguage = (event) => {
+      if (!langRef.current?.contains(event.target)) setIsLangOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeLanguage);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeLanguage);
+    };
+  }, []);
+
+  useEffect(() => {
+    const closeOnDesktop = () => {
+      if (window.innerWidth > 820) setIsMenuOpen(false);
+    };
+    window.addEventListener("resize", closeOnDesktop);
+    return () => window.removeEventListener("resize", closeOnDesktop);
+  }, []);
 
   return (
-    <div>
-      <header className="nav-container">
-        <BubbleMenu
-          logo={<span style={{ fontWeight: 700 }}>RB</span>}
-          items={items}
-          menuAriaLabel="Toggle navigation"
-          menuBg="#ffffff"
-          menuContentColor="#111111"
-          useFixedPosition={false}
-          animationEase="back.out(1.5)"
-          animationDuration={0.5}
-          staggerDelay={0.12}
-        />
+    <div id="top" className="nav-slot">
+    <header className={`nav-container ${isScrolled ? "is-scrolled" : ""}`}>
+      <Link to="/" className="logo" aria-label={t("home")}>
+        <img src={logoWhite} alt="Ogabek Orziyev" className="logo-img" />
+      </Link>
 
-        <Link onClick={handleHome} className="logo">
-          <img src={logoWhite} alt="Logo" className="logo-img" />
-        </Link>
+      <nav className="desktop-nav" aria-label={t("navigation_toggle")}>
+        {links.map((link) => (
+          <a key={link.href} href={link.href} className={link.accent ? "nav-link nav-contact" : "nav-link"}>
+            {link.label}
+          </a>
+        ))}
+      </nav>
 
-        <div
-          className="lang-switcher"
-          style={{
-            position: "relative",
-            marginLeft: "auto",
-            marginRight: "2rem",
-            zIndex: 9999,
-          }}
-        >
-          {/*
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsLangOpen((prev) => !prev);
-            }}
-            className="lang-button"
-            aria-expanded={isLangOpen}
-            style={{
-              background: "transparent",
-              border: "1px solid rgba(255, 255, 255, 0.25)",
-              color: "#ffffff",
-              fontWeight: 600,
-              fontSize: "1rem",
-              padding: "0.5rem 1rem",
-              borderRadius: "6px",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-          >
-            {languages.find((l) => l.code === currentLang)?.label || "EN"}
+      <div className="nav-actions">
+        <div ref={langRef} className="lang-switcher">
+          <button type="button" onClick={() => setIsLangOpen((open) => !open)} aria-expanded={isLangOpen} aria-haspopup="listbox" className="lang-button">
+            <span>{languages.find((language) => language.code === currentLang)?.label || "EN"}</span>
+            <FiChevronDown aria-hidden="true" />
           </button>
-          */}
-
-          <motion.button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsLangOpen((prev) => !prev);
-            }}
-            aria-expanded={isLangOpen}
-            whileHover={{
-              boxShadow: "0 0 18px rgba(212,175,55,0.6)",
-              borderColor: "#D4AF37",
-              scale: 1.06,
-            }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            style={{
-              background: "transparent",
-              border: "1px solid rgba(212,175,55,0.3)",
-              color: "#ffffff",
-              fontWeight: 600,
-              fontSize: "1rem",
-              padding: "0.5rem 1rem",
-              borderRadius: "6px",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-          >
-            {languages.find((l) => l.code === currentLang)?.label || "EN"}
-          </motion.button>
-
           <AnimatePresence>
             {isLangOpen && (
-              <motion.ul
-                variants={dropdownVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                style={{
-                  position: "absolute",
-                  top: "100%",
-                  right: 0,
-                  marginTop: "8px",
-                  background: "rgba(20, 20, 20, 0.98)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderRadius: "8px",
-                  minWidth: "140px",
-                  padding: "0.5rem 0",
-                  boxShadow: "0 12px 35px rgba(0, 0, 0, 0.5)",
-                  listStyle: "none",
-                  zIndex: 10000,
-                  overflow: "hidden",
-                }}
-              >
-                {languages.map((lang, index) => (
-                  <motion.li
-                    key={lang.code}
-                    custom={index}
-                    variants={itemVariants}
-                    whileHover={{
-                      background: "rgba(255, 255, 255, 0.08)",
-                    }}
-                    style={{ margin: 0 }}
-                  >
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleLangChange(lang.code);
-                      }}
-                      style={{
-                        width: "100%",
-                        padding: "0.7rem 1.2rem",
-                        background: "none",
-                        border: "none",
-                        color:
-                          currentLang === lang.code ? "#c3e41d" : "#ffffff",
-                        textAlign: "left",
-                        cursor: "pointer",
-                        fontSize: "0.95rem",
-                        transition: "color 0.2s",
-                      }}
-                    >
-                      {lang.full}
+              <motion.ul className="lang-dropdown" role="listbox" initial={{ opacity: 0, scale: 0.96, y: -6 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: -6 }} transition={{ duration: 0.16 }}>
+                {languages.map((language) => (
+                  <li key={language.code}>
+                    <button type="button" role="option" aria-selected={currentLang === language.code} className={`lang-option ${currentLang === language.code ? "active" : ""}`} onClick={() => { i18n.changeLanguage(language.code); setIsLangOpen(false); }}>
+                      <span><small>{language.label}</small>{language.full}</span>
+                      {currentLang === language.code && <FiCheck aria-hidden="true" />}
                     </button>
-                  </motion.li>
+                  </li>
                 ))}
               </motion.ul>
             )}
           </AnimatePresence>
         </div>
-      </header>
+
+        <button type="button" className={`mobile-menu-button ${isMenuOpen ? "open" : ""}`} onClick={() => setIsMenuOpen((open) => !open)} aria-expanded={isMenuOpen} aria-controls="mobile-navigation" aria-label={t("navigation_toggle")}>
+          <span />
+          <span />
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav id="mobile-navigation" className="mobile-nav" aria-label={t("navigation_toggle")} initial={{ opacity: 0, y: -10, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8, scale: 0.98 }} transition={{ duration: 0.2 }}>
+            {links.map((link, index) => (
+              <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)}>
+                <span>0{index + 1}</span>{link.label}
+              </a>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
     </div>
   );
 };

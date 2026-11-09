@@ -82,6 +82,17 @@ export default function BubbleMenu({
   };
 
   useEffect(() => {
+    if (!isMenuOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     const overlay = overlayRef.current;
     const bubbles = bubblesRef.current.filter(Boolean);
     const labels = labelRefs.current.filter(Boolean);
@@ -190,6 +201,9 @@ export default function BubbleMenu({
             useFixedPosition ? "fixed" : "absolute"
           }`}
           aria-hidden={!isMenuOpen}
+          onPointerDown={(event) => {
+            if (event.target === event.currentTarget) setIsMenuOpen(false);
+          }}
         >
           <ul className="pill-list" role="menu" aria-label="Menu links">
             {menuItems.map((item, idx) => (

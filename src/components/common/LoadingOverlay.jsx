@@ -7,7 +7,7 @@ const LoadingOverlay = () => {
   useEffect(() => {
     const timer = setTimeout(() => setFadeOut(true), 1200);
     return () => clearTimeout(timer);
-  }, []);
+  }, []); 
 
   return (
     <div className={`loading-wrapper ${fadeOut ? "fade-out" : ""}`}>

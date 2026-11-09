@@ -17,12 +17,13 @@ import { Footer } from "./components/layout/Footer";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import FloatingCodingButton from "components/common/FloatingCodingButton";
+import QuickOrderModal from "components/common/QuickOrderModal";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
+    const timer = setTimeout(() => setLoading(false), 900);
     return () => clearTimeout(timer);
   }, []);
 
@@ -45,6 +46,7 @@ function App() {
               <Contact />
               <Footer />
               <FloatingCodingButton />
+              <QuickOrderModal />
             </>
           }
         />

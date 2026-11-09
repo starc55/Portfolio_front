@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import "../styles/Page.css";
-import works from "../data/works";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SectionTitle from "components/ui/SectionTitle";
 import { useTranslation } from "react-i18next";
+import SectionTitle from "components/ui/SectionTitle";
+import works from "../data/works";
+import "../styles/Page.css";
+import "../styles/Projects.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,114 +13,57 @@ const Portfolio = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    gsap.utils.toArray(".work_card").forEach((card, i) => {
-      gsap.fromTo(
-        card,
-        { opacity: 0, y: 80 },
-        {
+    const context = gsap.context(() => {
+      gsap.utils.toArray(".work_card").forEach((card, index) => {
+        gsap.fromTo(card, { opacity: 0, y: 50 }, {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 0.8,
           ease: "power3.out",
-          delay: i * 0.1,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+          delay: index * 0.04,
+          scrollTrigger: { trigger: card, start: "top 88%", once: true },
+          onComplete: () => gsap.set(card, { clearProps: "transform" }),
+        });
+      });
     });
+    return () => context.revert();
   }, []);
 
-  const handleCardClick = (e, project) => {
-    if (project.link && !e.target.closest("button, a")) {
-      window.open(project.link, "_blank", "noopener,noreferrer");
-    }
-  };
-
-  const renderButtons = (project) => {
-    return (
-      <div className="overlay_buttons">
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project_btn github_btn"
-          >
-            GitHub
-          </a>
-        )}
-        {project.demoVideo && (
-          <a
-            href={project.demoVideo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project_btn demo_btn"
-          >
-            Demo Video
-          </a>
-        )}
-        {project.apkLink && (
-          <a href={project.apkLink} download className="project_btn apk_btn">
-            Download APK
-          </a>
-        )}
-        {project.link &&
-          !project.github &&
-          !project.apkLink &&
-          !project.demoVideo && (
-            <button className="project_btn view_btn">
-              {t("view_project")} →
-            </button>
-          )}
-      </div>
-    );
-  };
-
   return (
-    <div className="portfolio" id="projects">
+    <section className="portfolio" id="projects">
       <div className="portfolio_container">
-        <SectionTitle
-          title={t("featured_projects.title")}
-          subtitle={t("featured_projects.subtitle")}
-        />
+        <SectionTitle title={t("featured_projects.title")} subtitle={t("featured_projects.subtitle")} />
 
         <div className="portfolio_masonry">
-          {works.map((work) => (
-            <div
-              className={`work_card ${
-                work.link || work.github || work.apkLink ? "clickable" : ""
-              }`}
+          {works.map((work, index) => (
+            <a
+              className="work_card"
               key={work.titleKey}
-              onClick={(e) => handleCardClick(e, work)}
+              href={work.link || work.github || work.demoVideo || work.apkLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${t(work.titleKey)} — ${t("projects_open")}`}
             >
               <div className="work_img_wrapper">
-                <img
-                  src={work.img}
-                  alt={t(work.titleKey)}
-                  loading="lazy"
-                  className="work_img"
-                />
-
+                <img src={work.img} alt={t(work.titleKey)} loading="lazy" className="work_img" />
                 <div className="work_overlay">
                   <div className="overlay_content">
-                    <div className="work_category_badge">
-                      {t(`category.${work.category}`)}
+                    <div className="project-meta">
+                      <span className="work_category_badge">{t(`category.${work.category}`)}</span>
+                      <span className="project-index">{String(index + 1).padStart(2, "0")}</span>
                     </div>
-
                     <h3 className="work_title">{t(work.titleKey)}</h3>
-
-                    {renderButtons(work)}
+                    <div className="project-tags">
+                      {work.tags?.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

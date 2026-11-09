@@ -4,8 +4,18 @@
   "projects": "Projects",
   "contact": "Contact",
   "codes": "Codes",
+  "floating_contact": "Start a project",
+  "navigation_toggle": "Open menu",
   "tagline": "Building products, not just interfaces.",
   "scroll_down": "Scroll Down",
+  "hero": {
+    "start_project": "Start a project",
+    "explore_work": "Explore work",
+    "availability": "Available for selected projects"
+  },
+  "projects_open": "open project",
+  "testimonials_pages": "Testimonials pages",
+  "page_label": "Page",
   "building_smart": "Building Smart Interfaces",
   "react_crm": "React & React Native | CRM & Admin Panels",
 
@@ -119,7 +129,8 @@
     }
   },
   "projectsPage": {
-    "obrano": { "title": "OBRANO" },
+    "obrano": { "title": "OBRANO Academy education CRM platform" },
+    "xion": { "title": "XION medical marketplace CRM platform" },
     "furniture": { "title": "Furniture store website" },
     "barber": { "title": "Barber booking website" },
     "express": { "title": "Logistic company platform" },
@@ -285,7 +296,24 @@
     "success": "Success!",
     "successDesc": "Your message has been sent to Telegram.",
     "error": "Error",
-    "errorDesc": "There was a problem sending the message. Please try again."
+    "errorDesc": "There was a problem sending the message. Please try again.",
+    "eyebrow": "New inquiry",
+    "formTitle": "Ready to put your idea in motion?",
+    "formCopy": "Share a short brief. I will review the scope and reply with a clear next step.",
+    "fastReply": "Fast response",
+    "fastReplyCopy": "Usually within one business day.",
+    "clearPlan": "Clear plan",
+    "clearPlanCopy": "Transparent scope, timeline and pricing.",
+    "directContact": "Direct contact",
+    "directContactCopy": "You work directly with the developer.",
+    "step": "Quick brief",
+    "projectType": "What do you need?",
+    "types": { "website": "Website", "webapp": "Web app", "redesign": "Redesign", "other": "Other" },
+    "namePlaceholder": "Your name",
+    "budget": "Estimated budget",
+    "budgetPlaceholder": "Choose a range",
+    "messagePlaceholder": "Tell me about the goal, key features and timeline...",
+    "privacy": "Your details are used only to contact you about this project."
   },
   "footer": {
     "tagline": "Where ideas become scalable digital products.",

@@ -15,9 +15,9 @@
     position: fixed;
 }
 
-/* .bubble-menu.absolute {
+.bubble-menu.absolute {
     position: absolute;
-  } */
+}
 
 .bubble-menu .bubble {
     --bubble-size: 48px;
@@ -90,7 +90,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.56);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     z-index: 200;
 }
 
@@ -116,6 +119,7 @@
     margin-right: auto;
     pointer-events: auto;
     justify-content: stretch;
+    pointer-events: none;
 }
 
 .bubble-menu-items .pill-list .pill-spacer {
@@ -130,6 +134,7 @@
     align-items: stretch;
     flex: 0 0 calc(100% / 3);
     box-sizing: border-box;
+    pointer-events: auto;
 }
 
 .bubble-menu-items .pill-list .pill-col:nth-child(4):nth-last-child(2) {
